@@ -78,6 +78,9 @@ app.use((req, res, next) => {
     next();
 });
 // ====================================================Routes start here=====================================
+// app.use('/', (req, res)=> {
+//     res.send('Accha');
+// })
 app.use('/eduafghan', studentRoute);
 
 
