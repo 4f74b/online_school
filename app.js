@@ -1,0 +1,98 @@
+const express = require('express');
+const mongoose = require('mongoose');
+const multer = require('multer');
+const ejs = require('ejs');
+const ejsMate = require('ejs-mate');
+const path = require('path');
+const session = require('express-session');
+const bodyParser = require("body-parser");
+const passport = require("passport");
+const flash = require("connect-flash");
+
+
+const studentRoute = require('./routes/student-route');
+
+const app = express();
+const port = process.env.PORT || 3000;
+
+
+app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
+app.use(bodyParser({ limit: "50mb" }));
+
+
+app.engine("ejs", ejsMate);
+app.set("views", path.join(__dirname, "/views"));
+app.set("view engine", "ejs");
+
+
+app.use(express.static(path.join(__dirname, "./public")));
+
+app.listen(3000, () => {
+  console.log("Server started on port" + port);
+});
+
+mongoose.connect("mongodb://0.0.0.0:27017/online-school", {
+  useNewUrlParser: true,
+  useUnifiedTopology: true,
+});
+
+//the following will check for a successfull connection to mongodb, The above commented code can also be used
+const db = mongoose.connection;
+db.on("error", console.error.bind(console, "Connection error"));
+db.once("open", () => {
+  console.log("database connected");
+});
+
+path.join(__dirname, "/views");
+
+// Configure session
+const sessionOptions = {
+  secret: "somesecret",
+  resave: false,
+  saveUninitialized: false,
+};
+app.use(session(sessionOptions));
+app.use(flash());
+
+app.use(passport.initialize());
+app.use(passport.session());
+
+app.use((req, res, next) => {
+  res.locals.success = req.flash("success");
+  res.locals.error = req.flash("error");
+  next();
+});
+
+// add currently logged in user to res.locals
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+// add current url to res.locals
+app.use((req, res, next) => {
+  res.locals.currentUrl = req.originalUrl;
+  next();
+});
+// ====================================================Routes start here=====================================
+app.use('/eduafghan', studentRoute);
+
+
+
+
+
+
+// ======================================================Routes end here====================================
+
+// The following route will respond if and only if the requested path and method do not match the above specified ones
+app.all("*", (req, res, next) => {
+  throw new ExpressError(404, "page not found");
+});
+
+// The following is our custom error handler
+app.use((err, req, res, next) => {
+  const { status = 500 } = err;
+  if (!err.message) err.message = "Something went wrong";
+  res.status(status).render("error", { err });
+});
