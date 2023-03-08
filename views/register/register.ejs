@@ -108,6 +108,13 @@
     <script src="/assets/js/countdown.js"></script>
     <!-- Main JS -->
     <script src="/assets/js/main.js"></script>
+
+    <!-- add required to inputs -->
+    <script>
+        for (let input of document.querySelectorAll('input')){
+            input.setAttribute('required', '');
+        }
+    </script>
 </body>
 
 </html>
