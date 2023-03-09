@@ -79,297 +79,291 @@
 <body class="p-5">
     <h1 class="title p-3">Register</h1>
     <%- include('../partials/flash.ejs') %>
-    <form class="col-lg-12 d-flex flex-wrap" method="post" action="/<%= domainName %>/student/register">
-        <div style="z-index: unset !important;"
-            class="col-12 col-lg-6 col-sm-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
-            <h5 class="title text-center">Basic Information</h5>
-            <div class="max-width-auto">
-                <div class="form-group">
-                    <input name="fullName" type="text" id="fullName">
-                    <label>Full Name</label>
-                    <span class="focus-border"></span>
+        <form class="col-lg-12 d-flex flex-wrap" method="post" action="/<%= domainName %>/student/register">
+            <div style="z-index: unset !important;"
+                class="col-12 col-lg-6 col-sm-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
+                <h5 class="title text-center">Basic Information</h5>
+                <div class="max-width-auto">
+                    <div class="form-group">
+                        <input name="fullName" type="text" id="fullName">
+                        <label>Full Name</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group">
+                        <input name="fatherName" type="text" id="fatherName">
+                        <label>Father Name</label>
+                        <span class="focus-border"></span>
+                    </div>
+
                 </div>
-                <div class="form-group">
-                    <input name="fatherName" type="text" id="fatherName">
-                    <label>Father Name</label>
-                    <span class="focus-border"></span>
+            </div>
+            <div style="z-index: unset !important;"
+                class="col-12 col-lg-6 col-sm-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
+                <h5 class="title text-center">Contact Information</h5>
+                <div class="max-width-auto">
+                    <div class="form-group">
+                        <input name="contact[email]" type="email" id="email">
+                        <label>Email address</label>
+                        <span class="focus-border"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input name="contact[phoneNo]" type="number" id="phoneNo">
+                        <label>Phone Number(<small>optional</small>)</label>
+                        <span class="focus-border"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <input name="contact[address][streetAddress]" type="text" id="streed">
+                        <label>Full Address(<small>street, district, province</small>)</label>
+                        <span class="focus-border"></span>
+                    </div>
+
+                </div>
+
+
+                <div class="d-flex justify-content-between">
+                    <div class="form-group d-flex flex-column">
+                        <div for="country">Country</div>
+                        <select name="contact[address][country]" class="form-control selectEl" id="country">
+                            <option selected="">Afghanistan</option>
+                            <option>Pakistan
+                            </option>
+                        </select>
+                    </div>
+                    <div class="d-flex flex-column justify-content-end">
+                        <label class="dob-input d-flex align-items-center pr-5">Date
+                            of
+                            Birth</label>
+                        <div class="d-sm-flex d-block ml-5">
+                            <div class="form-group mr-1">
+                                <select name="DOB[]" class="form-control selectEl" id="bornDay">
+                                    <option>Day</option>
+                                    <option>1</option>
+                                    <option>2</option>
+                                    <option>3</option>
+                                    <option>4</option>
+                                    <option>5</option>
+                                    <option>6</option>
+                                    <option>7</option>
+                                    <option>8</option>
+                                    <option>9</option>
+                                    <option>10</option>
+                                    <option>11</option>
+                                    <option>12</option>
+                                    <option>13</option>
+                                    <option>14</option>
+                                    <option>15</option>
+                                    <option>16</option>
+                                    <option>17</option>
+                                    <option>18</option>
+                                    <option>19</option>
+                                    <option selected="">20</option>
+                                    <option>21</option>
+                                    <option>22</option>
+                                    <option>23</option>
+                                    <option>24</option>
+                                    <option>25</option>
+                                    <option>26</option>
+                                    <option>27</option>
+                                    <option>28</option>
+                                    <option>29</option>
+                                    <option>30</option>
+                                    <option>31</option>
+                                </select>
+                            </div>
+                            <div class="form-group mr-1">
+                                <select name="DOB[]" class="form-control selectEl" id="bornMonth">
+                                    <option>Month</option>
+                                    <option selected="">Jan</option>
+                                    <option>Feb</option>
+                                    <option>Mar</option>
+                                    <option>Apr</option>
+                                    <option>May</option>
+                                    <option>Jun</option>
+                                    <option>Jul</option>
+                                    <option>Aug</option>
+                                    <option>Sep</option>
+                                    <option>Oct</option>
+                                    <option>Nov</option>
+                                    <option>Dec</option>
+                                </select>
+                            </div>
+                            <div class="form-group mr-1">
+                                <select name="DOB[]" class="form-control selectEl" id="BornYear">
+                                    <option>Year</option>
+                                    <option>2029</option>
+                                    <option>2028</option>
+                                    <option>2027</option>
+                                    <option>2026</option>
+                                    <option>2025</option>
+                                    <option>2024</option>
+                                    <option>2023</option>
+                                    <option>2022</option>
+                                    <option>2021</option>
+                                    <option>2020</option>
+                                    <option>2019</option>
+                                    <option>2018</option>
+                                    <option>2017</option>
+                                    <option>2016</option>
+                                    <option>2015</option>
+                                    <option>2014</option>
+                                    <option>2013</option>
+                                    <option>2012</option>
+                                    <option>2011</option>
+                                    <option>2010</option>
+                                    <option>2009</option>
+                                    <option>2008</option>
+                                    <option>2007</option>
+                                    <option>2006</option>
+                                    <option>2005</option>
+                                    <option>2004</option>
+                                    <option>2003</option>
+                                    <option>2002</option>
+                                    <option>2001</option>
+                                    <option>2000</option>
+                                    <option>1999</option>
+                                    <option>1998</option>
+                                    <option>1997</option>
+                                    <option>1996</option>
+                                    <option>1995</option>
+                                    <option>1994</option>
+                                    <option>1993</option>
+                                    <option>1992</option>
+                                    <option>1991</option>
+                                    <option>1990</option>
+                                    <option selected="">1989</option>
+                                    <option>1988</option>
+                                    <option>1987</option>
+                                    <option>1986</option>
+                                    <option>1985</option>
+                                    <option>1984</option>
+                                    <option>1983</option>
+                                    <option>1982</option>
+                                    <option>1981</option>
+                                    <option>1980</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
                 </div>
 
             </div>
-        </div>
-        <div style="z-index: unset !important;"
-            class="col-12 col-lg-6 col-sm-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
-            <h5 class="title text-center">Contact Information</h5>
-            <div class="max-width-auto">
-                <div class="form-group">
-                    <input name="contact[email]" type="email" id="email">
-                    <label>Email address</label>
-                    <span class="focus-border"></span>
+
+            <div style="z-index: unset !important;"
+                class="col-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
+                <h5 class="title text-center">Education Information</h5>
+                <div class="col-12 d-flex justify-content-center flex-column align-items-center">
+                    <div class="form-group col-6">
+                        <input name="education[instituteName]" type="text" id="instituteName">
+                        <label>Enter School name(<small>if any</small>)</label>
+                        <span class="focus-border"></span>
+                    </div>
+                    <div class="form-group col-6">
+                        <div>Select previous education level</div>
+                        <select name="education[previous_grade]" class="form-control mb-4 selectEl" id="grade">
+                            <option disabled selected>Previous grade</option>
+                            <option>1st
+                            </option>
+                            <option>
+                                2nd
+                            </option>
+                            <option>3rd
+                            </option>
+                            <option>4th
+                            </option>
+                            <option>5th
+                            </option>
+                            <option>6th
+                            </option>
+                            <option>7th
+                            </option>
+                            <option>8th
+                            </option>
+                            <option>9th
+                            </option>
+                            <option>10th
+                            </option>
+                            <option>College first year
+                            </option>
+                            <option>College 2nd year
+                            </option>
+                        </select>
+                    </div>
                 </div>
 
-                <div class="form-group">
-                    <input name="contact[phoneNo]" type="number" id="phoneNo">
-                    <label>Phone Number(<small>optional</small>)</label>
-                    <span class="focus-border"></span>
-                </div>
-
-                <div class="form-group">
-                    <input name="contact[address][streetAddress]" type="text" id="streed">
-                    <label>Full Address(<small>street, district, province</small>)</label>
-                    <span class="focus-border"></span>
-                </div>
 
             </div>
 
-
-            <div class="d-flex justify-content-between">
-                <div class="form-group d-flex flex-column">
-                    <div for="country">Country</div>
-                    <select name="contact[address][country]" class="form-control selectEl" id="country">
-                        <option selected="">Afghanistan</option>
-                        <option>Pakistan
-                        </option>
-                    </select>
+            <div class="d-flex flex-column align-items-center col-12 pt-5s">
+                <div class="form-group col-6">
+                    <input name="password" type="password">
+                    <label>Password</label>
+                    <span class="focus-border"></span>
                 </div>
-                <div class="d-flex flex-column justify-content-end">
-                    <label class="dob-input d-flex align-items-center pr-5">Date
-                        of
-                        Birth</label>
-                    <div class="d-sm-flex d-block ml-5">
-                        <div class="form-group mr-1">
-                            <select name="DOB[]" class="form-control selectEl" id="bornDay">
-                                <option>Day</option>
-                                <option>1</option>
-                                <option>2</option>
-                                <option>3</option>
-                                <option>4</option>
-                                <option>5</option>
-                                <option>6</option>
-                                <option>7</option>
-                                <option>8</option>
-                                <option>9</option>
-                                <option>10</option>
-                                <option>11</option>
-                                <option>12</option>
-                                <option>13</option>
-                                <option>14</option>
-                                <option>15</option>
-                                <option>16</option>
-                                <option>17</option>
-                                <option>18</option>
-                                <option>19</option>
-                                <option selected="">20</option>
-                                <option>21</option>
-                                <option>22</option>
-                                <option>23</option>
-                                <option>24</option>
-                                <option>25</option>
-                                <option>26</option>
-                                <option>27</option>
-                                <option>28</option>
-                                <option>29</option>
-                                <option>30</option>
-                                <option>31</option>
-                            </select>
-                        </div>
-                        <div class="form-group mr-1">
-                            <select name="DOB[]" class="form-control selectEl" id="bornMonth">
-                                <option>Month</option>
-                                <option selected="">Jan</option>
-                                <option>Feb</option>
-                                <option>Mar</option>
-                                <option>Apr</option>
-                                <option>May</option>
-                                <option>Jun</option>
-                                <option>Jul</option>
-                                <option>Aug</option>
-                                <option>Sep</option>
-                                <option>Oct</option>
-                                <option>Nov</option>
-                                <option>Dec</option>
-                            </select>
-                        </div>
-                        <div class="form-group mr-1">
-                            <select name="DOB[]" class="form-control selectEl" id="BornYear">
-                                <option>Year</option>
-                                <option>2029</option>
-                                <option>2028</option>
-                                <option>2027</option>
-                                <option>2026</option>
-                                <option>2025</option>
-                                <option>2024</option>
-                                <option>2023</option>
-                                <option>2022</option>
-                                <option>2021</option>
-                                <option>2020</option>
-                                <option>2019</option>
-                                <option>2018</option>
-                                <option>2017</option>
-                                <option>2016</option>
-                                <option>2015</option>
-                                <option>2014</option>
-                                <option>2013</option>
-                                <option>2012</option>
-                                <option>2011</option>
-                                <option>2010</option>
-                                <option>2009</option>
-                                <option>2008</option>
-                                <option>2007</option>
-                                <option>2006</option>
-                                <option>2005</option>
-                                <option>2004</option>
-                                <option>2003</option>
-                                <option>2002</option>
-                                <option>2001</option>
-                                <option>2000</option>
-                                <option>1999</option>
-                                <option>1998</option>
-                                <option>1997</option>
-                                <option>1996</option>
-                                <option>1995</option>
-                                <option>1994</option>
-                                <option>1993</option>
-                                <option>1992</option>
-                                <option>1991</option>
-                                <option>1990</option>
-                                <option selected="">1989</option>
-                                <option>1988</option>
-                                <option>1987</option>
-                                <option>1986</option>
-                                <option>1985</option>
-                                <option>1984</option>
-                                <option>1983</option>
-                                <option>1982</option>
-                                <option>1981</option>
-                                <option>1980</option>
-                            </select>
-                        </div>
+                <div class="d-flex justify-content-center col-12">
+                    <div class="form-submit-group w-50 d-flex justify-content-end justify-content-sm-center">
+                        <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
+                            <span class="icon-reverse-wrapper">
+                                <span class="btn-text">Register</span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                            </span>
+                        </button>
                     </div>
                 </div>
             </div>
 
-        </div>
-
-        <div style="z-index: unset !important;"
-            class="col-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
-            <h5 class="title text-center">Education Information</h5>
-            <div class="col-12 d-flex justify-content-center flex-column align-items-center">
-                <div class="form-group col-6">
-                    <input name="education[instituteName]" type="text" id="instituteName">
-                    <label>Enter School name(<small>if any</small>)</label>
-                    <span class="focus-border"></span>
-                </div>
-                <div class="form-group col-6">
-                    <div>Select previous education level</div>
-                    <select name="education[previous_grade]" class="form-control mb-4 selectEl"
-                        id="grade">
-                        <option disabled selected>Previous grade</option>
-                        <option>1st
-                        </option>
-                        <option>
-                            2nd
-                        </option>
-                        <option>3rd
-                        </option>
-                        <option>4th
-                        </option>
-                        <option>5th
-                        </option>
-                        <option>6th
-                        </option>
-                        <option>7th
-                        </option>
-                        <option>8th
-                        </option>
-                        <option>9th
-                        </option>
-                        <option>10th
-                        </option>
-                        <option>College first year
-                        </option>
-                        <option>College 2nd year
-                        </option>
-                    </select>
-                </div>
-            </div>
-
-
-        </div>
-
-        <div class="d-flex flex-column align-items-center col-12 border-top pt-5s">
-
-            <div class="form-group col-6">
-                <input name="username" type="text">
-                <label>Username</label>
-                <span class="focus-border"></span>
-            </div>
-
-            <div class="form-group col-6">
-                <input name="password" type="password">
-                <label>Password</label>
-                <span class="focus-border"></span>
-            </div>
-            <div class="d-flex justify-content-center col-12">
-                <div class="form-submit-group w-50 d-flex justify-content-end justify-content-sm-center">
-                    <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
-                        <span class="icon-reverse-wrapper">
-                            <span class="btn-text">Register</span>
-                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                            <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                        </span>
-                    </button>
-                </div>
-            </div>
-        </div>
+            <input type="text" name="role" value="student" class="d-none">
 
 
 
-    </form>
+        </form>
 
 
 
 
-    <!-- JS
+        <!-- JS
 ============================================ -->
-    <!-- Modernizer JS -->
-    <script src="/assets/js/modernizr.min.js"></script>
-    <!-- jQuery JS -->
-    <script src="/assets/js/jquery.js"></script>
-    <!-- Bootstrap JS -->
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <!-- sal.js -->
-    <script src="/assets/js/sal.js"></script>
-    <script src="/assets/js/swiper.js"></script>
-    <script src="/assets/js/magnify.min.js"></script>
-    <script src="/assets/js/jquery-appear.js"></script>
-    <script src="/assets/js/odometer.js"></script>
-    <!-- <script src="/assets/js/backtotop.js"></script> -->
-    <script src="/assets/js/isotop.js"></script>
-    <script src="/assets/js/imageloaded.js"></script>
+        <!-- Modernizer JS -->
+        <script src="/assets/js/modernizr.min.js"></script>
+        <!-- jQuery JS -->
+        <script src="/assets/js/jquery.js"></script>
+        <!-- Bootstrap JS -->
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <!-- sal.js -->
+        <script src="/assets/js/sal.js"></script>
+        <script src="/assets/js/swiper.js"></script>
+        <script src="/assets/js/magnify.min.js"></script>
+        <script src="/assets/js/jquery-appear.js"></script>
+        <script src="/assets/js/odometer.js"></script>
+        <!-- <script src="/assets/js/backtotop.js"></script> -->
+        <script src="/assets/js/isotop.js"></script>
+        <script src="/assets/js/imageloaded.js"></script>
 
-    <script src="/assets/js/wow.js"></script>
-    <script src="/assets/js/waypoint.min.js"></script>
-    <script src="/assets/js/easypie.js"></script>
-    <script src="/assets/js/text-type.js"></script>
-    <script src="/assets/js/jquery-one-page-nav.js"></script>
-    <script src="/assets/js/bootstrap-select.min.js"></script>
-    <script src="/assets/js/jquery-ui.js"></script>
-    <script src="/assets/js/magnify-popup.min.js"></script>
-    <script src="/assets/js/paralax-scroll.js"></script>
-    <!-- <script src="/assets/js/paralax.min.js"></script> -->
-    <script src="/assets/js/countdown.js"></script>
-    <!-- Main JS -->
-    <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/wow.js"></script>
+        <script src="/assets/js/waypoint.min.js"></script>
+        <script src="/assets/js/easypie.js"></script>
+        <script src="/assets/js/text-type.js"></script>
+        <script src="/assets/js/jquery-one-page-nav.js"></script>
+        <script src="/assets/js/bootstrap-select.min.js"></script>
+        <script src="/assets/js/jquery-ui.js"></script>
+        <script src="/assets/js/magnify-popup.min.js"></script>
+        <script src="/assets/js/paralax-scroll.js"></script>
+        <!-- <script src="/assets/js/paralax.min.js"></script> -->
+        <script src="/assets/js/countdown.js"></script>
+        <!-- Main JS -->
+        <script src="/assets/js/main.js"></script>
 
-    <!-- add required to inputs -->
-    <script>
-        for (let input of document.querySelectorAll('input')) {
-            const inputId=input.id;
-            if(inputId != 'phoneNo' && inputId != 'instituteName' && inputId != 'grade'){
-                input.setAttribute('required', '');
+        <!-- add required to inputs -->
+        <script>
+            for (let input of document.querySelectorAll('input')) {
+                const inputId = input.id;
+                if (inputId != 'phoneNo' && inputId != 'instituteName' && inputId != 'grade') {
+                    input.setAttribute('required', '');
+                }
             }
-        }
-    </script>
+        </script>
 </body>
 
 </html>

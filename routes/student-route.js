@@ -4,7 +4,7 @@ const configurePassport = require("../controllers/passport/configure-passport");
 const passport = require("passport");
 const multer = require("multer");
 
-const registerStudent = require('../controllers/register/register-student');
+const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/student/render-home');
 
 const storage = multer.memoryStorage();
@@ -22,7 +22,7 @@ router
     res.render("register/register");
   })
   //   render register data
-  .post(registerStudent);
+  .post(register);
 
 
 // =================--------------------------login/logout related routes======================================================

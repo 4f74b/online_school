@@ -1,8 +1,7 @@
 const mongoose = require("mongoose");
-const fs = require("fs");
 const passportLocalMongoose = require("passport-local-mongoose");
 
-const userSchema = new mongoose.Schema({
+const UserSchema = new mongoose.Schema({
   profileImage: {
     type: String,
   },
@@ -11,59 +10,23 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  fatherName: {
-    type: String,
-    required: true,
-  },
-  DOB: {
-    type: Array,
-    required: true,
-  },
-  contact: {
-    email: {
-      type: String,
-      required: true,
-    },
-    phoneNo: {
-      type: String,
-    },
-    address: {
-      country: {
-        type: String,
-        required: true,
-      },
-      streetAddress: {
-        type: String,
-        required: true,
-      },
-    },
-  },
-  education: {
-    instituteName: {
-      type: String,
-    },
-    previous_grade: {
-      type: String,
-    },
-  },
-  complaint: [mongoose.Schema.Types.ObjectId],
-  recoveryQs: {
-    q1: {
-      type: String,
-    },
-    q2: {
-      type: String,
-    },
-  },
   role: {
     type: String,
-    default: "student",
-    required: true,
+    enum: ['student', 'teacher', 'admin'],
+    default: 'student',
+    required: true
   },
+  userProfile: {
+    type: mongoose.Schema.Types.ObjectId,
+    required: true,
+    ref: 'Student',
+  }
 });
 
+
+
 // adding a post delete middleware to student schema so that it could run before deleting some student
-userSchema.post("findOneAndDelete", async function (deletedHostellite, next) {
+UserSchema.post("findOneAndDelete", async function (deletedHostellite, next) {
   //   //Delete any associated files
   //   if (deletedHostellite.profileImage) {
   //     fs.unlink("public/hostel-files/hostellite-profile-images/" + deletedHostellite.profileImage, (err) => {
@@ -98,7 +61,7 @@ userSchema.post("findOneAndDelete", async function (deletedHostellite, next) {
 // });
 
 //The following statement will add username and password field to our schema and will make sure that the usename is unique
-userSchema.plugin(passportLocalMongoose);
+UserSchema.plugin(passportLocalMongoose, { usernameField: 'email' });
 
-const User = mongoose.model("User", userSchema);
+const User = mongoose.model("User", UserSchema);
 module.exports = User;
