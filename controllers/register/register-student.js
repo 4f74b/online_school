@@ -6,7 +6,7 @@ async function uploadProfile(req, res) {
     if ((await Student.findOne({ username: req.body.username })) == null) {
         try {
 
-            const std = await Student({
+            let std = await Student({
                 ...req.body,
             });
 
@@ -18,10 +18,20 @@ async function uploadProfile(req, res) {
             //   });
             //   std.profileImage = req.body.username + "." + req.file.originalname.split(".")[1];
             // }
-            await Student.register(std, req.body.password);
-            res.redirect("/" + res.locals.domainName + "/admin/hostellites-list");
+            std = await Student.register(std, req.body.password);
+            req.login(std, (err) => {
+                if (err) {
+                    req.flash('error', "Error occured while logging in");
+                    res.redirect("/" + res.locals.domainName + "/student/login");
+                } else {
+                    req.flash("success", "Welcome!!!");
+                    res.redirect("/" + res.locals.domainName + "/student");
+                }
+
+            })
         } catch (err) {
-            req.flash("error", err.message);
+            req.flash("error", err.message.split(':')[0] + " (You may have left some of the fields empty)");
+            res.status(403);
             res.redirect("/" + res.locals.domainName + "/student/register");
         }
 

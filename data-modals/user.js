@@ -39,21 +39,11 @@ const userSchema = new mongoose.Schema({
     },
   },
   education: {
-    InstituteName: {
+    instituteName: {
       type: String,
-      required: true,
     },
     previous_grade: {
       type: String,
-      required: true,
-    },
-    start: {
-      type: String,
-      required: true,
-    },
-    end: {
-      type: String,
-      required: true,
     },
   },
   complaint: [mongoose.Schema.Types.ObjectId],

@@ -5,12 +5,14 @@ const passport = require("passport");
 const multer = require("multer");
 
 const registerStudent = require('../controllers/register/register-student');
+const renderHomePage = require('../controllers/student/render-home');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
-// router.use(checkExpiry);
 
+// ==================================================Home page========================================================
+router.get('/', renderHomePage);
 
 // =================--------------------------Register related routes======================================================
 router
@@ -21,6 +23,7 @@ router
   })
   //   render register data
   .post(registerStudent);
+
 
 // =================--------------------------login/logout related routes======================================================
 // router

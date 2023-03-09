@@ -11,6 +11,7 @@ const flash = require("connect-flash");
 
 
 const studentRoute = require('./routes/student-route');
+const configurePassport = require('./controllers/passport/configure-passport');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -57,6 +58,9 @@ app.use(flash());
 
 app.use(passport.initialize());
 app.use(passport.session());
+
+// configure passport
+app.use(configurePassport);
 
 app.use((req, res, next) => {
     res.locals.success = req.flash("success");
