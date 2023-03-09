@@ -78,7 +78,7 @@
 
 <body class="p-5">
     <h1 class="title p-3">Register</h1>
-    <form class="col-lg-12 d-flex flex-wrap">
+    <form class="col-lg-12 d-flex flex-wrap" method="post" action="/<%= domainName %>/student/register">
         <div style="z-index: unset !important;"
             class="col-12 col-lg-6 col-sm-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
             <h5 class="title text-center">Basic Information</h5>
@@ -91,12 +91,6 @@
                 <div class="form-group">
                     <input name="fatherName" type="text">
                     <label>Father Name</label>
-                    <span class="focus-border"></span>
-                </div>
-
-                <div class="form-group">
-                    <input name="register_conpassword" type="password">
-                    <label>Confirm Password</label>
                     <span class="focus-border"></span>
                 </div>
 
@@ -114,7 +108,7 @@
 
                 <div class="form-group">
                     <input name="contact[phoneNo]" type="number">
-                    <label>Phone Number</label>
+                    <label>Phone Number(<small>optional</small>)</label>
                     <span class="focus-border"></span>
                 </div>
 
@@ -261,9 +255,41 @@
             <div class="max-width-auto">
 
                 <div class="form-group">
-                    <input name="education[school][name]" type="number">
+                    <input name="education[InstituteName]" type="number">
                     <label>Enter School name(<small>if any</small>)</label>
                     <span class="focus-border"></span>
+                </div>
+                <div class="col-md-6">
+                    <div>Select previous education level</div>
+                    <select name="education[previous_grade]" class="form-control mb-4 selectEl"
+                        id="s-from1">
+                        <option disabled selected>Previous grade</option>
+                        <option>1st
+                        </option>
+                        <option>
+                            2nd
+                        </option>
+                        <option>3rd
+                        </option>
+                        <option>4th
+                        </option>
+                        <option>5th
+                        </option>
+                        <option>6th
+                        </option>
+                        <option>7th
+                        </option>
+                        <option>8th
+                        </option>
+                        <option>9th
+                        </option>
+                        <option>10th
+                        </option>
+                        <option>College first year
+                        </option>
+                        <option>College 2nd year
+                        </option>
+                    </select>
                 </div>
 
                 <div class="col-md-12">
@@ -275,7 +301,7 @@
                                 <div class="row">
 
                                     <div class="col-md-6">
-                                        <select name="education[school][start]" class="form-control mb-4 selectEl"
+                                        <select name="education[start]" class="form-control mb-4 selectEl"
                                             id="s-from1">
                                             <option>Year
                                             </option>
@@ -372,7 +398,7 @@
 
                                 <div class="row">
                                     <div class="col-md-6">
-                                        <select name="education[school][end]" class="form-control input-sm selectEl"
+                                        <select name="education[end]" class="form-control input-sm selectEl"
                                             id="end-in1">
                                             <option>Year
                                             </option>
@@ -473,13 +499,13 @@
         <div class="d-flex flex-column align-items-end col-12">
 
             <div class="form-group col-6">
-                <input name="register_user" type="text">
+                <input name="username" type="text">
                 <label>Username</label>
                 <span class="focus-border"></span>
             </div>
 
             <div class="form-group col-6">
-                <input name="register_password" type="password">
+                <input name="password" type="password">
                 <label>Password</label>
                 <span class="focus-border"></span>
             </div>
@@ -536,11 +562,11 @@
     <script src="/assets/js/main.js"></script>
 
     <!-- add required to inputs -->
-    <script>
+    <!-- <script>
         for (let input of document.querySelectorAll('input')) {
             input.setAttribute('required', '');
         }
-    </script>
+    </script> -->
 </body>
 
 </html>

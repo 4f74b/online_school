@@ -3,23 +3,8 @@ const router = express.Router();
 const configurePassport = require("../controllers/passport/configure-passport");
 const passport = require("passport");
 const multer = require("multer");
-// const logoutStudent = require("../controllers/logout/logoutStudent");
-// const addRequest = require("../controllers/pass-request/passRequest");
-// const getPassRequest = require("../controllers/pass-request/get-pass-request");
-// const addComplaint = require("../controllers/complaint/addComplaint");
-// const showHostellite = require("../controllers/CRUDHostellite/showHostellite");
-// const updateHostellite = require("../controllers/CRUDHostellite/updateHostellite");
-// const showNoticeBoard = require("../controllers/notice-boardCRUD/showNoticeBoard");
-// const isLoggedIn = require("../controllers/login/isLoggedInStudent");
-// const getComplaintLog = require("../controllers/complaint/complaint-log");
-// const deleteComplaint = require("../controllers/complaint/delete-complaint");
-// const catchAsync = require("../utils/catchAsync");
-// const isStudent = require("../controllers/role/isStudent");
-// const isAuthorized = require("../controllers/isAuthorized/isAuthorized");
-// const fillEditForm = require("../controllers/CRUDHostellite/fill-edit-form");
-// const checkTime = require("../controllers/pass-request/check-time");
-// const checkExpiry = require("../controllers/pass-request/check-expiry");
-// const deletePass = require("../controllers/pass-request/delete-pass");
+
+const registerStudent = require('../controllers/register/register-student');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -35,11 +20,7 @@ router
     res.render("register/register");
   })
   //   render register data
-//   .post(
-//     catchAsync(function (req, res) {
-//       res.redirect("/eduafghan/student/notice-board");
-//     })
-//   );
+  .post(registerStudent);
 
 // =================--------------------------login/logout related routes======================================================
 // router

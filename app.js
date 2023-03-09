@@ -72,16 +72,17 @@ app.use((req, res, next) => {
     next();
 });
 
-// add current url to res.locals
+// add current url and domain name to res.locals
 app.use((req, res, next) => {
     res.locals.currentUrl = req.originalUrl;
+    res.locals.domainName= "eduafghan"
     next();
 });
 // ====================================================Routes start here=====================================
 // app.use('/', (req, res)=> {
 //     res.send('Accha');
 // })
-app.use('/eduafghan', studentRoute);
+app.use('/eduafghan/student', studentRoute);
 
 
 
@@ -91,13 +92,13 @@ app.use('/eduafghan', studentRoute);
 // ======================================================Routes end here====================================
 
 // The following route will respond if and only if the requested path and method do not match the above specified ones
-app.all("*", (req, res, next) => {
-    throw new ExpressError(404, "page not found");
-});
+// app.all("*", (req, res, next) => {
+//     throw new ExpressError(404, "page not found");
+// });
 
-// The following is our custom error handler
-app.use((err, req, res, next) => {
-    const { status = 500 } = err;
-    if (!err.message) err.message = "Something went wrong";
-    res.status(status).render("error", { err });
-});
+// // The following is our custom error handler
+// app.use((err, req, res, next) => {
+//     const { status = 500 } = err;
+//     if (!err.message) err.message = "Something went wrong";
+//     res.status(status).render("error", { err });
+// });

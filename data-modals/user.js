@@ -39,30 +39,21 @@ const userSchema = new mongoose.Schema({
     },
   },
   education: {
-    school: {
-      name: {
-        type: String,
-        required: true,
-      },
-      start: {
-        type: String,
-        required: true,
-      },
-      end: {
-        type: String,
-        required: true,
-      },
+    InstituteName: {
+      type: String,
+      required: true,
     },
-    college: {
-      name: {
-        type: String,
-      },
-      start: {
-        type: String,
-      },
-      end: {
-        type: String,
-      },
+    previous_grade: {
+      type: String,
+      required: true,
+    },
+    start: {
+      type: String,
+      required: true,
+    },
+    end: {
+      type: String,
+      required: true,
     },
   },
   complaint: [mongoose.Schema.Types.ObjectId],
@@ -76,28 +67,28 @@ const userSchema = new mongoose.Schema({
   },
   role: {
     type: String,
-    default: "hostellite",
+    default: "student",
     required: true,
   },
 });
 
 // adding a post delete middleware to student schema so that it could run before deleting some student
 userSchema.post("findOneAndDelete", async function (deletedHostellite, next) {
-//   //Delete any associated files
-//   if (deletedHostellite.profileImage) {
-//     fs.unlink("public/hostel-files/hostellite-profile-images/" + deletedHostellite.profileImage, (err) => {
-//       if (err) {
-//         throw err;
-//       }
-//     });
-//   }
+  //   //Delete any associated files
+  //   if (deletedHostellite.profileImage) {
+  //     fs.unlink("public/hostel-files/hostellite-profile-images/" + deletedHostellite.profileImage, (err) => {
+  //       if (err) {
+  //         throw err;
+  //       }
+  //     });
+  //   }
 
-//   // Delete any complaints
-//   if (deletedHostellite.complaint.length) {
-//     for (complaintId of deletedHostellite.complaint) {
-//       await Complaint.findByIdAndDelete(complaintId);
-//     }
-//   }
+  //   // Delete any complaints
+  //   if (deletedHostellite.complaint.length) {
+  //     for (complaintId of deletedHostellite.complaint) {
+  //       await Complaint.findByIdAndDelete(complaintId);
+  //     }
+  //   }
   next();
 });
 
