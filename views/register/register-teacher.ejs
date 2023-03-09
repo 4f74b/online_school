@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito:400,600,700" rel="stylesheet">
     <link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
     <link href="/assets/css//plugins.css" rel="stylesheet" type="text/css" />
-    <link href="/plugins/perfect-scrollbar.css" rel="stylesheet" type="text/css" />
+    <!-- <link href="/plugins/perfect-scrollbar.css" rel="stylesheet" type="text/css" /> -->
     <!-- END GLOBAL MANDATORY STYLES -->
 
     <!--  BEGIN CUSTOM STYLE FILE  -->
@@ -444,16 +444,7 @@
 
                                                             <div class="table-responsive">
                                                                 <table class="table table-bordered item-table">
-                                                                    <thead>
-                                                                        <tr>
-                                                                            <th class=""></th>
-                                                                            <th>Description</th>
-                                                                            <th class="">Rate</th>
-                                                                            <th class="">Qty</th>
-                                                                            <th class="text-right">Amount</th>
-                                                                            <th class="text-center">Tax</th>
-                                                                        </tr>
-                                                                    </thead>
+
                                                                     <tbody>
                                                                         <tr>
                                                                             <td class="delete-item-row">
@@ -485,43 +476,30 @@
                                                                                             </svg></a></li>
                                                                                 </ul>
                                                                             </td>
-                                                                            <td class="description"><input type="text"
+                                                                            <td class="description">
+                                                                                <input name="qualification[qual1][name]"
+                                                                                    type="text"
                                                                                     class="form-control form-control-sm"
-                                                                                    placeholder="Item Description">
-                                                                                <textarea class="form-control"
-                                                                                    placeholder="Additional Details"></textarea>
+                                                                                    placeholder="Qualification Name">
                                                                             </td>
-                                                                            <td class="rate">
+                                                                            <td class="description">
                                                                                 <input type="text"
+                                                                                    name="qualification[qual1][issuingAuthority]"
                                                                                     class="form-control form-control-sm"
                                                                                     placeholder="Price">
                                                                             </td>
-                                                                            <td class="text-right qty"><input
-                                                                                    type="text"
-                                                                                    class="form-control form-control-sm"
-                                                                                    placeholder="Quantity"></td>
-                                                                            <td class="text-right amount"><span
-                                                                                    class="editable-amount"><span
-                                                                                        class="currency">$</span> <span
-                                                                                        class="amount">100.00</span>
+                                                                            <td class="text-right qty">
+                                                                            </td>
+                                                                            <td class="text-right amount">
                                                                             </td>
                                                                             <td class="text-center tax">
-                                                                                <div class="n-chk">
-                                                                                    <label
-                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary"
-                                                                                        style="height: 18px; margin: 0 auto;">
-                                                                                        <input type="checkbox"
-                                                                                            class="new-control-input">
-                                                                                        <span
-                                                                                            class="new-control-indicator"></span><span
-                                                                                            class="new-chk-content">Tax</span>
-                                                                                    </label>
-                                                                                </div>
                                                                             </td>
                                                                         </tr>
                                                                     </tbody>
                                                                 </table>
                                                             </div>
+
+
 
                                                             <button class="btn btn-secondary additem btn-sm">Add
                                                                 Item</button>
@@ -1013,7 +991,5 @@
                 <script src="/plugins/flatpickr/flatpickr.js"></script>
                 <script src="/assets/js/apps/invoice-add.js"></script>
 </body>
-
-<!-- Mirrored from designreset.com/cork/ltr/demo4/apps_invoice-add.html by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 02 Oct 2022 23:33:02 GMT -->
 
 </html>
