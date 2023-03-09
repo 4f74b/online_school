@@ -11,6 +11,9 @@ const flash = require("connect-flash");
 
 
 const studentRoute = require('./routes/student-route');
+const teacherRoute = require('./routes/teacher-route');
+
+
 const configurePassport = require('./controllers/passport/configure-passport');
 
 const app = express();
@@ -79,14 +82,16 @@ app.use((req, res, next) => {
 // add current url and domain name to res.locals
 app.use((req, res, next) => {
     res.locals.currentUrl = req.originalUrl;
-    res.locals.domainName= "eduafghan"
+    res.locals.domainName = "eduafghan"
     next();
 });
 // ====================================================Routes start here=====================================
-// app.use('/', (req, res)=> {
-//     res.send('Accha');
-// })
+
+// student routes
 app.use('/eduafghan/student', studentRoute);
+
+// teacher routes
+app.use('/eduafghan/teacher', teacherRoute);
 
 
 
