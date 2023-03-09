@@ -4,9 +4,12 @@ const TeacherSchema = mongoose.Schema({
         type: [String],
         required: true
     },
-    experience: {
+    address: {
+        type: String,
+    },
+    phoneNo: {
         type: Number,
-        required: true
+        required: true,
     },
     availability: {
         type: [String],
