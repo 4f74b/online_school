@@ -7,7 +7,7 @@ const Joi = require('joi');
 
 async function register(req, res) {
     let newUser;
-    if ((await User.findOne({ email: req.body.contact.email })) == null) {
+    if ((await User.findOne({ email: req.body.email })) == null) {
         try {
             switch (req.body.role) {
                 case 'admin':
@@ -48,8 +48,7 @@ async function register(req, res) {
         }
 
     } else {
-        console.log(req.body);
-        req.flash("error", req.body.role + " with the provided email '" + req.body.contact.email + "' is already registered");
+        req.flash("error", req.body.role + " with the provided email '" + req.body.email + "' is already registered");
         res.redirect("/" + res.locals.domainName + "/" + req.body.role + "/register");
     }
 }

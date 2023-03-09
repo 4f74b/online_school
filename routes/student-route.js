@@ -19,7 +19,7 @@ router
   .route("/register")
   // render register form
   .get((req, res) => {
-    res.render("register/register");
+    res.render("register/register-student");
   })
   //   render register data
   .post(register);
