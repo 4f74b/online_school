@@ -5,7 +5,7 @@ const passport = require("passport");
 const multer = require("multer");
 
 const register = require('../controllers/register/register');
-const renderHomePage = require('../controllers/student/render-home');
+const renderHomePage = require('../controllers/render-home');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });

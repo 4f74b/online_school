@@ -6,7 +6,6 @@ const fs = require("fs");
 const Joi = require('joi');
 
 async function register(req, res) {
-    console.log(req.body);
     let newUser;
     if ((await User.findOne({ email: req.body.email })) == null) {
         try {

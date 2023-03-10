@@ -1,14 +1,16 @@
 const express = require("express");
 const router = express.Router();
-const configurePassport = require("../controllers/passport/configure-passport");
 const passport = require("passport");
 const multer = require("multer");
 
-const register = require('../controllers/register/register');
-const renderHomePage = require('../controllers/student/render-home');
-
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
+
+
+const register = require('../controllers/register/register');
+const renderHomePage = require('../controllers/render-home');
+const isLoggedIn = require('./controllers/login/isLoggedin');
+
 
 
 // ==================================================Home page========================================================

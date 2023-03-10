@@ -5,7 +5,8 @@ const passport = require("passport");
 const multer = require("multer");
 
 const register = require('../controllers/register/register');
-const renderHomePage = require('../controllers/student/render-home');
+const renderHomePage = require('../controllers/render-home');
+const postLogin = require('../controllers/login/login')
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
@@ -27,21 +28,13 @@ router.post('/create', register);
 
 // =================--------------------------login/logout related routes======================================================
 // router
-//   .route("/login")
-//   // render login form
-//   .get((req, res) => {
-//     res.render("login/login");
-//   })
-//   //   render login data
-//   .post(
-//     configurePassport,
-//     passport.authenticate("user", { failureFlash: true, failureRedirect: "/eduafghan/student/login" }),
-//     catchAsync(function (req, res) {
-//       req.flash("success", "Welcome " + req.user.fullName);
-//       res.redirect("/eduafghan/student/notice-board");
+//     .route("/login")
+//     // render login form
+//     .get((req, res) => {
+//         res.render("login/login");
 //     })
-//   );
-
+//     //   render login data
+//     .post(passport.authenticate("User", { failureFlash: true, failureRedirect: "/eduafghan/student/login" }), postLogin)
 // // logout Student
 // router.get("/logout", isLoggedIn, catchAsync(logoutStudent));
 

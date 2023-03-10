@@ -16,6 +16,7 @@ const adminRoute = require('./routes/admin-route');
 
 
 const configurePassport = require('./controllers/passport/configure-passport');
+const postLogin = require('./controllers/login/login');
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -87,6 +88,12 @@ app.use((req, res, next) => {
     next();
 });
 // ====================================================Routes start here=====================================
+
+// generic login route
+app.get('/eduafghan/login', (req, res) => {
+    res.render("login/login");
+})
+app.post('/eduafghan/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/eduafghan/login" }), postLogin);
 
 // student routes
 app.use('/eduafghan/student', studentRoute);
