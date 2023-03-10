@@ -13,13 +13,16 @@ async function register(req, res) {
                 case 'admin':
                     newUser = Admin({ ...req.body })
                     break;
-                case 'teacher': Teacher({ ...req.body })
+                case 'teacher':
+                    console.log('helllo');
+                    Teacher({ ...req.body });
                     break;
                 default:
                     newUser = Student({ ...req.body });
             }
             let std = await User({ ...req.body });
             std.userProfile = newUser._id;
+            console.log(newUser);
 
             //if the User data contains file, then create a path in public directory to save it
             // if (req.file) {

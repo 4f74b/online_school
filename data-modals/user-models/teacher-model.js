@@ -11,6 +11,9 @@ const TeacherSchema = mongoose.Schema({
         type: Number,
         required: true,
     },
+    country: {
+        type: String,
+    },
     availability: {
         type: [String],
         required: true
@@ -34,7 +37,7 @@ const TeacherSchema = mongoose.Schema({
             type: String,
             required: true
         },
-        level: {
+        grade: {
             type: String,
             required: true
         },
@@ -42,14 +45,6 @@ const TeacherSchema = mongoose.Schema({
             type: String,
             required: true
         },
-        startDate: {
-            type: Date,
-            required: true
-        },
-        endDate: {
-            type: Date,
-            required: true
-        }
     }],
     reviews: [{
         studentName: {
