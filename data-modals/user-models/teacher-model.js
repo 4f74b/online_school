@@ -18,7 +18,7 @@ const TeacherSchema = mongoose.Schema({
         type: [String],
         required: true
     },
-    qualifications: [{
+    qualification: [{
         name: {
             type: String,
             required: true
@@ -27,13 +27,9 @@ const TeacherSchema = mongoose.Schema({
             type: String,
             required: true
         },
-        issueDate: {
-            type: Date,
-            required: true
-        }
     }],
     teachingExperience: [{
-        subject: {
+        subName: {
             type: String,
             required: true
         },
@@ -41,7 +37,7 @@ const TeacherSchema = mongoose.Schema({
             type: String,
             required: true
         },
-        institution: {
+        institution_name: {
             type: String,
             required: true
         },

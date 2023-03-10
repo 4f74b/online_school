@@ -16,6 +16,8 @@ async function register(req, res) {
                     std.subModel = 'Admin'
                     break;
                 case 'teacher':
+                    req.body.qualification = Object.values(req.body.qualification);
+                    req.body.teachingExperience = Object.values(req.body.teachingExperience);
                     newUser = Teacher({ ...req.body });
                     std.subModel = 'Teacher'
                     break;
