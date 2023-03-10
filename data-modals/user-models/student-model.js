@@ -35,6 +35,11 @@ const StudentSchema = mongoose.Schema({
             type: String,
         },
     },
+    gender: {
+        type: String,
+        required: true,
+        enum: ['male', 'female'],
+    },
     complaint: [mongoose.Schema.Types.ObjectId],
     recoveryQs: {
         q1: {

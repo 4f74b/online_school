@@ -66,7 +66,12 @@ const TeacherSchema = mongoose.Schema({
     userInfo: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
-    }
+    },
+    gender: {
+        type: String,
+        required: true,
+        enum: ['male', 'female'],
+    },
 })
 
 // adding a post delete middleware to student schema so that it could run before deleting some student

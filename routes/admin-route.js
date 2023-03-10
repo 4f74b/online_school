@@ -9,12 +9,12 @@ const upload = multer({ storage });
 
 const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/render-home');
-const isLoggedIn = require('./controllers/login/isLoggedin');
+const isLoggedIn = require('../controllers/login/isLoggedIn');
 
 
 
 // ==================================================Home page========================================================
-router.get('/', renderHomePage);
+router.get('/', isLoggedIn, renderHomePage);
 
 // =================--------------------------Register related routes======================================================
 router

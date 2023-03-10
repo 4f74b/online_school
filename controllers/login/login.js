@@ -1,5 +1,4 @@
 module.exports = async function (req, res) {
-    console.log(req.user);
     switch (req.user.role) {
         case 'student':
             res.redirect('/' + res.locals.domainName + '/student');

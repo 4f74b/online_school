@@ -43,7 +43,9 @@ async function register(req, res) {
                     res.redirect("/" + res.locals.domainName + "/" + req.body.role + "/login");
                 } else {
                     req.flash("success", "Welcome!!!");
-                    res.redirect("/" + res.locals.domainName + "/student");
+                    const redirectUrl = req.session.returnTo || "/" + res.locals.domainName + "/student";
+                    delete req.session.returnTo;
+                    res.redirect(redirectUrl);
                 }
 
             })
