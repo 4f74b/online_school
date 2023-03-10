@@ -1658,7 +1658,7 @@
                                                             <div
                                                                 class="form-group d-flex flex-column align-items-end mt-5">
                                                                 <div class="col-sm-9">
-                                                                    <input type="text"
+                                                                    <input type="password"
                                                                         class="form-control form-control-sm"
                                                                         id="password" placeholder="Choose password"
                                                                         name="password">
@@ -1666,7 +1666,7 @@
                                                             </div>
                                                             <div class="form-group d-flex flex-column align-items-end">
                                                                 <div class="col-sm-9">
-                                                                    <input type="text"
+                                                                    <input type="password"
                                                                         class="form-control form-control-sm"
                                                                         id="password_conf"
                                                                         placeholder="Confirm password"
@@ -1674,8 +1674,8 @@
                                                                 </div>
                                                             </div>
 
-                                                            <div class="msg bg-danger p-2">
-                                                                helllo
+                                                            <div class="msg bg-danger p-2 text-right rounded d-none">
+                                                                Password did not match
                                                             </div>
 
 
@@ -1704,10 +1704,17 @@
                 <!-- confirm Password -->
                 <script>
                     document.querySelector('form').addEventListener('submit', function (evt) {
+                        if (document.getElementById('password').value == '') {
+                            evt.stopPropagation();
+                            evt.preventDefault();
+                            document.querySelector('.msg').classList.remove('d-none');
+                            document.querySelector('.msg').innerHTML = "Password must be provided"
+                        }
                         if (document.getElementById('password').value != document.getElementById('password_conf').value) {
                             evt.stopPropagation();
                             evt.preventDefault();
-
+                            document.querySelector('.msg').classList.remove('d-none');
+                            document.querySelector('.msg').innerHTML = "Password did not match"
                         }
                     })
                 </script>

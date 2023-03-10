@@ -12,6 +12,7 @@ const flash = require("connect-flash");
 
 const studentRoute = require('./routes/student-route');
 const teacherRoute = require('./routes/teacher-route');
+const adminRoute = require('./routes/admin-route');
 
 
 const configurePassport = require('./controllers/passport/configure-passport');
@@ -92,6 +93,9 @@ app.use('/eduafghan/student', studentRoute);
 
 // teacher routes
 app.use('/eduafghan/teacher', teacherRoute);
+
+// admin routes
+app.use('/eduafghan/admin', adminRoute);
 
 
 

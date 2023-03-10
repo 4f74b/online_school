@@ -1,16 +1,9 @@
 const mongoose = require('mongoose');
 const adminSchema = mongoose.Schema({
-    phone: {
-        type: String,
-        required: true
-    },
+    phoneNumber: { type: String },
     address: {
         type: String,
-        required: true
-    },
-    permissions: {
-        type: [String],
-        required: true
+        required: true,
     },
 })
 
