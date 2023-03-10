@@ -23,6 +23,10 @@ const StudentSchema = mongoose.Schema({
             },
         },
     },
+    grade: {
+        type: Number,
+        required: true
+    },
     education: {
         instituteName: {
             type: String,

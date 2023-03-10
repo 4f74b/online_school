@@ -29,6 +29,10 @@
     <link rel="stylesheet" href="/assets/css/plugins/jquery-ui.css">
     <link rel="stylesheet" href="/assets/css/plugins/magnigy-popup.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+
+    <link rel="stylesheet" type="text/css" href="/assets/css/forms/theme-checkbox-radio.css">
+
+
     <style>
         /* Style for the select element */
         .selectEl {
@@ -94,6 +98,106 @@
                         <label>Father Name</label>
                         <span class="focus-border"></span>
                     </div>
+
+                    <div class="invoice-address-client-fields">
+                        <h6>Select your education level(<small>Select your class</small>)
+                        </h6>
+                        <div class="row">
+                            <div class="col-12 invoice-address-client border d-flex flex-wrap">
+
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="1">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">1</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="2">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">2</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="3">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">3</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="4">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">4</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="5">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">5</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="6">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">6</span>
+                                    </label>
+                                </div>
+
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="7">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">7</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="8">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">8</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="9">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">9</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="10">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">10</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="11">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">11</span>
+                                    </label>
+                                </div>
+                                <div class="n-chk mb-4 p-1">
+                                    <label class="new-control new-radio new-radio-text radio-primary">
+                                        <input type="radio" name="grade" class="new-control-input" value="12">
+                                        <span class="new-control-indicator"></span>
+                                        <span class="new-chk-content" style="padding-left: 1rem;">12</span>
+                                    </label>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
 
                 </div>
             </div>
@@ -262,31 +366,33 @@
                     <div class="form-group col-6">
                         <div>Select previous education level</div>
                         <select name="education[previous_grade]" class="form-control mb-4 selectEl" id="grade">
-                            <option disabled selected>Previous grade</option>
-                            <option>1st
+                            <option disabled selected value="">--Previous grade--</option>
+                            <option value="none">none
                             </option>
-                            <option>
+                            <option value="1">1st
+                            </option>
+                            <option value="2">
                                 2nd
                             </option>
-                            <option>3rd
+                            <option value="3">3rd
                             </option>
-                            <option>4th
+                            <option value="4">4th
                             </option>
-                            <option>5th
+                            <option value="5">5th
                             </option>
-                            <option>6th
+                            <option value="6">6th
                             </option>
-                            <option>7th
+                            <option value="7">7th
                             </option>
-                            <option>8th
+                            <option value="8">8th
                             </option>
-                            <option>9th
+                            <option value="9">9th
                             </option>
-                            <option>10th
+                            <option value="10">10th
                             </option>
-                            <option>College first year
+                            <option value="11">College first year
                             </option>
-                            <option>College 2nd year
+                            <option value="12">College 2nd year
                             </option>
                         </select>
                     </div>
@@ -306,7 +412,7 @@
                 </div>
                 <div class="form-group col-6">
                     <input name="conf_password" type="password" id="conf_password">
-                    <label>Password</label>
+                    <label>Confirm Password</label>
                     <span class="focus-border"></span>
                 </div>
                 <div class="d-flex justify-content-center col-12">
