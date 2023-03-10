@@ -1,4 +1,5 @@
 var currentDate = new Date();
+let expQtt = 1;
 
 $('.dropify').dropify({
   messages: { 'default': 'Click to Upload Picture/Logo', 'replace': 'Upload or Drag n Drop' }
@@ -13,9 +14,10 @@ var f2 = flatpickr(document.getElementById('due'), {
 });
 
 function deleteItemRow() {
-  deleteItem = document.querySelectorAll('.delete-item');
+  deleteItem = document.querySelectorAll('.delete-item-edit');
   for (var i = 0; i < deleteItem.length; i++) {
     deleteItem[i].addEventListener('click', function () {
+      expQtt--;
       this.parentElement.parentNode.parentNode.parentNode.remove();
     })
   }
@@ -95,27 +97,7 @@ document.getElementsByClassName('edititem')[0].addEventListener('click', functio
   getTableElement = document.querySelector('.item-table1');
   currentIndex = getTableElement.rows.length;
 
-  $html = '<tr>' +
-    '<td class="delete-item-row">' +
-    '<ul class="table-controls">' +
-    '<li><a href="javascript:void(0);" class="delete-item" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg></a></li>' +
-    '</ul>' +
-    '</td>' +
-    '<td class="description"><input type="text" class="form-control  form-control-sm" placeholder="Item Description"> <textarea class="form-control" placeholder="Additional Details"></textarea></td>' +
-    '<td class="rate">' +
-    '<input type="text" class="form-control  form-control-sm" placeholder="Price">' +
-    ' </td>' +
-    '<td class="text-right qty"><input type="text" class="form-control  form-control-sm" placeholder="Quantity"></td>' +
-    '<td class="text-right amount"><span class="editable-amount"><span class="currency">$</span> <span class="amount">0.00</span></td>' +
-    '<td class="text-center tax">' +
-    '<div class="n-chk">' +
-    '<label class="new-control new-checkbox new-checkbox-text checkbox-primary" style="height: 18px; margin: 0 auto;">' +
-    '<input type="checkbox" class="new-control-input">' +
-    '<span class="new-control-indicator"></span><span class="new-chk-content">Tax</span>' +
-    ' </label>' +
-    '</div>' +
-    '</td>' +
-    '</tr>';
+  $html = '<tr> <td class="delete-item-row"> <ul class="table-controls"> <li><a href="javascript:void(0);" class="delete-item-edit" data-toggle="tooltip" data-placement="top" title="" data-original-title="Delete"><svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-x-circle"> <circle cx="12" cy="12" r="10"> </circle> <line x1="15" y1="9" x2="9" y2="15"> </line> <line x1="9" y1="9" x2="15" y2="15"> </line> </svg></a></li> </ul> </td> <td class="description"><input type="text" class="form-control form-control-sm" name="experience[exp' + (++expQtt) + '][subName]" placeholder="Subject Name"> </td> <td class="description"> <select class="form-control" name="experience[exp' + (expQtt) + '][grade]" placeholder="Grade"> <option selected value=""> --Grade-- </option> <option value="1">1</option> <option value="2">2</option> <option value="3">3</option> <option value="4">4</option> <option value="5">5</option> <option value="6">6</option> <option value="7">7</option> <option value="8">8</option> <option value="9">9</option> <option value="10">10</option> <option value="11">11</option> <option value="12">12</option> </select> </td> <td class="description"> <input type="text" name="experience[exp' + expQtt + '][institution_name]" class="form-control form-control-sm" placeholder="Institution name"> </td> </tr>';
 
   $(".item-table1 tbody").append($html);
   deleteItemRow();
