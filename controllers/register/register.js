@@ -6,22 +6,24 @@ const fs = require("fs");
 const Joi = require('joi');
 
 async function register(req, res) {
-    console.log(req.body)
     let newUser;
     if ((await User.findOne({ email: req.body.email })) == null) {
         try {
+            let std = await User({ ...req.body });
             switch (req.body.role) {
                 case 'admin':
                     newUser = Admin({ ...req.body })
+                    std.subModel = 'Admin'
                     break;
                 case 'teacher':
-                    console.log('helllo');
                     newUser = Teacher({ ...req.body });
+                    std.subModel = 'Teacher'
                     break;
                 default:
                     newUser = Student({ ...req.body });
+                    std.subModel = 'Student';
+                    break;
             }
-            let std = await User({ ...req.body });
             std.userProfile = newUser._id;
 
             //if the User data contains file, then create a path in public directory to save it
@@ -32,6 +34,7 @@ async function register(req, res) {
             //   });
             //   std.profileImage = req.body.username + "." + req.file.originalname.split(".")[1];
             // }
+            newUser.userInfo = std._id;
             await newUser.save();
             std = await User.register(std, req.body.password);
             req.login(std, (err) => {

@@ -45,6 +45,10 @@ const StudentSchema = mongoose.Schema({
         default: "student",
         required: true,
     },
+    userInfo: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+    }
 })
 
 // adding a post delete middleware to student schema so that it could run before deleting some student

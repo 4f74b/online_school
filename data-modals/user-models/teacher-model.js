@@ -62,6 +62,10 @@ const TeacherSchema = mongoose.Schema({
     }],
     profilePictureUrl: {
         type: String,
+    },
+    userInfo: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
     }
 })
 

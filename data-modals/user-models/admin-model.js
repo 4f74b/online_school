@@ -1,10 +1,14 @@
 const mongoose = require('mongoose');
 const adminSchema = mongoose.Schema({
-    phoneNumber: { type: String },
+    phoneNo: { type: String },
     address: {
         type: String,
         required: true,
     },
+    userInfo: {
+        type: mongoose.Types.ObjectId,
+        ref: 'User',
+    }
 })
 
 // adding a post delete middleware to student schema so that it could run before deleting some student

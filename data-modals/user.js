@@ -19,7 +19,12 @@ const UserSchema = new mongoose.Schema({
   userProfile: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
-    ref: 'Student',
+    refPath: 'subModel',
+  },
+  subModel: {
+    type: String,
+    required: true,
+    enum: ['Admin', 'Student', 'Teacher']
   }
 });
 
