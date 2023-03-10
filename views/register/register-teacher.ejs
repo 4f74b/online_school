@@ -753,7 +753,7 @@
 
                                             <div class="invoice-detail-header">
 
-                                                <form method="post" action="/eduafghan/teacher/register"
+                                                <form method="post" action="/<%= domainName %>/teacher/register"
                                                     class="row justify-content-between">
                                                     <div class="col-xl-5 invoice-address-company">
 
@@ -1627,6 +1627,17 @@
 
                 </div>
                 <!-- END MAIN CONTAINER -->
+                <!-- set url of form -->
+                <script>
+                    document.querySelector('form').addEventListener('submit', (evt) => {
+                        console.log('helllo');
+                        document.querySelector('form').setAttribute('method', 'post');
+                        document.querySelector('form').setAttribute('action', '/eduafghan/teacher/register');
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                        document.querySelector('form').submit();
+                    })
+                </script>
 
                 <!-- BEGIN GLOBAL MANDATORY SCRIPTS -->
                 <script src="/assets/js/libs/jquery-3.1.1.min.js"></script>
@@ -1647,6 +1658,8 @@
                 <script src="/plugins/flatpickr/flatpickr.js"></script>
                 <script src="/assets/js/apps/invoice-add.js"></script>
                 <script src="/assets/js/apps/invoice-edit.js"></script>
+
+
 </body>
 
 </html>
