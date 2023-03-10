@@ -21,8 +21,8 @@ router
     .get((req, res) => {
         res.render("register/register-teacher");
     })
-    //   render register data
-    .post(register);
+//   render register data
+router.post('/create', register);
 
 
 // =================--------------------------login/logout related routes======================================================

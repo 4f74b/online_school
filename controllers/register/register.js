@@ -6,6 +6,7 @@ const fs = require("fs");
 const Joi = require('joi');
 
 async function register(req, res) {
+    console.log(req.body)
     let newUser;
     if ((await User.findOne({ email: req.body.email })) == null) {
         try {
@@ -15,14 +16,13 @@ async function register(req, res) {
                     break;
                 case 'teacher':
                     console.log('helllo');
-                    Teacher({ ...req.body });
+                    newUser = Teacher({ ...req.body });
                     break;
                 default:
                     newUser = Student({ ...req.body });
             }
             let std = await User({ ...req.body });
             std.userProfile = newUser._id;
-            console.log(newUser);
 
             //if the User data contains file, then create a path in public directory to save it
             // if (req.file) {
