@@ -12,6 +12,7 @@ const renderHomePage = require('../controllers/render-home');
 const isLoggedIn = require('../controllers/login/isLoggedIn');
 const { renderAddGrade } = require('../controllers/admin/add-grade');
 const { getStudentWithGrade } = require('../controllers/admin/get-student');
+const { getTeacherBySubjectAndGradeAndSlot } = require("../controllers/admin/getTeacher");
 
 
 
@@ -33,8 +34,11 @@ router.route('/add-grade')
     .get(renderAddGrade)
 
 
-// ==================================================Get Student of particular grade========================================================
+// ==================================================Get Student========================================================
 router.get('/get-student/with-grade/:class', getStudentWithGrade)
+
+// ==================================================Get Teacher========================================================
+router.get('/get-teacher/:subject/:slot/:grade', getTeacherBySubjectAndGradeAndSlot)
 
 
 // =================--------------------------login/logout related routes======================================================

@@ -180,41 +180,25 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col-12 d-flex flex-wrap subject mb-5">
-                            <div class="col-12 col-lg-4">
-                                <div class="w-100 form-group">
-                                    <label>Section</label>
-                                    <select class="select2" name="section">
-                                        <option value="">--Please Select--</option>
-                                        <option value="1">Pink</option>
-                                        <option value="2">Blue</option>
-                                        <option value="3">Bird</option>
-                                        <option value="3">Rose</option>
-                                        <option value="3">Red</option>
-                                    </select>
-                                </div>
-                                <div class="w-100 form-group">
-                                    <label>Teacher</label>
-                                    <select class="select2" name="section">
-                                        <option value="">--Add Teacher--</option>
-                                        <% for (teacher of teachers){ %>
-                                            <option value="<%= teacher._id %>">
-                                                <%= teacher.fullName %>
-                                            </option>
-                                            <% } %>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-12">
-                            <button type="button" id="addSubject" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Add
-                                Subject</button>
+
+                        <div id="courseWrapper" class="">
+
+
 
                         </div>
+                    </div>
+
+                    <div class="col-12">
+
+                        <button type="button" id="addSubject" class="btn-fill-lg bg-blue-dark btn-hover-bluedark">Add
+                            Subject</button>
+                    </div>
+                    <div class="col-12">
                         <div class="col-12 form-group mg-t-8 d-flex justify-content-end">
                             <button type="submit"
                                 class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
                         </div>
+
                     </div>
                 </form>
 
@@ -328,9 +312,16 @@
         })
     </script>
 
+    <script>
+        let courseCount = 0;
+        document.getElementById('addSubject').addEventListener('click', async function (evt) {
+            document.getElementById('courseWrapper').insertAdjacentHTML('beforeend', '<div class="course border shadow mb-5 bg-ash"> <div class="col-12 d-flex flex-wrap mb-5"> <div class="col-12 col-lg-4"> <div class="w-100 form-group"> <label class="h3 p-4"> <u class="subjectTitle' + (++courseCount) + '"> Subject#: ' + (courseCount) + ' </u></label> <select class="coursesSelect' + (courseCount) + '" onchange="getTeacher(this, ' + courseCount + ')" name="subject"> <option value="">--Please Select Subject name--</option> <option value="math">Math</option> <option value="english">English</option> <option value="history">History</option> <option value="science">Science</option> <option value="art">Art</option> <option value="music">Music</option> <option value="pushto">Pushto</option> <option value="dari">Dari</option> <option value="biology">Biology</option> <option value="physics">Physics</option> <option value="social Studies">Social Studies</option> <option value="religious Education">Religious Education </option> <option value="business Studies">Business Studies</option> <option value="computer Science">Computer Science</option> <option value="skills Education">Skills Education</option> <option value="foreign Language">Foreign Language</option> </select> </div> </div> </div> <div class="row p-5 justify-content-between mb-5 form-group" style="background-color:aliceblue;"> <h6>Select Time of this course</h6> <div class="col-12 d-flex flex-wrap"> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="08:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">08:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="09:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">09:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="10:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">10:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="11:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">11:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="12:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">12:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="13:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">01:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="14:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">02:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="15:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">03:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="16:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">04:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="17:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">05:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="18:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">06:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="19:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">07:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="getTeacherByCourseAndTime(this, ' + courseCount + ')" name="subjects[subject' + courseCount + '][slot]" class="new-control-input" value="20:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">08:15 pm</span> </label> </div> </div> </div> <div class="col-12 p-2 form-group d-none" style="background-color: beige;" id="relatedTeachers' + (courseCount) + '"> <div class="table-responsive"> <label>Add Teacher( <small>The following Teachers are elligible for "<span id="selectedLabelTeacher"></span>" class <span id="timeLabelWrap' + courseCount + '" class="d-none">in the selected time slot "<span id="timeSlot"></span>"</span></small> )</label> <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer"> <table class="table display data-table text-nowrap dataTable no-footer" id="DataTables_Table_0" role="grid"> <thead> <tr role="row"> <th class="sorting_asc" rowspan="1" colspan="1" aria-label=" Roll " style="width: 85.8px;"> <div class=""> <label class="">Roll</label> </div> </th> <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Name: activate to sort column ascending" style="width: 80.6875px;">Name</th> <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Gender: activate to sort column ascending" style="width: 51.625px;">Gender</th> <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="Address: activate to sort column ascending" style="width: 133.8px;">Address</th> <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" aria-label="E-mail: activate to sort column ascending" style="width: 166.075px;">E-mail</th> </tr> </thead> <tbody id="teachersTable' + courseCount + '"> </tbody> </table> </div> </div> </div> </div>')
+        })
+    </script>
     <!-- Check for students of particular class level -->
     <script>
         setTimeout(() => {
+
             document.getElementById('classLevel').onchange = async function (evt) {
                 document.getElementById('selectedLabel').innerHTML = this.value;
                 // clear students table
@@ -354,8 +345,103 @@
                     console.log(err);
                 }
             }
+
         }, 100);
     </script>
+
+    <!-- Check for Teachers of particular subject -->
+    <script>
+        function createTeacherTable(teachers, wrapper, subNo) {
+            if (teachers.length) {
+                document.getElementById('relatedTeachers' + subNo).classList.remove('d-none');
+                for (let teacher of teachers) {
+                    wrapper.insertAdjacentHTML('beforeend', '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="teachers[teacher' + subNo + '][id]" class="new- control - input" value="' + teacher._id + '"> <span class="new- control - indicator"></span> <span class="new- chk - content">#' + teacher._id + '</span> </label> </td> <td>' + teacher.userInfo.fullName + '</td> <td>' + teacher.gender + '</td> <td>' + teacher.address + '</td> <td>' + teacher.userInfo.email + '</td> </tr>')
+                }
+            } else {
+                document.getElementById('relatedTeachers' + subNo).classList.add('d-none');
+                console.log('no teacher with the selected subject found');
+            }
+        }
+
+
+        async function getTeacherByCourse(subNo) {
+            document.querySelector('.subjectTitle' + subNo).innerHTML = document.querySelector('.coursesSelect' + courseCount).value.charAt(0).toUpperCase() + document.querySelector('.coursesSelect' + courseCount).value.slice(1);
+            // clear teachers table
+            let tbody = document.getElementById('teachersTable' + courseCount);
+            while (tbody.firstChild) {
+                tbody.removeChild(tbody.firstChild);
+            }
+            // look for teachers of the selected grade
+            try {
+                let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher/' + document.querySelector('.coursesSelect' + courseCount).value + '/null/null');
+                res = await res.json();
+                createTeacherTable(res, tbody, subNo);
+            } catch (err) {
+                console.log(err);
+            }
+        }
+
+
+        async function getTeacherByCourseAndSlot(subNo) {
+            if (document.querySelector('.coursesSelect' + courseCount).value && document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value != '') {
+                document.getElementById('selectedLabelTeacher').innerHTML = document.querySelector('.coursesSelect' + courseCount).value;
+                document.getElementById('timeSlot').innerHTML = document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value
+                document.getElementById('timeLabelWrap' + courseCount).classList.remove('d-none');
+                document.querySelector('.subjectTitle' + subNo).innerHTML = document.querySelector('.coursesSelect' + courseCount).value.charAt(0).toUpperCase() + document.querySelector('.coursesSelect' + courseCount).value.slice(1);
+                // clear teachers table
+                let tbody = document.getElementById('teachersTable' + courseCount);
+                while (tbody.firstChild) {
+                    tbody.removeChild(tbody.firstChild);
+                }
+                // look for teachers of the selected slot and subject
+                try {
+                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher/' + document.querySelector('.coursesSelect' + courseCount).value + '/' + document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value + '/garbage');
+                    res = await res.json();
+                    createTeacherTable(res, tbody, subNo);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }
+
+        function getTeacher(self, subNo) {
+            document.getElementById('selectedLabelTeacher').innerHTML = self.value;
+            document.getElementById('timeLabelWrap' + courseCount).classList.add('d-none');
+            if (self.value && !document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked')) {
+                getTeacherByCourse(subNo)
+            } else if (self.value) {
+                getTeacherByCourseAndSlot(subNo)
+            }
+        }
+    </script>
+
+    <!-- Check for Teachers of particular subject and slot -->
+    <script>
+
+        async function getTeacherByCourseAndTime(self, subNo) {
+            if (document.querySelector('.coursesSelect' + subNo).value && self.value != '') {
+                document.getElementById('selectedLabelTeacher').innerHTML = document.querySelector('.coursesSelect' + subNo).value;
+                document.getElementById('timeSlot').innerHTML = self.value
+                document.getElementById('timeLabelWrap' + subNo).classList.remove('d-none');
+                // clear teachers table
+                let tbody = document.getElementById('teachersTable' + subNo);
+                while (tbody.firstChild) {
+                    tbody.removeChild(tbody.firstChild);
+                }
+                // look for teachers of the selected slot and subject
+                try {
+                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher/' + document.querySelector('.coursesSelect' + subNo).value + '/' + self.value + '/garbage');
+                    res = await res.json();
+                    createTeacherTable(res, tbody, subNo);
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }
+
+    </script>
+
+
 
 
 
