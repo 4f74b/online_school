@@ -85,9 +85,6 @@
                     </div>
                 </div>
 
-                <h1>
-                    <%= teachers[0].fullName %>
-                </h1>
                 <!-- Button trigger modal -->
                 <button type="button" class="modal-trigger d-none" data-toggle="modal" data-target="#grade-type">
                     Select Class Type
@@ -130,10 +127,12 @@
                             <label>Class ID No</label>
                             <input type="number" name="classID" placeholder="Class Id" class="form-control">
                         </div>
-                        <div class="col-12 p-0 form-group">
+                        <div class="col-12 p-2 form-group d-none" style="background-color: beige;" id="relatedStudents">
 
                             <div class="table-responsive">
-                                <label>Add Students</label>
+                                <label>Add Students( <small>The following students have applied for class <span
+                                            id="selectedLabel"></span></small>
+                                    )</label>
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
                                     <table class="table display data-table text-nowrap dataTable no-footer"
                                         id="DataTables_Table_0" role="grid">
@@ -175,24 +174,7 @@
                                                     style="width: 166.075px;">E-mail</th>
                                             </tr>
                                         </thead>
-                                        <tbody>
-                                            <tr role="row" class="odd">
-                                                <td class="sorting_1 p-0 pl-4">
-                                                    <label
-                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0">
-                                                        <input type="checkbox" name="subjects[]"
-                                                            class="new-control-input" value="spanish">
-                                                        <span class="new-control-indicator"></span>
-                                                        <span class="new-chk-content">#10012</span>
-                                                    </label>
-                                                </td>
-                                                <td>Mark Willy</td>
-                                                <td>Male</td>
-                                                <td>2</td>
-                                                <td>TA-107 Newyork</td>
-                                                <td>2/4/2023</td>
-                                                <td>kazifahim93@gmail.com</td>
-                                            </tr>
+                                        <tbody id="studentsTable">
                                         </tbody>
                                     </table>
                                 </div>
@@ -201,9 +183,15 @@
                         <div class="col-12 d-flex flex-wrap subject mb-5">
                             <div class="col-12 col-lg-4">
                                 <div class="w-100 form-group">
-                                    <label>Subject Name</label>
-                                    <input type="text" name="subjects[sub1][name]" placeholder="Subject name"
-                                        class="form-control">
+                                    <label>Section</label>
+                                    <select class="select2" name="section">
+                                        <option value="">--Please Select--</option>
+                                        <option value="1">Pink</option>
+                                        <option value="2">Blue</option>
+                                        <option value="3">Bird</option>
+                                        <option value="3">Rose</option>
+                                        <option value="3">Red</option>
+                                    </select>
                                 </div>
                                 <div class="w-100 form-group">
                                     <label>Teacher</label>
@@ -344,15 +332,23 @@
     <script>
         setTimeout(() => {
             document.getElementById('classLevel').onchange = async function (evt) {
+                document.getElementById('selectedLabel').innerHTML = this.value;
+                // clear students table
+                let tbody = document.getElementById('studentsTable');
+                while (tbody.firstChild) {
+                    tbody.removeChild(tbody.firstChild);
+                }
+                // look for students of the selected grade
                 try {
                     let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-student/with-grade/' + this.value);
                     res = await res.json();
-                    console.log(res);
                     if (res.length) {
+                        document.getElementById('relatedStudents').classList.remove('d-none');
                         for (let student of res) {
-                            console.log(student);
-                            document.querySelector('tbody').innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student._id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student._id + '</span> </label> </td> <td>' + student.userInfo.fullName + '</td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + student.contact.address.streetAddress + '</td> <td>' + student.DOB[0] + '/' + student.DOB[1] + '/' + student.DOB[2] + '</td> <td>' + student.userInfo.email + '</td> </tr>'
+                            tbody.innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student._id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student._id + '</span> </label> </td> <td>' + student.userInfo.fullName + '</td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + student.contact.address.streetAddress + '</td> <td>' + student.DOB[0] + '/' + student.DOB[1] + '/' + student.DOB[2] + '</td> <td>' + student.userInfo.email + '</td> </tr>'
                         }
+                    } else {
+                        document.getElementById('relatedStudents').classList.add('d-none');
                     }
                 } catch (err) {
                     console.log(err);
