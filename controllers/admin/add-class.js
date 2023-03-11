@@ -1,6 +1,5 @@
-const Teacher = require('../../data-modals/user-models/teacher-model');
-const Student = require('../../data-modals/user-models/student-model');
-const User = require('../../data-modals/user');
+const Class = require('../../data-modals/class/class');
+const Subject = require('../../data-modals/class/subject');
 
 
 module.exports.renderAddClass = async function (req, res) {
@@ -16,6 +15,13 @@ module.exports.renderAddClass = async function (req, res) {
 module.exports.addClass = async function (req, res) {
     req.body.students = Object.values(req.body.students);
     req.body.subjects = Object.values(req.body.subjects);
-    console.log(req.body);
+    let subject;
+    let cls = new Class({ ...req.body });
+    for (let subject of req.body.subjects) {
+        subject = new Subject({ ...subject });
+        await subject.save();
+        cls.subjects.push(subject._id);
+    }
+    console.log(cls);
 }
 
