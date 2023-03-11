@@ -11,6 +11,7 @@ const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/render-home');
 const isLoggedIn = require('../controllers/login/isLoggedIn');
 const { renderAddGrade } = require('../controllers/admin/add-grade');
+const { getStudentWithGrade } = require('../controllers/admin/get-student');
 
 
 
@@ -30,6 +31,10 @@ router
 // ==================================================Add Grad========================================================
 router.route('/add-grade')
     .get(renderAddGrade)
+
+
+// ==================================================Get Student of particular grade========================================================
+router.route('/get-student/with-grade/:class', getStudentWithGrade)
 
 
 // =================--------------------------login/logout related routes======================================================
