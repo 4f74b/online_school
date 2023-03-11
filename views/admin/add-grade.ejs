@@ -1,0 +1,260 @@
+<!-- Select 2 CSS -->
+<link rel="stylesheet" href="/css/select2.min.css">
+<!-- Date Picker CSS -->
+<link rel="stylesheet" href="/css/datepicker.min.css">
+<% layout('layouts/admin/boilerplate') %>
+
+    <!-- Sidebar Area End Here -->
+    <div class="dashboard-content-one">
+        <!-- Breadcubs Area Start Here -->
+        <div class="breadcrumbs-area">
+            <h3>Grades</h3>
+            <ul>
+                <li>
+                    <a href="/<%= domainName %>/admin">Home</a>
+                </li>
+                <li>Add New Class</li>
+            </ul>
+        </div>
+        <!-- Breadcubs Area End Here -->
+        <!-- Add Class Area Start Here -->
+        <div class="card height-auto">
+            <div class="card-body">
+                <!-- Select Class Type Modal -->
+                <div class="modal fade" id="grade-type" tabindex="-1" role="dialog" aria-hidden="true"
+                    style="display: none;">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title">Select Class Type</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="col-12 d-flex flex-wrap justify-content-center">
+                                    <div class="col-12 col-md-6">
+                                        <div>
+                                            <h4>
+                                                Self-guided Class
+                                            </h4>
+                                            <p>
+                                                This class has courses but
+                                                no online classes or interaction with teacher. This means that students
+                                                will only have access to
+                                                course materials such as readings, and videos. Students can work
+                                                through the course materials at their own pace.
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btn btn-success w-50" id="staticClassBtn">Create</button>
+
+                                        </div>
+                                    </div>
+                                    <div class="col-12 col-md-6">
+                                        <div>
+                                            <h4>
+                                                Interactive Class
+                                            </h4>
+                                            <p>
+                                                This class has online
+                                                courses where students can interact with the teacher. This means that
+                                                there will be scheduled live online classes where the teacher will teach
+                                                and students can ask questions and participate in discussions. Students
+                                                will also have access to course materials and assignments online, but
+                                                there will be additional opportunities for interaction with the teacher
+                                                during the live classes.
+                                            </p>
+                                        </div>
+                                        <div class="d-flex justify-content-center">
+                                            <button class="btn btn-success w-50"
+                                                id="interactiveClassBtn">Create</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-none">
+                                <button id="closeModal" type="button" class="footer-btn bg-dark-low"
+                                    data-dismiss="modal">Close</button>
+                                <button type="button" class="footer-btn bg-linkedin">Save
+                                    Changes</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h1>
+                    <%= teachers[0].fullName %>
+                </h1>
+                <!-- Button trigger modal -->
+                <button type="button" class="modal-trigger d-none" data-toggle="modal" data-target="#grade-type">
+                    Select Class Type
+                </button>
+
+                <!-- interactive class form -->
+                <form class="new-added-form " id="interactiveClass">
+                    <input type="text" name="classType" value="interactive" id="" class="d-none">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Class Level</label>
+                            <select class="select2" name="classLevel">
+                                <option value="">--Select Class Level--</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                                <option value="5">5</option>
+                                <option value="6">6</option>
+                                <option value="7">7</option>
+                                <option value="8">8</option>
+                                <option value="9">9</option>
+                                <option value="10">10</option>
+                                <option value="11">11</option>
+                                <option value="12">12</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Class ID No</label>
+                            <input type="number" name="classID" placeholder="Class Id" class="form-control">
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Section</label>
+                            <select class="select2" name="section">
+                                <option value="">--Please Select--</option>
+                                <option value="1">Pink</option>
+                                <option value="2">Blue</option>
+                                <option value="3">Bird</option>
+                                <option value="3">Rose</option>
+                                <option value="3">Red</option>
+                            </select>
+                        </div>
+                        <div class="col-6">
+
+                            <button type="button" class=" btn btn-secondary">Add Course</button>
+                        </div>
+                        <div class="col-12 form-group mg-t-8">
+                            <button type="submit"
+                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                            <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                        </div>
+                    </div>
+                </form>
+
+
+                <!-- statc grade form -->
+                <form class="new-added-form d-none" id="staticClass">
+                    <input type="text" name="classType" value="static" id="" class="d-none">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Teacher Name *</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>ID No</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Gender *</label>
+                            <select class="select2">
+                                <option value="">Please Select</option>
+                                <option value="1">Male</option>
+                                <option value="2">Female</option>
+                                <option value="3">Others</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Class</label>
+                            <select class="select2">
+                                <option value="">Please Select</option>
+                                <option value="1">Play</option>
+                                <option value="2">Nursery</option>
+                                <option value="3">One</option>
+                                <option value="3">Two</option>
+                                <option value="3">Three</option>
+                                <option value="3">Four</option>
+                                <option value="3">Five</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Subject *</label>
+                            <select class="select2">
+                                <option value="">Please Select*</option>
+                                <option value="1">English</option>
+                                <option value="2">Mathmethics</option>
+                                <option value="3">Physics</option>
+                                <option value="3">Chemestry</option>
+                                <option value="3">Biology</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Section *</label>
+                            <select class="select2">
+                                <option value="">Please Select *</option>
+                                <option value="1">Pink</option>
+                                <option value="2">Blue</option>
+                                <option value="3">Bird</option>
+                                <option value="3">Rose</option>
+                                <option value="3">Red</option>
+                            </select>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Time *</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Date*</label>
+                            <input type="text" placeholder="dd/mm/yyyy" class="form-control air-datepicker"
+                                data-position="bottom right">
+                            <i class="far fa-calendar-alt"></i>
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>Phone *</label>
+                            <input type="text" placeholder="" class="form-control">
+                        </div>
+                        <div class="col-xl-3 col-lg-6 col-12 form-group">
+                            <label>E-Mail *</label>
+                            <input type="email" placeholder="" class="form-control">
+                        </div>
+                        <div class="col-md-6 form-group"></div>
+                        <div class="col-12 form-group mg-t-8">
+                            <button type="submit"
+                                class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Save</button>
+                            <button type="reset" class="btn-fill-lg bg-blue-dark btn-hover-yellow">Reset</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <!-- show modal for selection -->
+    <script>
+        // setTimeout(() => {
+        //     document.querySelector('.modal-trigger').click()
+        // }, 100);
+    </script>
+
+    <!-- Render selection -->
+    <script>
+        // for interactive
+        document.getElementById('interactiveClassBtn').addEventListener('click', function (evt) {
+            document.getElementById('staticClass').remove();
+            document.getElementById('closeModal').click();
+            document.getElementById('interactiveClass').classList.remove('d-none');
+        })
+        // for static
+        document.getElementById('staticClassBtn').addEventListener('click', function (evt) {
+            document.getElementById('interactiveClass').remove();
+            document.getElementById('closeModal').click();
+            document.getElementById('staticClass').classList.remove('d-none');
+        })
+    </script>
+
+
+
+    <!-- Select 2 Js -->
+    <script src="/js/select2.min.js"></script>
+    <!-- Date Picker Js -->
+    <script src="/js/datepicker.min.js"></script>
