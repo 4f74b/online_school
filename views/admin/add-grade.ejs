@@ -348,12 +348,12 @@
                     let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-student/with-grade/' + this.value);
                     res = await res.json();
                     console.log(res);
-                    // if (res.length) {
-                    //     for (let student of res) {
-                    //         console.log(student);
-                    //         document.querySelector('tbody').innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student_id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student_id + '</span> </label> </td> <td>' + student.userInfo.fullName + '</td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + '</td> <td>2/4/2023</td> <td>kazifahim93@gmail.com</td> </tr>'
-                    //     }
-                    // }
+                    if (res.length) {
+                        for (let student of res) {
+                            console.log(student);
+                            document.querySelector('tbody').innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student._id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student._id + '</span> </label> </td> <td>' + student.userInfo.fullName + '</td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + student.contact.address.streetAddress + '</td> <td>' + student.DOB[0] + '/' + student.DOB[1] + '/' + student.DOB[2] + '</td> <td>' + student.userInfo.email + '</td> </tr>'
+                        }
+                    }
                 } catch (err) {
                     console.log(err);
                 }
