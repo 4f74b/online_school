@@ -10,9 +10,10 @@ const upload = multer({ storage });
 const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/render-home');
 const isLoggedIn = require('../controllers/login/isLoggedIn');
-const { renderAddGrade } = require('../controllers/admin/add-grade');
+const { renderAddClass } = require('../controllers/admin/add-class');
 const { getStudentWithGrade } = require('../controllers/admin/get-student');
 const { getTeacherBySubjectAndGradeAndSlot } = require("../controllers/admin/getTeacher");
+const { addClass } = require('../controllers/admin/add-class');
 
 
 
@@ -30,8 +31,9 @@ router
     .post(register);
 
 // ==================================================Add Grad========================================================
-router.route('/add-grade')
-    .get(renderAddGrade)
+router.route('/add-class')
+    .get(renderAddClass)
+    .post(addClass)
 
 
 // ==================================================Get Student========================================================
