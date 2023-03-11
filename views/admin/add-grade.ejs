@@ -99,7 +99,7 @@
                     <div class="row">
                         <div class="col-xl-3 col-lg-6 col-12 form-group">
                             <label>Class Level</label>
-                            <select class="select2" name="classLevel">
+                            <select class="select2" name="classLevel" id="classLevel">
                                 <option value="">--Select Class Level--</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -130,28 +130,50 @@
                             <label>Class ID No</label>
                             <input type="number" name="classID" placeholder="Class Id" class="form-control">
                         </div>
-                        <div class="col-12 form-group subject">
-                            <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Subject Name</label>
-                                <input type="text" name="subjects[sub1][name]" placeholder="Subject name"
-                                    class="form-control">
-                            </div>
-                            <div class="col-xl-3 col-lg-6 col-12 form-group">
-                                <label>Teacher</label>
-                                <select class="select2" name="section">
-                                    <option value="">--Add Teacher--</option>
-                                    <% for (teacher of teachers){ %>
-                                        <option value="<%= teacher._id %>">
-                                            <%= teacher.fullName %>
-                                        </option>
-                                        <% } %>
-                                </select>
-                            </div>
+                        <div class="col-12 p-0 form-group">
+
                             <div class="table-responsive">
+                                <label>Add Students</label>
                                 <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
                                     <table class="table display data-table text-nowrap dataTable no-footer"
                                         id="DataTables_Table_0" role="grid">
                                         <thead>
+                                            <tr role="row">
+                                                <th class="sorting_asc" rowspan="1" colspan="1" aria-label="
+                                                    
+                                                        
+                                                        Roll
+                                                    
+                                                " style="width: 85.8px;">
+                                                    <div class="">
+                                                        <label class="">Roll</label>
+                                                    </div>
+                                                </th>
+                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Name: activate to sort column ascending"
+                                                    style="width: 80.6875px;">Name</th>
+                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Gender: activate to sort column ascending"
+                                                    style="width: 51.625px;">Gender</th>
+                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Class: activate to sort column ascending"
+                                                    style="width: 39.7125px;">Applied for Class</th>
+                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Address: activate to sort column ascending"
+                                                    style="width: 133.8px;">Address</th>
+                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="Date Of Birth: activate to sort column ascending"
+                                                    style="width: 92.1125px;">Date Of Birth</th>
+                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                    rowspan="1" colspan="1"
+                                                    aria-label="E-mail: activate to sort column ascending"
+                                                    style="width: 166.075px;">E-mail</th>
+                                            </tr>
                                         </thead>
                                         <tbody>
                                             <tr role="row" class="odd">
@@ -161,38 +183,38 @@
                                                         <input type="checkbox" name="subjects[]"
                                                             class="new-control-input" value="spanish">
                                                         <span class="new-control-indicator"></span>
-                                                        <span class="new-chk-content">Pushto</span>
+                                                        <span class="new-chk-content">#10012</span>
                                                     </label>
                                                 </td>
-                                                <td class="text-center"><img src="img/figure/student2.png"
-                                                        alt="student"></td>
                                                 <td>Mark Willy</td>
                                                 <td>Male</td>
                                                 <td>2</td>
-                                                <td>English</td>
-                                                <td>A</td>
                                                 <td>TA-107 Newyork</td>
-                                                <td>+ 123 9988568</td>
+                                                <td>2/4/2023</td>
                                                 <td>kazifahim93@gmail.com</td>
-                                                <td>
-                                                    <div class="dropdown">
-                                                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"
-                                                            aria-expanded="false">
-                                                            <span class="flaticon-more-button-of-three-dots"></span>
-                                                        </a>
-                                                        <div class="dropdown-menu dropdown-menu-right">
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-times text-orange-red"></i>Close</a>
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                                                            <a class="dropdown-item" href="#"><i
-                                                                    class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
-                                                        </div>
-                                                    </div>
-                                                </td>
                                             </tr>
                                         </tbody>
                                     </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 d-flex flex-wrap subject mb-5">
+                            <div class="col-12 col-lg-4">
+                                <div class="w-100 form-group">
+                                    <label>Subject Name</label>
+                                    <input type="text" name="subjects[sub1][name]" placeholder="Subject name"
+                                        class="form-control">
+                                </div>
+                                <div class="w-100 form-group">
+                                    <label>Teacher</label>
+                                    <select class="select2" name="section">
+                                        <option value="">--Add Teacher--</option>
+                                        <% for (teacher of teachers){ %>
+                                            <option value="<%= teacher._id %>">
+                                                <%= teacher.fullName %>
+                                            </option>
+                                            <% } %>
+                                    </select>
                                 </div>
                             </div>
                         </div>
@@ -316,6 +338,27 @@
             document.getElementById('closeModal').click();
             document.getElementById('staticClass').classList.remove('d-none');
         })
+    </script>
+
+    <!-- Check for students of particular class level -->
+    <script>
+        setTimeout(() => {
+            document.getElementById('classLevel').onchange = async function (evt) {
+                try {
+                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-student/with-grade/' + this.value);
+                    res = await res.json();
+                    console.log(res);
+                    // if (res.length) {
+                    //     for (let student of res) {
+                    //         console.log(student);
+                    //         document.querySelector('tbody').innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student_id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student_id + '</span> </label> </td> <td>' + student.userInfo.fullName + '</td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + '</td> <td>2/4/2023</td> <td>kazifahim93@gmail.com</td> </tr>'
+                    //     }
+                    // }
+                } catch (err) {
+                    console.log(err);
+                }
+            }
+        }, 100);
     </script>
 
 

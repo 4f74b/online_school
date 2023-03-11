@@ -34,7 +34,7 @@ router.route('/add-grade')
 
 
 // ==================================================Get Student of particular grade========================================================
-router.route('/get-student/with-grade/:class', getStudentWithGrade)
+router.get('/get-student/with-grade/:class', getStudentWithGrade)
 
 
 // =================--------------------------login/logout related routes======================================================

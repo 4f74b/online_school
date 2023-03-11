@@ -1,8 +1,7 @@
-const User = require('../../data-modals/user');
+const Student = require('../../data-modals/user-models/student-model');
 module.exports.getStudentWithGrade = async function (req, res) {
-    console.log(req.body);
     try {
-        res.send(await User.find({ grade: req.body.grade }));
+        res.send(await Student.find({ grade: req.params.class }).populate('userInfo'));
     } catch (err) {
         res.send(err.message);
     }
