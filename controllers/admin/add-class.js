@@ -30,6 +30,7 @@ module.exports.addClass = async function (req, res) {
             }
         }
         await cls.save();
+
     } catch (err) {
         req.flash('error', err.message);
         res.redirect('/' + res.locals.domainName + '/admin/add-class');
