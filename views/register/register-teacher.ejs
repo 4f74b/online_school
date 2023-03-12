@@ -1120,8 +1120,8 @@
 
                                                                         <div class="n-chk mb-4 p-1">
                                                                             <label
-                                                                                class="new-control new-radio new-radio-text radio-primary">
-                                                                                <input type="radio" name="gender"
+                                                                                class="new-control new-checkbox new-checkbox-text radio-checkbox">
+                                                                                <input type="radio" name="checkbox"
                                                                                     class="new-control-input"
                                                                                     value="male">
                                                                                 <span class="new-chk-content"
@@ -1132,8 +1132,8 @@
                                                                         </div>
                                                                         <div class="n-chk mb-4 p-1">
                                                                             <label
-                                                                                class="new-control new-radio new-radio-text radio-primary">
-                                                                                <input type="radio" name="gender"
+                                                                                class="new-control new-checkbox new-checkbox-text radio-checkbox">
+                                                                                <input type="radio" name="checkbox"
                                                                                     class="new-control-input"
                                                                                     value="female">
                                                                                 <span
@@ -1408,136 +1408,1426 @@
                                                                         </div>
 
                                                                     </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="08:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">08:15
-                                                                                am</span>
-                                                                        </label>
+
+                                                                    <h2 class="col-12">Select a day:</h2>
+
+
+                                                                    <div class="col-12">
+                                                                        <div class="n-chk col-12">
+                                                                            <label for="monday"
+                                                                                class="new-control new-checkbox new-checkbox-text checkbox-success">
+                                                                                <input type="checkbox" data-day="monday"
+                                                                                    class="new-control-input"
+                                                                                    name="day[monday]" value="monday"
+                                                                                    id="monday" onclick=""><br>
+                                                                                <span
+                                                                                    class="new-control-indicator"></span>
+                                                                                <span
+                                                                                    class="new-chk-content">Monday</span>
+                                                                            </label>
+                                                                            <div id="monday-slots"
+                                                                                class="time-slots col-12 flex-wrap"
+                                                                                style="display: none;">
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="08:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="09:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">09:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="10:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">10:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="11:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">11:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="12:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">12:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="13:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">01:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="14:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">02:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="15:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">03:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="16:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">04:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="17:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">05:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="18:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">06:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="19:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">07:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[monday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="20:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+
+                                                                        <div class="n-chk col-12">
+                                                                            <label for="tuesday"
+                                                                                class="new-control new-checkbox new-checkbox-text checkbox-success">
+                                                                                <input type="checkbox"
+                                                                                    data-day="tuesday"
+                                                                                    class="new-control-input"
+                                                                                    name="day[tuesday]" value="tuesday"
+                                                                                    id="tuesday" onclick=""><br>
+                                                                                <span
+                                                                                    class="new-control-indicator"></span>
+                                                                                <span
+                                                                                    class="new-chk-content">Tuesday</span>
+                                                                            </label>
+                                                                            <div id="tuesday-slots"
+                                                                                class="time-slots col-12 flex-wrap"
+                                                                                style="display: none;">
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="08:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="09:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">09:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="10:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">10:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="11:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">11:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="12:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">12:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="13:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">01:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="14:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">02:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="15:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">03:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="16:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">04:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="17:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">05:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="18:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">06:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="19:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">07:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[tuesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="20:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="n-chk col-12">
+                                                                            <label for="wednesday"
+                                                                                class="new-control new-checkbox new-checkbox-text checkbox-success">
+                                                                                <input type="checkbox"
+                                                                                    data-day="wednesday"
+                                                                                    class="new-control-input"
+                                                                                    name="day[wednesday]"
+                                                                                    value="wednesday" id="wednesday"
+                                                                                    onclick=""><br>
+                                                                                <span
+                                                                                    class="new-control-indicator"></span>
+                                                                                <span
+                                                                                    class="new-chk-content">Wednesday</span>
+                                                                            </label>
+
+                                                                            <div id="wednesday-slots"
+                                                                                class="time-slots col-12 flex-wrap"
+                                                                                style="display: none;">
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="08:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="09:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">09:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="10:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">10:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="11:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">11:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="12:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">12:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="13:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">01:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="14:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">02:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="15:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">03:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="16:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">04:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="17:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">05:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="18:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">06:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="19:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">07:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[wednesday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="20:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="n-chk col-12">
+                                                                            <label for="thursday"
+                                                                                class="new-control new-checkbox new-checkbox-text checkbox-success">
+                                                                                <input type="checkbox"
+                                                                                    data-day="thursday"
+                                                                                    class="new-control-input"
+                                                                                    name="day[thursday]"
+                                                                                    value="thursday" id="thursday"
+                                                                                    onclick=""><br>
+                                                                                <span
+                                                                                    class="new-control-indicator"></span>
+                                                                                <span
+                                                                                    class="new-chk-content">Thursday</span>
+                                                                            </label>
+                                                                            <div id="thursday-slots"
+                                                                                class="time-slots col-12 flex-wrap"
+                                                                                style="display: none;">
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="08:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="09:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">09:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="10:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">10:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="11:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">11:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="12:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">12:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="13:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">01:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="14:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">02:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="15:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">03:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="16:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">04:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="17:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">05:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="18:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">06:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="19:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">07:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[thursday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="20:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="n-chk col-12">
+                                                                            <label for="friday"
+                                                                                class="new-control new-checkbox new-checkbox-text checkbox-success">
+                                                                                <input type="checkbox" data-day="friday"
+                                                                                    class="new-control-input"
+                                                                                    name="day[friday]" value="friday"
+                                                                                    id="friday" onclick=""><br>
+                                                                                <span
+                                                                                    class="new-control-indicator"></span>
+                                                                                <span
+                                                                                    class="new-chk-content">Friday</span>
+                                                                            </label>
+                                                                            <div id="friday-slots"
+                                                                                class="time-slots col-12 flex-wrap"
+                                                                                style="display: none;">
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="08:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="09:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">09:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="10:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">10:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="11:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">11:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="12:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">12:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="13:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">01:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="14:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">02:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="15:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">03:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="16:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">04:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="17:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">05:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="18:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">06:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="19:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">07:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[friday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="20:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="n-chk col-12">
+                                                                            <label for="saturday"
+                                                                                class="new-control new-checkbox new-checkbox-text checkbox-success">
+                                                                                <input type="checkbox"
+                                                                                    data-day="saturday"
+                                                                                    class="new-control-input"
+                                                                                    name="day[saturday]"
+                                                                                    value="saturday" id="saturday"
+                                                                                    onclick=""><br>
+                                                                                <span
+                                                                                    class="new-control-indicator"></span>
+                                                                                <span
+                                                                                    class="new-chk-content">Saturday</span>
+                                                                            </label>
+                                                                            <div id="saturday-slots"
+                                                                                class="time-slots col-12 flex-wrap"
+                                                                                style="display: none;">
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="08:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="09:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">09:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="10:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">10:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="11:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">11:15
+                                                                                            am</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="12:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">12:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="13:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">01:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="14:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">02:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="15:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">03:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="16:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">04:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="17:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">05:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="18:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">06:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="19:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">07:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+                                                                                <div class="n-chk mb-4 p-1 col-2">
+                                                                                    <label
+                                                                                        class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                        <input type="checkbox"
+                                                                                            name="day[saturday][slot]"
+                                                                                            class="new-control-input"
+                                                                                            value="20:15">
+                                                                                        <span
+                                                                                            class="new-control-indicator"></span>
+                                                                                        <span
+                                                                                            class="new-chk-content">08:15
+                                                                                            pm</span>
+                                                                                    </label>
+                                                                                </div>
+
+                                                                            </div>
+                                                                        </div>
+
+
+                                                                        <div class="n-chk col-4">
+                                                                            <label for="sunday"
+                                                                                class="new-control new-checkbox new-checkbox-text checkbox-success">
+                                                                                <input type="checkbox" data-day="sunday"
+                                                                                    class="new-control-input"
+                                                                                    name="day[sunday]" value="sunday"
+                                                                                    id="sunday" onclick=""><br>
+                                                                                <span
+                                                                                    class="new-control-indicator"></span>
+                                                                                <span
+                                                                                    class="new-chk-content">Sunday</span>
+                                                                            </label>
+                                                                        </div>
+                                                                        <div id="sunday-slots"
+                                                                            class="time-slots col-12 flex-wrap"
+                                                                            style="display: none;">
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="08:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">08:15
+                                                                                        am</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="09:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">09:15
+                                                                                        am</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="10:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">10:15
+                                                                                        am</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="11:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">11:15
+                                                                                        am</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="12:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">12:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="13:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">01:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="14:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">02:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="15:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">03:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="16:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">04:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="17:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">05:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="18:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">06:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="19:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">07:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+                                                                            <div class="n-chk mb-4 p-1 col-2">
+                                                                                <label
+                                                                                    class="new-control new-checkbox new-checkbox-text checkbox-primary">
+                                                                                    <input type="checkbox"
+                                                                                        name="day[sunday][slot]"
+                                                                                        class="new-control-input"
+                                                                                        value="20:15">
+                                                                                    <span
+                                                                                        class="new-control-indicator"></span>
+                                                                                    <span class="new-chk-content">08:15
+                                                                                        pm</span>
+                                                                                </label>
+                                                                            </div>
+
+                                                                        </div>
                                                                     </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="09:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">09:15
-                                                                                am</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="10:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">10:15
-                                                                                am</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="11:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">11:15
-                                                                                am</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="12:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">12:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="13:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">01:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="14:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">02:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="15:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">03:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="16:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">04:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="17:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">05:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="18:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">06:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="19:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">07:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
-                                                                    <div class="n-chk mb-4 p-1">
-                                                                        <label
-                                                                            class="new-control new-checkbox new-checkbox-text checkbox-primary">
-                                                                            <input type="checkbox" name="availability[]"
-                                                                                class="new-control-input" value="20:15">
-                                                                            <span class="new-control-indicator"></span>
-                                                                            <span class="new-chk-content">08:15
-                                                                                pm</span>
-                                                                        </label>
-                                                                    </div>
+                                                                    <div id="timings"></div>
+
+
+
+
+
 
 
 
@@ -1715,6 +3005,8 @@
 
                                                         </div>
 
+
+
                                                         <button class="btn btn-dark ml-auto mt-5">Register</button>
 
                                                     </div>
@@ -1734,6 +3026,27 @@
 
                 </div>
                 <!-- END MAIN CONTAINER -->
+
+
+                <script>
+                    const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+
+                    checkboxes.forEach((checkbox) => {
+                        if (checkbox.getAttribute('data-day')) {
+                            checkbox.addEventListener('change', () => {
+                                const day = checkbox.dataset.day;
+                                console.log(day);
+                                const slotsContainer = document.getElementById(`${day}-slots`);
+
+                                if (checkbox.checked) {
+                                    slotsContainer.style.display = 'flex';
+                                } else {
+                                    slotsContainer.style.display = 'none';
+                                }
+                            });
+                        }
+                    });
+                </script>
 
                 <!-- confirm Password -->
                 <script>
