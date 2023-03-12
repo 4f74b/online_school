@@ -15,8 +15,7 @@ const TeacherSchema = mongoose.Schema({
         type: String,
     },
     availability: {
-        type: [String],
-        required: true
+        type: [Object],
     },
     qualification: [{
         name: {
