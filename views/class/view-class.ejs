@@ -117,13 +117,15 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex">
-                                                        <h6>Teacher: <small> <a
-                                                                    href="/<%= domainName %>/admin/teacher/<%= course.teacher.userInfo._id %>/view">
-                                                                    <%= course.teacher.userInfo.fullName.charAt(0).toUpperCase()+course.teacher.userInfo.fullName.slice(1)
-                                                                        %>
-                                                                </a>
-                                                            </small>
-                                                        </h6>
+                                                        <% if(course.teacher){ %>
+                                                            <h6>Teacher: <small> <a
+                                                                        href="/<%= domainName %>/admin/teacher/<%= course.teacher.userInfo._id %>/view">
+                                                                        <%= course.teacher.userInfo.fullName.charAt(0).toUpperCase()+course.teacher.userInfo.fullName.slice(1)
+                                                                            %>
+                                                                    </a>
+                                                                </small>
+                                                            </h6>
+                                                            <% } %>
                                                     </div>
                                                     <div>
                                                         <h6>Schedule: <small>
