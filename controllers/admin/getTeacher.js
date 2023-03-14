@@ -13,7 +13,7 @@ module.exports.getTeacherQuery = async function (req, res) {
                     _id: teacher.userInfo._id,
                     gender: teacher.gender,
                     address: teacher.address,
-                    availability: teacher.availability
+                    qualifications: teacher.qualifications
                 });
             }
             res.send(availableTeachers);

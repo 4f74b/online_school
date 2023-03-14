@@ -19,10 +19,10 @@ async function register(req, res) {
                     // console.log(Object.values(req.body.day));
                     req.body.qualification = Object.values(req.body.qualification);
                     req.body.teachingExperience = Object.values(req.body.teachingExperience);
-                    req.body.availability = []
-                    for (let day of Object.values(req.body.day)) {
-                        req.body.availability.push({ name: day[0], slot: day[1].slot });
-                    }
+                    // req.body.availability = []
+                    // for (let day of Object.values(req.body.day)) {
+                    //     req.body.availability.push({ name: day[0], slot: day[1].slot });
+                    // }
                     newUser = Teacher({ ...req.body });
                     std.subModel = 'Teacher'
                     break;

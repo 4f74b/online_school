@@ -14,9 +14,9 @@ const TeacherSchema = mongoose.Schema({
     country: {
         type: String,
     },
-    availability: {
-        type: [Object],
-    },
+    // availability: {
+    //     type: [Object],
+    // },
     qualification: [{
         name: {
             type: String,
