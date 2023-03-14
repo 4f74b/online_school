@@ -3,12 +3,12 @@
     <div class="dashboard-content-one">
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
-            <h3>Students</h3>
+            <h3>Class</h3>
             <ul>
                 <li>
                     <a href="index.html">Home</a>
                 </li>
-                <li>Student Details</li>
+                <li>Class Details</li>
             </ul>
         </div>
         <!-- Breadcubs Area End Here -->
@@ -16,9 +16,6 @@
         <div class="card height-auto">
             <div class="card-body">
                 <div class="heading-layout1">
-                    <div class="item-title">
-                        <h3>About Me</h3>
-                    </div>
                     <div class="dropdown">
                         <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
                             aria-expanded="false">...</a>
@@ -32,12 +29,13 @@
                     </div>
                 </div>
                 <div class="single-info-details">
-                    <div class="item-img">
-                        <img src="img/figure/student1.jpg" alt="student">
-                    </div>
                     <div class="item-content">
                         <div class="header-inline item-header">
-                            <h3 class="text-dark-medium font-medium">Jessia Rose</h3>
+
+                            <div class="item-title">
+                                <h3>About Class <%= cls.classLevel %> (<small>Section <%= cls.section %> </small>)
+                                </h3>
+                            </div>
                             <div class="header-elements">
                                 <ul>
                                     <li><a href="#"><i class="far fa-edit"></i></a></li>
@@ -46,35 +44,97 @@
                                 </ul>
                             </div>
                         </div>
-                        <p>Aliquam erat volutpat. Curabiene natis massa sedde lacu stiquen sodale
-                            word moun taiery.Aliquam erat volutpaturabiene natis massa sedde sodale
-                            word moun taiery.</p>
                         <div class="info-table table-responsive">
                             <table class="table text-nowrap">
                                 <tbody>
                                     <tr>
-                                        <td>Name:</td>
-                                        <td class="font-medium text-dark-medium">Jessia Rose</td>
+                                        <td>Class Level:</td>
+                                        <td class="font-medium text-dark-medium">
+                                            <%= cls.classLevel %>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Gender:</td>
-                                        <td class="font-medium text-dark-medium">Female</td>
+                                        <td>Class Section:</td>
+                                        <td class="font-medium text-dark-medium">
+                                            <%= cls.section %>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Father Name:</td>
-                                        <td class="font-medium text-dark-medium">Steve Jones</td>
+                                        <td>Class ID:</td>
+                                        <td class="font-medium text-dark-medium">
+                                            <%= cls.classID %>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Mother Name:</td>
-                                        <td class="font-medium text-dark-medium">Naomi Rose</td>
+                                        <td>Type:</td>
+                                        <td class="font-medium text-dark-medium">
+                                            <%= cls.classType.charAt(0).toUpperCase()+ cls.classType.slice(1) %>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Date Of Birth:</td>
-                                        <td class="font-medium text-dark-medium">07.08.2016</td>
+                                        <td>Created At:</td>
+                                        <td class="font-medium text-dark-medium">
+                                            <%= `${cls.created.toLocaleString('default', { month: 'short' })}
+                                                ${cls.created.getDate()} ${cls.created.getFullYear()}
+                                                ${cls.created.getHours()}:${cls.created.getMinutes()}`; %>
+                                        </td>
                                     </tr>
                                     <tr>
-                                        <td>Religion:</td>
-                                        <td class="font-medium text-dark-medium">Islam</td>
+                                        <td>Subjects Offered:</td>
+                                        <td class="font-medium text-dark-medium">
+                                            <% for(let course of cls.courses){ %>
+                                                <div class="bg-ash p-2 mb-1">
+                                                    <div class="d-flex justify-content-between pr-3">
+                                                        <h4>
+                                                            <%= course.name.charAt(0).toUpperCase()+course.name.slice(1)
+                                                                %>
+                                                        </h4>
+                                                        <div class="heading-layout1">
+                                                            <div class="dropdown">
+                                                                <a class="dropdown-toggle" href="#" role="button"
+                                                                    data-toggle="dropdown" aria-expanded="false">...</a>
+
+                                                                <div class="dropdown-menu dropdown-menu-right">
+                                                                    <a class="dropdown-item" href="#">
+                                                                        <i class="fas fa-times text-orange-red">
+                                                                        </i>
+                                                                        Close
+                                                                    </a>
+                                                                    <a class="dropdown-item"
+                                                                        href="/<%= domainName %>/admin/class/<%= cls._id %>/course/<%= course._id %>/edit">
+                                                                        <i class="fas fa-cogs text-dark-pastel-green">
+                                                                        </i>
+                                                                        Edit
+                                                                    </a>
+                                                                    <a class="dropdown-item"
+                                                                        href="/<%= domainName %>/admin/class/<%= cls._id %>/course/<%= course._id %>/delete">
+                                                                        <i class="fas fa-redo-alt text-orange-peel">
+                                                                        </i>
+                                                                        Delete
+                                                                    </a>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex">
+                                                        <h6>Teacher: <small> <a
+                                                                    href="/<%= domainName %>/admin/teacher/<%= course.teacher.userInfo._id %>/view">
+                                                                    <%= course.teacher.userInfo.fullName.charAt(0).toUpperCase()+course.teacher.userInfo.fullName.slice(1)
+                                                                        %>
+                                                                </a>
+                                                            </small>
+                                                        </h6>
+                                                    </div>
+                                                    <div>
+                                                        <h6>Schedule: <small>
+                                                                <%= course.day.charAt(0).toUpperCase()+course.day.slice(1)
+                                                                    + ' ' +course.slot %>
+                                                            </small></h6>
+                                                    </div>
+                                                </div>
+
+                                                <% } %>
+                                        </td>
                                     </tr>
                                     <tr>
                                         <td>Father Occupation:</td>
