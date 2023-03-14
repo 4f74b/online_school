@@ -15,7 +15,11 @@ const classSchema = new mongoose.Schema({
     },
     classID: { type: String },
     students: [{ type: mongoose.Types.ObjectId, ref: 'Student' }],
-    subjects: [{ type: mongoose.Types.ObjectId, ref: 'Subject' }]
+    courses: [{ type: mongoose.Types.ObjectId, ref: 'Subject' }],
+    created: {
+        type: Date,
+        default: Date.now,
+    }
 });
 
 module.exports = mongoose.model('Class', classSchema);

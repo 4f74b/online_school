@@ -20,13 +20,12 @@ module.exports.addClass = async function (req, res) {
         if (req.body.subjects) {
             req.body.subjects = Object.values(req.body.subjects);
         }
-        let subject;
         let cls = new Class({ ...req.body });
         if (req.body.subjects) {
             for (let subject of req.body.subjects) {
                 subject = new Subject({ ...subject });
                 await subject.save();
-                cls.subjects.push(subject._id);
+                cls.courses.push(subject._id);
             }
         }
         await cls.save();

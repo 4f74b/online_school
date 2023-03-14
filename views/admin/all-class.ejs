@@ -1,0 +1,99 @@
+<% layout('layouts/admin/boilerplate') %>
+
+    <div class="dashboard-content-one">
+        <!-- Breadcubs Area Start Here -->
+        <div class="breadcrumbs-area">
+            <h3>Classes</h3>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>All Classes</li>
+            </ul>
+        </div>
+        <!-- Breadcubs Area End Here -->
+        <!-- Class Table Area Start Here -->
+        <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>All Classes</h3>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table display data-table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>Class Level</th>
+                                <th>Section</th>
+                                <th>Class Type</th>
+                                <th>Created At</th>
+                                <th class="d-none">Class</th>
+                                <th class="d-none">Date</th>
+                                <th class="d-none">Time</th>
+                                <th class="d-none">Phone</th>
+                                <th class="d-none">E-mail</th>
+                                <th class="d-none"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <% if (allClss){ %>
+                                <% for (let cls of allClss){ %>
+                                    <tr>
+                                        <td>
+                                            <a href="/<%= domainName %>/admin/class/<%= cls._id %>/view">
+                                                <%= cls.classID %>
+                                            </a>
+                                        </td>
+                                        <td class="">
+                                            <%= cls.classLevel %>
+                                        </td>
+                                        <td>
+                                            <%= cls.section %>
+                                        </td>
+                                        <td>
+                                            <%= cls.classType %>
+                                        </td>
+                                        <td>
+                                            <%= `${cls.created.toLocaleString('default', { month: 'short' })}
+                                                ${cls.created.getDate()} ${cls.created.getFullYear()}
+                                                ${cls.created.getHours()}:${cls.created.getMinutes()}`; %>
+                                        </td>
+                                        <td class="d-none">A</td>
+                                        <td class="d-none">02/05/2001</td>
+                                        <td class="d-none">10.00 am - 11.30 am</td>
+                                        <td class="d-none">+ 123 9988568</td>
+                                        <td class="d-none">kazifahim93@gmail.com</td>
+                                        <td class="d-none">
+                                            <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <span class="flaticon-more-button-of-three-dots"></span>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fas fa-times text-orange-red"></i>Close</a>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% }} %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <!-- Class Table Area End Here -->
+        <footer class="footer-wrap-layout1">
+            <div class="copyright">© Copyrights <a href="#">akkhor</a> 2019. All rights reserved. Designed by <a
+                    href="#">PsdBosS</a></div>
+        </footer>
+    </div>
