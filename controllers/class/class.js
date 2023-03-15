@@ -11,8 +11,9 @@ module.exports.viewClass = async function (req, res) {
     try {
         const cls = await Class.findById(req.params.id).populate([
             { path: 'courses', populate: { path: 'teacher', populate: { path: 'userInfo' } } },
-            { path: 'students' }
+            { path: 'students', populate: { path: 'userInfo' } }
         ]);
+        console.log(cls.students);
         res.render('class/view-class', { cls });
     } catch (err) {
         req.flash('error', 'Wrong class Id');

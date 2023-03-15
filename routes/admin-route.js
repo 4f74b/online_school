@@ -16,6 +16,7 @@ const { renderAddClass } = require('../controllers/class/add-class');
 const { addClass } = require('../controllers/class/add-class');
 const { renderAllClasses } = require('../controllers/class/class');
 const { viewClass } = require('../controllers/class/class');
+const { renderViewUser } = require('../controllers/view/view-user');
 
 
 
@@ -42,11 +43,17 @@ router.get('/all-class', renderAllClasses)
 router.get('/class/:id/view', viewClass);
 
 
-// ==================================================Get Student========================================================
+// ==================================================Student========================================================
+// get student related to particular class
 router.get('/get-student/with-grade/:class', getStudentWithGrade)
+// render view student
+router.get('/student/:id/view', renderViewUser);
 
-// ==================================================Get Teacher========================================================
+// ==================================================Teacher========================================================
+// get Teacher related to particular course
 router.get('/get-teacher', getTeacherQuery)
+// render view Teacher
+router.get('/teacher/:id/view', renderViewUser);
 
 
 // =================--------------------------login/logout related routes======================================================

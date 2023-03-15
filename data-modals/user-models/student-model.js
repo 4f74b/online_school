@@ -57,6 +57,9 @@ const StudentSchema = mongoose.Schema({
     userInfo: {
         type: mongoose.Types.ObjectId,
         ref: 'User',
+    },
+    admittedClass: {
+        type: mongoose.Types.ObjectId
     }
 })
 

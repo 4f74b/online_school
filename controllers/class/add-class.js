@@ -1,5 +1,7 @@
 const Class = require('../../data-modals/class/class');
 const Subject = require('../../data-modals/class/subject');
+const Student = require('../../data-modals/user-models/student-model');
+const Teacher = require('../../data-modals/user-models/teacher-model');
 
 
 module.exports.renderAddClass = async function (req, res) {
@@ -14,25 +16,43 @@ module.exports.renderAddClass = async function (req, res) {
 
 module.exports.addClass = async function (req, res) {
     try {
-        if (req.body.students) {
+        let students = [];
+        // Create array of students
+        console.log(req.body)
+        if ((typeof req.body.students.id) == 'object') {
+            req.body.students = Object.values(req.body.students);
+            if (req.body.students[0].length > 1) {
+                for (let student of req.body.students[0]) {
+                    students.push(student);
+
+                }
+                req.body.students = students;
+
+            }
+        } else {
             req.body.students = Object.values(req.body.students);
         }
         if (req.body.subjects) {
             req.body.subjects = Object.values(req.body.subjects);
         }
         let cls = new Class({ ...req.body });
+
+        // add class id to each student
+        for (let id of req.body.students) {
+            const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id });
+        }
         if (req.body.subjects) {
             for (let subject of req.body.subjects) {
-                subject = new Subject({ ...subject });
-                await subject.save();
-                cls.courses.push(subject._id);
+                let sub = new Subject({ ...subject });
+                sub = await sub.save();
+                cls.courses.push(sub._id);
             }
         }
         await cls.save();
 
     } catch (err) {
-        req.flash('error', err.message);
-        res.redirect('/' + res.locals.domainName + '/admin/add-class');
+        console.log('error');
+        res.send(err);
     }
 }
 

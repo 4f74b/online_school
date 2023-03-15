@@ -10,10 +10,11 @@ module.exports.getTeacherQuery = async function (req, res) {
             for (teacher of teachers) {
                 availableTeachers.push({
                     fullName: teacher.userInfo.fullName,
-                    _id: teacher.userInfo._id,
+                    email: teacher.userInfo.email,
+                    _id: teacher._id,
                     gender: teacher.gender,
                     address: teacher.address,
-                    qualifications: teacher.qualifications
+                    qualifications: teacher.qualification
                 });
             }
             res.send(availableTeachers);
