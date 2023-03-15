@@ -123,35 +123,40 @@
                                                     ${user.contact.address.country}` %>
                                             </td>
                                         </tr>
-                                        <% if (user.contact.phoneNo){ %>
-                                            <tr>
-                                                <td>Phone:</td>
+                                        <tr>
+                                            <td>Phone:</td>
+                                            <% if (user.contact.phoneNo){ %>
                                                 <td class="font-medium text-dark-medium">
                                                     <%= user.contact.phoneNo %>
                                                 </td>
+                                                <% }else{ %>
+                                                    <td class="font-medium text-dark-medium">
+                                                        <div class="text-danger">Phone Number is not provided by student
+                                                        </div>
+                                                    </td>
+                                                    <% } %>
+                                        </tr>
+                                        <% if (user.education){ %>
+                                            <tr>
+                                                <td>Previous Education:</td>
+                                                <td class="font-medium text-dark-medium">
+                                                    <div class="d-flex">
+                                                        <div class="mr-4">
+                                                            <div>Previous Institue Name:</div>
+                                                            <div>Previous Grade: </div>
+                                                        </div>
+                                                        <div>
+                                                            <div>
+                                                                <%= ` ${user.education.instituteName}` %>
+                                                            </div>
+                                                            <div>
+                                                                <%= `${user.education.previous_grade}` %>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </td>
                                             </tr>
                                             <% } %>
-                                                <% if (user.education){ %>
-                                                    <tr>
-                                                        <td>Previous Education:</td>
-                                                        <td class="font-medium text-dark-medium">
-                                                            <div class="d-flex">
-                                                                <div class="mr-4">
-                                                                    <div>Previous Institue Name:</div>
-                                                                    <div>Previous Grade: </div>
-                                                                </div>
-                                                                <div>
-                                                                    <div>
-                                                                        <%= ` ${user.education.instituteName}` %>
-                                                                    </div>
-                                                                    <div>
-                                                                        <%= `${user.education.previous_grade}` %>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </td>
-                                                    </tr>
-                                                    <% } %>
                                     </tbody>
                                 </table>
                             </div>
