@@ -37,9 +37,9 @@ module.exports.addClass = async function (req, res) {
         }
         let cls = new Class({ ...req.body });
 
-        // add class id to each student
+        // add class id to each student and also add admission date
         for (let id of req.body.students) {
-            const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id });
+            const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id, admissionDate: Date.now() });
         }
         if (req.body.subjects) {
             for (let subject of req.body.subjects) {

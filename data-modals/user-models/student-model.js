@@ -60,6 +60,9 @@ const StudentSchema = mongoose.Schema({
     },
     admittedClass: {
         type: mongoose.Types.ObjectId
+    },
+    admissionDate: {
+        type: Date,
     }
 })
 
