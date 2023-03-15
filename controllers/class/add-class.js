@@ -18,7 +18,6 @@ module.exports.addClass = async function (req, res) {
     try {
         let students = [];
         // Create array of students
-        console.log(req.body)
         if ((typeof req.body.students.id) == 'object') {
             req.body.students = Object.values(req.body.students);
             if (req.body.students[0].length > 1) {

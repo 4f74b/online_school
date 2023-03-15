@@ -59,7 +59,8 @@ const StudentSchema = mongoose.Schema({
         ref: 'User',
     },
     admittedClass: {
-        type: mongoose.Types.ObjectId
+        type: mongoose.Types.ObjectId,
+        ref: 'Class'
     },
     admissionDate: {
         type: Date,

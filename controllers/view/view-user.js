@@ -8,7 +8,10 @@ module.exports.renderViewUser = async function (req, res) {
     try {
         switch (userToBeViewed) {
             case 'student':
-                user = await Student.findById(req.params.id).populate('userInfo');
+                user = await Student.findById(req.params.id).populate([
+                    { path: 'admittedClass', select: ['classType', 'classLevel', 'section', 'courses'] },
+                    { path: 'userInfo' }
+                ]);
                 break;
             case 'teacher':
                 user = await Teacher.findById(req.params.id).populate('userInfo');
