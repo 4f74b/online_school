@@ -4,6 +4,7 @@ module.exports = async function (req, res) {
             res.redirect('/' + res.locals.domainName + '/student');
             break;
         case 'teacher':
+            req.flash('success', `Welcome ${req.user.fullName}`);
             res.redirect('/' + res.locals.domainName + '/teacher');
             break;
         case 'admin':

@@ -24,10 +24,10 @@ module.exports.getTeacherQuery = async function (req, res) {
         }
         else if (req.query.slot && req.query.subject && req.query.day) {
             let allteachers = await Teacher.find({ subjects: { $in: [req.query.subject] } }).populate('userInfo');
-            for (teacher of allteachers) {
-                for (avail of teacher.availability) {
-                    if (avail.name == req.query.day && avail.slot.includes(req.query.slot)) {
-                        availableTeachers.push(teacher);
+            for (let teacher of allteachers) {
+                for (let slot of teacher.slot_occupied) {
+                    if (slot.day == req.query.day && slot.slot == req.query.slot) {
+                        availableTeachers.push(teacher._id);
                     }
                 }
             }

@@ -343,13 +343,17 @@
                 try {
                     let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-student/with-grade/' + this.value);
                     res = await res.json();
+                    document.getElementById('relatedStudents').classList.remove('d-none');
                     if (res.length) {
-                        document.getElementById('relatedStudents').classList.remove('d-none');
                         for (let student of res) {
-                            tbody.innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student._id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student._id + '</span> </label> </td> <td>' + student.userInfo.fullName + '</td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + student.contact.address.streetAddress + '</td> <td>' + student.DOB[0] + '/' + student.DOB[1] + '/' + student.DOB[2] + '</td> <td>' + student.userInfo.email + '</td> </tr>'
+                            tbody.innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student._id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student._id + '</span> </label> </td> <td> <td> <a href="/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/student/' + student._id + '/view">' + student.userInfo.fullName + '</a></td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + student.contact.address.streetAddress + '</td> <td>' + student.DOB[0] + '/' + student.DOB[1] + '/' + student.DOB[2] + '</td> <td>' + student.userInfo.email + '</td> </tr>'
                         }
                     } else {
-                        document.getElementById('relatedStudents').classList.add('d-none');
+                        // document.getElementById('relatedStudents').classList.add('d-none');
+                        while (tbody.firstChild) {
+                            tbody.removeChild(tbody.firstChild);
+                        }
+                        tbody.innerHTML = '<h3 class="text-danger p-3 text center">No Students have applied for the selected class</h3>'
                     }
                 } catch (err) {
                     console.log(err);
@@ -363,10 +367,10 @@
     <script>
         async function populateSlots(self, subNo) {
             if (self.checked) {
-                document.getElementById(self.value + subNo).insertAdjacentHTML('beforeend', '<div class="row pl-5 justify-content-between form-group ml-1 border-bottom shadow" id="slot-wrapper' + (courseCount) + '" style="background-color:aliceblue;"> <h6 class="border-bottom">Select Time Slot for <span class="text-primary p-0 m-0 h2" id="day-name' + self.value + '">' + self.value.charAt(0).toUpperCase() + self.value.slice(1) + '</span>:</h6> <div class="col-12 d-flex flex-wrap"> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="08:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">08:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="09:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">09:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="10:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">10:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="11:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">11:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="12:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">12:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="13:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">01:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="14:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">02:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="15:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">03:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="16:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">04:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="17:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">05:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="18:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">06:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="19:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">07:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="20:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">08:15 pm</span> </label> </div> </div> </div>');
+                document.getElementById(self.value + subNo).insertAdjacentHTML('beforeend', '<div class="row pl-5 justify-content-between form-group ml-1 border-bottom shadow" id="slot-wrapper' + (courseCount) + '" style="background-color:aliceblue;"> <h6 class="border-bottom">Select Time Slot for <span class="text-primary p-0 m-0 h2" id="day-name' + self.value + '">' + self.value.charAt(0).toUpperCase() + self.value.slice(1) + '</span>:</h6> <div class="col-12 d-flex flex-wrap"> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="08:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">08:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="09:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">09:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="10:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">10:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="11:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">11:15 am</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="12:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">12:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="13:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">01:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="14:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">02:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="15:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">03:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="16:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">04:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="17:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">05:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="18:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">06:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="19:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">07:15 pm</span> </label> </div> <div class="n-chk col-2 mb-4 p-1"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary"> <input type="radio" onchange="lookForConflict(this,' + courseCount + ')" name="subjects[subject' + courseCount + '][schedule][' + self.value + '][slot]" class="new-control-input" value="20:15"> <span class="new-control-indicator"></span> <span class="new-chk-content">08:15 pm</span> </label> </div> </div> </div>');
             } else {
                 // Remove check boxes
-                document.getElementById(self.value).children[1].remove();
+                document.getElementById(self.value + subNo).children[1].remove();
             }
         }
 
@@ -381,7 +385,7 @@
                     for (let qual of teacher.qualifications) {
                         quals += '<div>' + qual.name + '</div>';
                     }
-                    wrapper.insertAdjacentHTML('beforeend', '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="radio" name="subjects[subject' + subNo + '][teacher]" class="new- control - input" value="' + teacher._id + '"> <span class="new- control - indicator"></span> <span class="new- chk - content">#' + teacher._id + '</span> </label> </td> <td>' + teacher.fullName + '</td> <td>' + teacher.gender + '</td> <td>' + teacher.address + '</td> <td>' + teacher.email + '</td> <td><small>' + quals + '</div></small></td> </tr>')
+                    wrapper.insertAdjacentHTML('beforeend', '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="radio" name="subjects[subject' + subNo + '][teacher]" class="new- control - input" value="' + teacher._id + '"> <span class="new- control - indicator"></span> <span class="new- chk - content">#' + teacher._id + '</span> </label> </td> <td> <a href="/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/teacher/' + teacher._id + '/view">' + teacher.fullName + '</a></td> <td>' + teacher.gender + '</td> <td>' + teacher.address + '</td> <td>' + teacher.email + '</td> <td><small>' + quals + '</div></small></td> </tr>')
                 }
             } else {
                 wrapper.innerHTML = '';
@@ -465,33 +469,41 @@
     <!-- Check for Teachers of particular subject and slot -->
     <script>
 
-        async function getTeacherByCourseDayAndSlot(self, subNo) {
+        async function lookForConflict(self, subNo) {
             // console.log(document.getElementById('selectedLabelTeacher' + subNo))
-            if (document.querySelector('.coursesSelect' + subNo) && document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value != '') {
-                let tbody = document.getElementById('teachersTable' + subNo);
-                console.log(subNo);
+            let parentNode = self.parentElement;
+            let days = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
+            while (!parentNode.id || !days.includes(parentNode.id.replace(/\d+$/, ""))) {
+                parentNode = parentNode.parentElement;
+            }
 
+            if (document.querySelector('.coursesSelect' + subNo).value && self.value && days.includes(parentNode.id.replace(/\d+$/, ""))) {
                 // look for teachers of the selected slot,subject and day
                 try {
-                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value + '&day=' + document.querySelector('input[name="subjects[subject' + (subNo) + '][day]"]:checked').value + '&slot=' + document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value);
+                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value + '&day=' + parentNode.id.replace(/\d+$/, "") + '&slot=' + self.value);
                     res = await res.json();
-                    if (res.length && document.getElementById('selectedLabelTeacher' + subNo)) {
-                        // clear teachers table
-                        if (tbody.firstChild) {
-                            while (tbody.firstChild) {
-                                tbody.removeChild(tbody.firstChild);
+                    let tbody = document.getElementById('teachersTable' + subNo);
+                    if (res.length) {
+                        for (let occupiedTeacher of res) {
+                            // Find the teacher an disable it
+                            if (tbody.querySelector('input[type="radio"][value="' + res[0] + '"]')) {
+                                let findRow = tbody.querySelector('input[type="radio"][value="' + res[0] + '"]').parentElement;
+                                while (findRow.role != 'row') {
+                                    findRow = findRow.parentElement;
+                                }
+                                findRow.remove();
                             }
                         }
-                        document.getElementById('selectedLabelTeacher' + subNo).innerHTML = document.querySelector('.coursesSelect' + subNo).value;
-                        document.getElementById('timeSlot' + subNo).innerHTML = document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value
-                        document.getElementById('timeLabelWrap' + subNo).classList.remove('d-none');
                     }
-                    console.log(tbody)
-                    createTeacherTable(res, tbody, subNo);
+                    // console.log(tbody)
+                    // createTeacherTable(res, tbody, subNo);
                 } catch (err) {
                     console.log(err);
                 }
+            }
+            else {
+                console.log('subject not selected')
             }
         }
 

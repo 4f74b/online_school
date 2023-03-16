@@ -8,11 +8,14 @@ const session = require('express-session');
 const bodyParser = require("body-parser");
 const passport = require("passport");
 const flash = require("connect-flash");
+const cors = require("cors");
+const dotEnv = require("dotenv");
 
 
 const studentRoute = require('./routes/student-route');
 const teacherRoute = require('./routes/teacher-route');
 const adminRoute = require('./routes/admin-route');
+// const zoomRouter = require("./routes/zoom-route");
 
 
 const configurePassport = require('./controllers/passport/configure-passport');
@@ -20,6 +23,16 @@ const postLogin = require('./controllers/login/login');
 
 const app = express();
 const port = process.env.PORT || 3000;
+
+
+
+//registering middlewares
+// dotEnv.config();
+// app.use(cors());
+
+
+//registering routes
+// app.use("/zoomapi", zoomRouter);
 
 
 app.use(express.urlencoded({ extended: true }));

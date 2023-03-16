@@ -7,13 +7,14 @@ const multer = require("multer");
 const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/render-home');
 const postLogin = require('../controllers/login/login')
+const isLoggedIn = require('../controllers/login/isLoggedIn');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 
 // ==================================================Home page========================================================
-router.get('/', renderHomePage);
+router.get('/', isLoggedIn, renderHomePage);
 
 // =================--------------------------Register related routes======================================================
 router

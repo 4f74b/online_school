@@ -51,12 +51,6 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td>Gender:</td>
-                                            <td class="font-medium text-dark-medium">
-                                                <%= user.gender.charAt(0).toUpperCase()+user.gender.slice(1) %>
-                                            </td>
-                                        </tr>
-                                        <tr>
                                             <td>Father Name:</td>
                                             <td class="font-medium text-dark-medium">
                                                 <%= user.fatherName.charAt(0).toUpperCase()+user.fatherName.slice(1) %>
@@ -69,94 +63,108 @@
                                             </td>
                                         </tr>
                                         <tr>
+                                            <td>Gender:</td>
+                                            <td class="font-medium text-dark-medium">
+                                                <%= user.gender.charAt(0).toUpperCase()+user.gender.slice(1) %>
+                                            </td>
+                                        </tr>
+                                        <tr>
                                             <td>E-mail:</td>
                                             <td class="font-medium text-dark-medium">
                                                 <%= user.userInfo.email %>
                                             </td>
                                         </tr>
-                                        <tr>
-                                            <td>Admission Date:</td>
-                                            <td class="font-medium text-dark-medium">
-                                                <%= `${user.admissionDate.getUTCDate()}/${user.admissionDate.getUTCMonth()
-                                                    + 1}/${user.admissionDate.getUTCFullYear()}` %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>
-                                                <a
-                                                    href="<%= `/${domainName}/${currentUser.role}/class/${user.admittedClass._id}/view` %>">
-                                                    Class:
-                                            </td>
-                                            </a>
-                                            <td class="font-medium text-dark-medium">
-                                                <div class="d-flex">
-                                                    <div class="mr-4">
-                                                        <div>Class Level:</div>
-                                                        <div>Section: </div>
-                                                    </div>
-                                                    <a
-                                                        href="<%= `/${domainName}/${currentUser.role}/class/${user.admittedClass._id}/view` %>">
-                                                        <div>
-                                                            <%= ` ${user.admittedClass.classLevel}` %>
-                                                        </div>
-                                                        <div>
-                                                            <%= `${user.admittedClass.section}` %>
-                                                        </div>
-                                                    </a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Section:</td>
-                                            <td class="font-medium text-dark-medium">Pink</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Roll:</td>
-                                            <td class="font-medium text-dark-medium">
-                                                <%= user._id %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Address:</td>
-                                            <td class="font-medium text-dark-medium">
-                                                <%= `${user.contact.address.streetAddress},
-                                                    ${user.contact.address.country}` %>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>Phone:</td>
-                                            <% if (user.contact.phoneNo){ %>
-                                                <td class="font-medium text-dark-medium">
-                                                    <%= user.contact.phoneNo %>
-                                                </td>
-                                                <% }else{ %>
-                                                    <td class="font-medium text-dark-medium">
-                                                        <div class="text-danger">Phone Number is not provided by student
-                                                        </div>
-                                                    </td>
-                                                    <% } %>
-                                        </tr>
-                                        <% if (user.education){ %>
+                                        <% if(user.admissionDate){ %>
                                             <tr>
-                                                <td>Previous Education:</td>
+                                                <td>Admission Date:</td>
                                                 <td class="font-medium text-dark-medium">
-                                                    <div class="d-flex">
-                                                        <div class="mr-4">
-                                                            <div>Previous Institue Name:</div>
-                                                            <div>Previous Grade: </div>
-                                                        </div>
-                                                        <div>
-                                                            <div>
-                                                                <%= ` ${user.education.instituteName}` %>
-                                                            </div>
-                                                            <div>
-                                                                <%= `${user.education.previous_grade}` %>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <%= `${user.admissionDate.getUTCDate()}/${user.admissionDate.getUTCMonth()
+                                                        + 1}/${user.admissionDate.getUTCFullYear()}` %>
                                                 </td>
                                             </tr>
-                                            <% } %>
+
+                                            <tr>
+                                                <td>Class:</td>
+                                                <td class="font-medium text-dark-medium">
+                                                    <%= user.admittedClass.classLevel %>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Section:</td>
+                                                <td class="font-medium text-dark-medium">
+                                                    <%= user.admittedClass.section %>
+                                                </td>
+                                            </tr>
+
+                                            <!-- If student is not admitted -->
+                                            <% }else{ %>
+                                                <tr>
+                                                    <td>Admission: </td>
+                                                    <td class="font-medium text-dark-medium">
+                                                        <div class="text-danger">This student is not registered in
+                                                            online
+                                                            class.
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Applied for grade:</td>
+                                                    <td class="font-medium text-dark-medium">
+                                                        <%= user.grade %>
+                                                    </td>
+                                                </tr>
+                                                <% } %>
+
+
+                                                    <tr>
+                                                        <td>Roll:</td>
+                                                        <td class="font-medium text-dark-medium">
+                                                            <%= user._id %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Address:</td>
+                                                        <td class="font-medium text-dark-medium">
+                                                            <%= `${user.contact.address.streetAddress},
+                                                                ${user.contact.address.country}` %>
+                                                        </td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Phone:</td>
+                                                        <% if (user.contact.phoneNo){ %>
+                                                            <td class="font-medium text-dark-medium">
+                                                                <%= user.contact.phoneNo %>
+                                                            </td>
+                                                            <% }else{ %>
+                                                                <td class="font-medium text-dark-medium">
+                                                                    <div class="text-danger">Phone Number is not
+                                                                        provided by
+                                                                        student
+                                                                    </div>
+                                                                </td>
+                                                                <% } %>
+                                                    </tr>
+                                                    <% if (user.education){ %>
+                                                        <tr>
+                                                            <td>Previous Education:</td>
+                                                            <td class="font-medium text-dark-medium">
+                                                                <div class="d-flex">
+                                                                    <div class="mr-4 border-right pr-3">
+                                                                        <div>Previous Institue Name:</div>
+                                                                        <div>Previous Grade: </div>
+                                                                    </div>
+                                                                    <div>
+                                                                        <div>
+                                                                            <%= ` ${user.education.instituteName}` %>
+                                                                        </div>
+                                                                        <div>
+                                                                            <%= `${user.education.previous_grade}` %>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                        <% } %>
                                     </tbody>
                                 </table>
                             </div>

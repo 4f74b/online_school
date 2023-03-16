@@ -2,9 +2,9 @@ const express = require("express");
 const router = express.Router();
 const passport = require("passport");
 const multer = require("multer");
-
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
+
 
 
 const register = require('../controllers/register/register');
@@ -17,6 +17,9 @@ const { addClass } = require('../controllers/class/add-class');
 const { renderAllClasses } = require('../controllers/class/class');
 const { viewClass } = require('../controllers/class/class');
 const { renderViewUser } = require('../controllers/view/view-user');
+
+
+
 
 
 

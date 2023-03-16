@@ -18,18 +18,19 @@ module.exports.addClass = async function (req, res) {
     try {
         let students = [];
         // Create array of students
-        if ((typeof req.body.students.id) == 'object') {
-            req.body.students = Object.values(req.body.students);
-            if (req.body.students[0].length > 1) {
-                for (let student of req.body.students[0]) {
-                    students.push(student);
+        if (req.body.students) {
+            if ((typeof req.body.students.id) == 'object') {
+                req.body.students = Object.values(req.body.students);
+                if (req.body.students[0].length > 1) {
+                    for (let student of req.body.students[0]) {
+                        students.push(student);
+                    }
+                    req.body.students = students;
 
                 }
-                req.body.students = students;
-
+            } else {
+                req.body.students = Object.values(req.body.students);
             }
-        } else {
-            req.body.students = Object.values(req.body.students);
         }
         if (req.body.subjects) {
             req.body.subjects = Object.values(req.body.subjects);
@@ -43,15 +44,33 @@ module.exports.addClass = async function (req, res) {
         if (req.body.subjects) {
             for (let subject of req.body.subjects) {
                 let sub = new Subject({ ...subject });
-                sub = await sub.save();
+                // Associate subject with class
+                sub.class = cls._id;
+
                 cls.courses.push(sub._id);
+                let slots = [];
+                for (let day in subject.schedule) {
+                    slots.push({ day: day, slot: subject.schedule[day].slot });
+                }
+                sub.schedule = slots;
+
+                sub = await sub.save();
+                // Also add subject and schedule to teacher
+                updateTeacher(sub._id, sub.teacher, slots);
             }
         }
         await cls.save();
 
     } catch (err) {
-        console.log('error');
-        res.send(err);
+        req.flash('error', err.message);
+        res.render('error/error');
     }
 }
 
+async function updateTeacher(courseID, teacherID, schedule) {
+    try {
+        await Teacher.findByIdAndUpdate(teacherID, { $push: { assigned_subjects: courseID, slot_occupied: schedule } });
+    } catch (err) {
+        throw Error(404, 'Selected Teacher not found');
+    }
+}

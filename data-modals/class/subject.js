@@ -2,7 +2,10 @@ const mongoose = require('mongoose');
 const subjectSchema = new mongoose.Schema({
     name: { type: String },
     schedule: [{}],
-    teacher: { type: String, ref: 'Teacher' }
+    teacher: { type: String, ref: 'Teacher' },
+    class: {
+        type: mongoose.Types.ObjectId,
+    }
 });
 
 module.exports = mongoose.model('Subject', subjectSchema);

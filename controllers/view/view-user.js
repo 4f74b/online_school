@@ -10,7 +10,8 @@ module.exports.renderViewUser = async function (req, res) {
             case 'student':
                 user = await Student.findById(req.params.id).populate([
                     { path: 'admittedClass', select: ['classType', 'classLevel', 'section', 'courses'] },
-                    { path: 'userInfo' }
+                    { path: 'userInfo' },
+                    { path: 'admittedClass', select: ['classLevel', 'section', 'classID'] }
                 ]);
                 break;
             case 'teacher':
@@ -18,15 +19,15 @@ module.exports.renderViewUser = async function (req, res) {
                 break;
         }
         if (!user) {
-            console.log(user);
             throw Error('404', 'Student not found');
         } else {
             res.render('user/view-user', { user });
         }
-    } catch (err) {
+    } catch (error) {
         req.flash('error', userToBeViewed.charAt(0).toUpperCase() + userToBeViewed.slice(1) + " not found");
         res.status(404);
-        res.send(err);
+        error.message = "User Not found";
+        res.render('error/error', { error });
         // res.render('error/error');
     }
 }

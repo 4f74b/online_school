@@ -67,6 +67,15 @@ const TeacherSchema = mongoose.Schema({
         required: true,
         enum: ['male', 'female'],
     },
+    assigned_subjects: [{ type: mongoose.Types.ObjectId, ref: 'Subject' }],
+    slot_occupied: [{
+        day: {
+            type: String,
+        },
+        slot: {
+            type: String
+        }
+    }],
 })
 
 // adding a post delete middleware to student schema so that it could run before deleting some student
