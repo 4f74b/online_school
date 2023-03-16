@@ -5,6 +5,7 @@ const subjectSchema = new mongoose.Schema({
     teacher: { type: String, ref: 'Teacher' },
     class: {
         type: mongoose.Types.ObjectId,
+        ref: 'Class'
     }
 });
 
