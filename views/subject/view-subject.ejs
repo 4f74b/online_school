@@ -1,60 +1,46 @@
 <% layout('layouts/admin/boilerplate') %>
     <link rel="stylesheet" type="text/css" href="/plugins/editors/quill/quill.snow.css">
-    <style>
-        .file-upload {
-            position: relative;
-            display: inline-block;
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
+    <script>
+        $(document).ready(function () {
+            $("#files").change(function () {
+                var files = $('#files')[0].files;
+                for (var i = 0; i < files.length; i++) {
+                    var file = files[i];
+                    var fileType = file.type.split('/')[1];
+                    var validTypes = ["pdf", "docx", "png", "jpg", "jpeg", "gif"];
+                    if ($.inArray(fileType, validTypes) < 0) {
+                        alert("Invalid file type. Please upload a PDF, DOCX, PNG, JPG, JPEG or GIF file.");
+                    } else {
+                        var reader = new FileReader();
+                        reader.onload = function (e) {
+                            var previewTemplate = '<div class="col-md-3 col-sm-6 col-12"><div class="card"><div class="card-header"><img src="' + getPreviewImage(fileType) + '" height="50" width="50" class="mr-2">' + file.name + '<button type="button" class="close" data-dismiss="alert" onclick="removeFile(this)">&times;</button></div><div class="card-body"><img src="' + e.target.result + '" height="150" width="150"></div></div></div>';
+                            $('#previews').append(previewTemplate);
+                        }
+                        reader.readAsDataURL(file);
+                    }
+                }
+            });
+        });
+
+        function removeFile(button) {
+            $(button).closest('.card').parent().remove();
         }
 
-        .file-upload input[type="file"] {
-            position: absolute;
-            top: 0;
-            left: 0;
-            opacity: 0;
-            width: 100%;
-            height: 100%;
-            cursor: pointer;
+        function getPreviewImage(fileType) {
+            if (fileType == "pdf") {
+                return "https://cdn.jsdelivr.net/npm/file-icon-vectors@2.2.0/dist/svg/pdf.svg";
+            } else if (fileType == "docx") {
+                return "https://cdn.jsdelivr.net/npm/file-icon-vectors@2.2.0/dist/svg/docx.svg";
+            } else if (fileType == "png" || fileType == "jpg" || fileType == "jpeg" || fileType == "gif") {
+                return "https://via.placeholder.com/50x50";
+            }
         }
+    </script>
 
-        .file-upload label {
-            display: inline-block;
-            padding: 8px 20px;
-            background-color: #3498db;
-            color: #fff;
-            border-radius: 4px;
-            cursor: pointer;
-        }
-
-        .file-preview {
-            display: flex;
-            flex-wrap: wrap;
-            margin-top: 20px;
-        }
-
-        .file-preview .preview-item {
-            width: 200px;
-            height: 200px;
-            margin: 10px;
-            position: relative;
-        }
-
-        .file-preview .preview-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .file-preview .preview-item .file-type {
-            position: absolute;
-            bottom: 10px;
-            right: 10px;
-            background-color: #fff;
-            padding: 5px;
-            border-radius: 4px;
-            font-size: 14px;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-    </style>
     <div class="dashboard-content-one">
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
@@ -509,11 +495,20 @@
                                                 <div id="quill-tooltip">
                                                 </div>
 
-
-                                                <div class="file-upload">
-                                                    <input type="file" id="file-input" multiple>
-                                                    <label for="file-input">Choose files</label>
-                                                    <div class="file-preview"></div>
+                                                <div class="container">
+                                                    <div class="row">
+                                                        <div class="col-md-12">
+                                                            <h1>Multiple File Upload with Preview</h1>
+                                                            <form>
+                                                                <div class="form-group">
+                                                                    <label for="files">Select files to upload:</label>
+                                                                    <input type="file" class="form-control-file"
+                                                                        id="files" name="files[]" multiple>
+                                                                </div>
+                                                            </form>
+                                                        </div>
+                                                    </div>
+                                                    <div class="row mt-4" id="previews"></div>
                                                 </div>
 
                                             </div>
@@ -560,61 +555,6 @@
         }, 100);
     </script>
     <script>
-        const fileInput = document.querySelector('#file-input');
-        const filePreview = document.querySelector('.file-preview');
-
-        fileInput.addEventListener('change', function () {
-            filePreview.innerHTML = '';
-            const files = Array.from(fileInput.files);
-            files.forEach((file) => {
-                const reader = new FileReader();
-                reader.readAsDataURL(file);
-                reader.onload = function () {
-                    const fileType = getFileType(file.name);
-                    const previewItem = createPreviewItem(fileType, reader.result);
-                    filePreview.appendChild(previewItem);
-                };
-            });
-        });
-
-        function getFileType(fileName) {
-            const extension = fileName.split('.').pop().toLowerCase();
-            switch (extension) {
-                case 'docx':
-                    return 'docx';
-                case 'pdf':
-                    return 'pdf';
-                case 'png':
-                case 'jpg':
-                case 'jpeg':
-                case 'gif':
-                    return 'image';
-                default:
-                    return 'file';
-            }
-        }
-
-        function createPreviewItem(fileType, fileUrl) {
-            const previewItem = document.createElement('div');
-            previewItem.className = 'preview-item';
-            if (fileType === 'image') {
-                const img = document.createElement('img');
-                img.src = fileUrl;
-                previewItem.appendChild(img);
-            } else if (fileType === 'docx') {
-                const fileIcon = document.createElement('div');
-                fileIcon.classList.add('d-flex')
-                fileIcon.insertAdjacentHTML('beforeend', '<svg width="100" height="100" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" fill="#000000"><g id="SVGRepo_bgCarrier" stroke-width="0"></g><g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g><g id="SVGRepo_iconCarrier"> <defs> <style>.cls-1{fill:#12c8fd;}</style> </defs> <title></title> <g id="xxx-word"> <path class="cls-1" d="M325,105H250a5,5,0,0,1-5-5V25a5,5,0,0,1,10,0V95h70a5,5,0,0,1,0,10Z"></path> <path class="cls-1" d="M325,154.83a5,5,0,0,1-5-5V102.07L247.93,30H100A20,20,0,0,0,80,50v98.17a5,5,0,0,1-10,0V50a30,30,0,0,1,30-30H250a5,5,0,0,1,3.54,1.46l75,75A5,5,0,0,1,330,100v49.83A5,5,0,0,1,325,154.83Z"></path> <path class="cls-1" d="M300,380H100a30,30,0,0,1-30-30V275a5,5,0,0,1,10,0v75a20,20,0,0,0,20,20H300a20,20,0,0,0,20-20V275a5,5,0,0,1,10,0v75A30,30,0,0,1,300,380Z"></path> <path class="cls-1" d="M275,280H125a5,5,0,0,1,0-10H275a5,5,0,0,1,0,10Z"></path> <path class="cls-1" d="M200,330H125a5,5,0,0,1,0-10h75a5,5,0,0,1,0,10Z"></path> <path class="cls-1" d="M325,280H75a30,30,0,0,1-30-30V173.17a30,30,0,0,1,30-30h.2l250,1.66a30.09,30.09,0,0,1,29.81,30V250A30,30,0,0,1,325,280ZM75,153.17a20,20,0,0,0-20,20V250a20,20,0,0,0,20,20H325a20,20,0,0,0,20-20V174.83a20.06,20.06,0,0,0-19.88-20l-250-1.66Z"></path> <path class="cls-1" d="M179.67,182.68,165.41,236H155.33l-10.62-39.22L135.06,236h-9.88l-14.57-53.32h10.2l10.31,38.87,9.61-38.87h9.73l10.63,38.87,10.12-38.87Z"></path> <path class="cls-1" d="M199.08,236.82q-8.75,0-13.36-6.29a23.75,23.75,0,0,1-4.61-14.41,21.32,21.32,0,0,1,5.1-14.57,17,17,0,0,1,13.46-5.82,16.75,16.75,0,0,1,13,5.66q5.1,5.66,5.1,14.73,0,9.34-5.29,15A17.54,17.54,0,0,1,199.08,236.82Zm.31-7.34q9,0,9-13.4,0-6.05-2.15-9.55a7.21,7.21,0,0,0-6.6-3.5,7.47,7.47,0,0,0-6.84,3.61q-2.23,3.61-2.23,9.59,0,6.45,2.36,9.84A7.46,7.46,0,0,0,199.39,229.48Z"></path> <path class="cls-1" d="M234.86,236H226V196.55h8V206q1.72-5.51,4.73-8a9.52,9.52,0,0,1,6.17-2.54l1.17,0V205q-6.8,0-9,4.34a18.47,18.47,0,0,0-2.21,8.4Z"></path> <path class="cls-1" d="M284.9,236h-8.32v-8q-3.44,8.79-11.64,8.79a12.43,12.43,0,0,1-11.13-6.05q-3.87-6.05-3.87-15a26.2,26.2,0,0,1,4-14.57,12.86,12.86,0,0,1,11.45-6.21q7.62,0,10.59,7V182.68h8.91ZM276,212.72q0-4.8-2.29-7.48a7.42,7.42,0,0,0-5.92-2.68,7,7,0,0,0-6.17,3.44q-2.23,3.44-2.23,10.27,0,13.2,8.28,13.2a7.58,7.58,0,0,0,5.8-2.83A10.49,10.49,0,0,0,276,219.4Z"></path> </g> </g></svg>')
-                fileIcon.src = `${fileType}.docx`;
-                previewItem.appendChild(fileIcon);
-            }
-            const fileTypeTag = document.createElement('div');
-            fileTypeTag.className = 'file-type';
-            fileTypeTag.textContent = fileType;
-            previewItem.appendChild(fileTypeTag);
-            return previewItem;
-        }
-
 
     </script>
 
