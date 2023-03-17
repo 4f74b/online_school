@@ -13,7 +13,6 @@ module.exports.viewClass = async function (req, res) {
             { path: 'courses', populate: { path: 'teacher', populate: { path: 'userInfo' } } },
             { path: 'students', populate: { path: 'userInfo' } }
         ]);
-        console.log(cls.students);
         res.render('class/view-class', { cls });
     } catch (err) {
         req.flash('error', 'Wrong class Id');

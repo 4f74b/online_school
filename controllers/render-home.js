@@ -10,7 +10,6 @@ module.exports = async function (req, res) {
 
             ])
             teacher = addAdditionalInfoToTeacher(teacher);
-            console.log(teacher.totalStudents)
             res.render('teacher/index', { teacher });
             break;
         case 'admin':

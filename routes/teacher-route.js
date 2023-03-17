@@ -6,6 +6,8 @@ const multer = require("multer");
 
 const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/render-home');
+const { viewClass } = require('../controllers/class/class')
+const { viewSubject } = require('../controllers/subject/subject');
 const postLogin = require('../controllers/login/login')
 const isLoggedIn = require('../controllers/login/isLoggedIn');
 
@@ -25,6 +27,14 @@ router
     })
 //   render register data
 router.post('/create', register);
+
+
+// =================--------------------------Class related routes======================================================
+router.get('/class/:id/view', viewClass);
+
+// =================--------------------------Subject related routes======================================================
+router.get('/subject/:id/view', viewSubject)
+
 
 
 // =================--------------------------login/logout related routes======================================================

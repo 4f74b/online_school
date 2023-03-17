@@ -51,7 +51,12 @@ app.listen(3000, () => {
     console.log("Server started on port" + port);
 });
 
-mongoose.connect("mongodb://0.0.0.0:27017/online-school", {
+// mongoose.connect("mongodb://0.0.0.0:27017/online-school", {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+// });
+
+mongoose.connect("mongodb+srv://abuaakashafridi:Afridi11@cluster0.zh0br2c.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });

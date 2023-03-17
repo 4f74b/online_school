@@ -8,32 +8,21 @@
                 <li>
                     <a href="index.html">Home</a>
                 </li>
-                <li>Class Details</li>
+                <li>Subject Details</li>
             </ul>
         </div>
         <!-- Breadcubs Area End Here -->
         <!-- Student Details Area Start Here -->
         <div class="card height-auto">
             <div class="card-body">
-                <div class="heading-layout1">
-                    <div class="dropdown">
-                        <a class="dropdown-toggle" href="#" role="button" data-toggle="dropdown"
-                            aria-expanded="false">...</a>
-
-                        <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="#"><i class="fas fa-times text-orange-red"></i>Close</a>
-                            <a class="dropdown-item" href="#"><i class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
-                            <a class="dropdown-item" href="#"><i
-                                    class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
-                        </div>
-                    </div>
-                </div>
                 <div class="single-info-details">
                     <div class="item-content">
                         <div class="header-inline item-header">
 
                             <div class="item-title">
-                                <h3>About Class <%= cls.classLevel %> (<small>Section <%= cls.section %> </small>)
+                                <h3>About Subject <u>
+                                        <%= cls.courses[0].name.charAt(0).toUpperCase()+cls.courses[0].name.slice(1) %>:
+                                    </u>
                                 </h3>
                             </div>
                             <div class="header-elements">
@@ -66,55 +55,22 @@
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td>Type:</td>
-                                        <td class="font-medium text-dark-medium">
-                                            <%= cls.classType.charAt(0).toUpperCase()+ cls.classType.slice(1) %>
-                                        </td>
-                                    </tr>
-                                    <tr>
                                         <td>Created At:</td>
                                         <td class="font-medium text-dark-medium">
                                             <%= `${cls.created.toLocaleString('default', { month: 'short' })}
-                                                ${cls.created.getDate()} ${cls.created.getFullYear()}
-                                                ${cls.created.getHours()}:${cls.created.getMinutes()}`; %>
+                                                ${cls.created.getDate()} ${cls.created.getFullYear()}`; %>
                                         </td>
                                     </tr>
                                     <tr>
-                                        <td class="d-none d-lg-block">Subjects Offered:</td>
+                                        <td class="d-none d-lg-block">Subject Details:</td>
                                         <td class="font-medium text-dark-medium w-100">
                                             <% for(let course of cls.courses){ %>
-                                                <div class="bg-ash p-2 mb-4 border-bottom">
+                                                <div class="bg-ash p-2 mb-1">
                                                     <div class="d-flex justify-content-between pr-3">
                                                         <h4>
                                                             <%= course.name.charAt(0).toUpperCase()+course.name.slice(1)
                                                                 %>
                                                         </h4>
-                                                        <div class="heading-layout1">
-                                                            <div class="dropdown">
-                                                                <a class="dropdown-toggle" href="#" role="button"
-                                                                    data-toggle="dropdown" aria-expanded="false">...</a>
-
-                                                                <div class="dropdown-menu dropdown-menu-right">
-                                                                    <a class="dropdown-item" href="#">
-                                                                        <i class="fas fa-times text-orange-red">
-                                                                        </i>
-                                                                        Close
-                                                                    </a>
-                                                                    <a class="dropdown-item"
-                                                                        href="/<%= domainName %>/admin/class/<%= cls._id %>/course/<%= course._id %>/edit">
-                                                                        <i class="fas fa-cogs text-dark-pastel-green">
-                                                                        </i>
-                                                                        Edit
-                                                                    </a>
-                                                                    <a class="dropdown-item"
-                                                                        href="/<%= domainName %>/admin/class/<%= cls._id %>/course/<%= course._id %>/delete">
-                                                                        <i class="fas fa-redo-alt text-orange-peel">
-                                                                        </i>
-                                                                        Delete
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                        </div>
                                                     </div>
                                                     <div class="d-flex">
                                                         <% if(course.teacher){ %>
