@@ -21,13 +21,14 @@ const adminRoute = require('./routes/admin-route');
 const configurePassport = require('./controllers/passport/configure-passport');
 const postLogin = require('./controllers/login/login');
 
+// load environment vairables
+dotEnv.config();
 const app = express();
 const port = process.env.PORT || 3000;
 
 
 
 //registering middlewares
-// dotEnv.config();
 // app.use(cors());
 
 
@@ -55,7 +56,6 @@ app.listen(3000, () => {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
 // });
-console.log(process.env.MONGO_USERNAME);
 
 mongoose.connect("mongodb+srv://" + process.env.MONGO_USERNAME + ":" + process.env.MONGO_KEY + "@cluster0.j6ogqxn.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
