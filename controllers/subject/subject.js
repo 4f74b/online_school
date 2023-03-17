@@ -7,5 +7,6 @@ module.exports.viewSubject = async function (req, res) {
         { path: 'courses', match: { _id: subject._id }, populate: { path: 'teacher', populate: { path: 'userInfo' } } },
         { path: 'students', populate: { path: 'userInfo' } }
     ]);
+    console.log(cls);
     res.render('subject/view-subject', { cls });
 }

@@ -1,45 +1,5 @@
 <% layout('layouts/admin/boilerplate') %>
     <link rel="stylesheet" type="text/css" href="/plugins/editors/quill/quill.snow.css">
-    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"> -->
-    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <!-- <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script> -->
-    <script>
-        $(document).ready(function () {
-            $("#files").change(function () {
-                var files = $('#files')[0].files;
-                for (var i = 0; i < files.length; i++) {
-                    var file = files[i];
-                    var fileType = file.type.split('/')[1];
-                    var validTypes = ["pdf", "docx", "png", "jpg", "jpeg", "gif"];
-                    if ($.inArray(fileType, validTypes) < 0) {
-                        alert("Invalid file type. Please upload a PDF, DOCX, PNG, JPG, JPEG or GIF file.");
-                    } else {
-                        var reader = new FileReader();
-                        reader.onload = function (e) {
-                            var previewTemplate = '<div class="col-md-3 col-sm-6 col-12"><div class="card"><div class="card-header"><img src="' + getPreviewImage(fileType) + '" height="50" width="50" class="mr-2">' + file.name + '<button type="button" class="close" data-dismiss="alert" onclick="removeFile(this)">&times;</button></div><div class="card-body"><img src="' + e.target.result + '" height="150" width="150"></div></div></div>';
-                            $('#previews').append(previewTemplate);
-                        }
-                        reader.readAsDataURL(file);
-                    }
-                }
-            });
-        });
-
-        function removeFile(button) {
-            $(button).closest('.card').parent().remove();
-        }
-
-        function getPreviewImage(fileType) {
-            if (fileType == "pdf") {
-                return "https://cdn.jsdelivr.net/npm/file-icon-vectors@2.2.0/dist/svg/pdf.svg";
-            } else if (fileType == "docx") {
-                return "https://cdn.jsdelivr.net/npm/file-icon-vectors@2.2.0/dist/svg/docx.svg";
-            } else if (fileType == "png" || fileType == "jpg" || fileType == "jpeg" || fileType == "gif") {
-                return "https://via.placeholder.com/50x50";
-            }
-        }
-    </script>
 
     <div class="dashboard-content-one">
         <!-- Breadcubs Area Start Here -->
@@ -477,7 +437,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="widget-content widget-content-area">
+                                        <form
+                                            action="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/add` %>"
+                                            class="widget-content widget-content-area">
                                             <div id="content-container">
                                                 <div id="toolbar-container">
                                                     <button class="ql-bold" data-toggle="tooltip"
@@ -495,25 +457,18 @@
                                                 <div id="quill-tooltip">
                                                 </div>
 
-                                                <div class="container">
-                                                    <div class="row">
-                                                        <div class="col-md-12">
-                                                            <h1>Multiple File Upload with Preview</h1>
-                                                            <form>
-                                                                <div class="form-group">
-                                                                    <label for="files">Select files to upload:</label>
-                                                                    <input type="file" class="form-control-file"
-                                                                        id="files" name="files[]" multiple>
-                                                                </div>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                    <div class="row mt-4" id="previews"></div>
-                                                </div>
 
+                                                <div class="mt-4">
+                                                    <label for="file-upload">Choose files to upload:</label>
+                                                    <input id="file-upload" type="file" multiple>
+                                                </div>
+                                                <div id="preview"></div>
                                             </div>
 
-                                        </div>
+                                            <button type="submit"
+                                                class="btn-fill-lg font-normal text-light gradient-orange-peel">Add</button>
+
+                                        </form>
                                     </div>
                                 </div>
                             </div>
@@ -553,9 +508,6 @@
             document.getElementById('addMaterialBtn').click();
             document.querySelector('.ql-image').remove()
         }, 100);
-    </script>
-    <script>
-
     </script>
 
     <script src="/plugins/editors/quill/quill.js"></script>
