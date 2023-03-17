@@ -55,8 +55,9 @@ app.listen(3000, () => {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
 // });
+console.log(process.env.MONGO_USERNAME);
 
-mongoose.connect("mongodb+srv://abuaakashafridi:Afridi11@cluster0.zh0br2c.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect("mongodb+srv://" + process.env.MONGO_USERNAME + ":" + process.env.MONGO_KEY + "@cluster0.j6ogqxn.mongodb.net/?retryWrites=true&w=majority", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
