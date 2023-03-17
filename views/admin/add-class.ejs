@@ -93,112 +93,116 @@
                 <!-- interactive class form -->
                 <form method="post" action="/<%= domainName %>/admin/add-class" class="new-added-form d-none"
                     id="interactiveClass">
-                    <input type="text" name="classType" value="interactive" id="" class="d-none">
-                    <div class="row">
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label>Class Level</label>
-                            <select required class="select2" name="classLevel" id="classLevel">
-                                <option value="">--Select Class Level--</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                                <option value="5">5</option>
-                                <option value="6">6</option>
-                                <option value="7">7</option>
-                                <option value="8">8</option>
-                                <option value="9">9</option>
-                                <option value="10">10</option>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
-                            </select>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label>Section</label>
-                            <select required class="select2" name="section">
-                                <option value="">--Please Select--</option>
-                                <option value="Pink">Pink</option>
-                                <option value="Blue">Blue</option>
-                                <option value="Bird">Bird</option>
-                                <option value="Rose">Rose</option>
-                                <option value="Red">Red</option>
-                            </select>
-                        </div>
-                        <div class="col-xl-3 col-lg-6 col-12 form-group">
-                            <label>Class ID No</label>
-                            <input type="number" name="classID" placeholder="Class Id" class="form-control">
-                        </div>
-                        <div class="col-12 p-2 form-group d-none" style="background-color: beige;" id="relatedStudents">
+                    <div>
+                        <input type="text" name="classType" value="interactive" id="" class="d-none">
+                        <div class="row">
+                            <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Class Level</label>
+                                <select required class="select2" name="classLevel" id="classLevel">
+                                    <option value="">--Select Class Level--</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                    <option value="6">6</option>
+                                    <option value="7">7</option>
+                                    <option value="8">8</option>
+                                    <option value="9">9</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Section</label>
+                                <select required class="select2" name="section">
+                                    <option value="">--Please Select--</option>
+                                    <option value="Pink">Pink</option>
+                                    <option value="Blue">Blue</option>
+                                    <option value="Bird">Bird</option>
+                                    <option value="Rose">Rose</option>
+                                    <option value="Red">Red</option>
+                                </select>
+                            </div>
+                            <div class="col-xl-3 col-lg-6 col-12 form-group">
+                                <label>Class ID No</label>
+                                <input type="number" name="classID" placeholder="Class Id" class="form-control">
+                            </div>
+                            <div class="col-12 p-2 form-group d-none" style="background-color: beige;"
+                                id="relatedStudents">
 
-                            <div class="table-responsive">
-                                <label>Add Students( <small>The following students have applied for class <span
-                                            id="selectedLabel"></span></small>
-                                    )</label>
-                                <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
-                                    <table class="table display data-table text-nowrap dataTable no-footer"
-                                        id="DataTables_Table_0" role="grid">
-                                        <thead>
-                                            <tr role="row">
-                                                <th class="sorting_asc" rowspan="1" colspan="1" aria-label="
+                                <div class="table-responsive">
+                                    <label>Add Students( <small>The following students have applied for class <span
+                                                id="selectedLabel"></span></small>
+                                        )</label>
+                                    <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper no-footer">
+                                        <table class="table display data-table text-nowrap dataTable no-footer"
+                                            id="DataTables_Table_0" role="grid">
+                                            <thead>
+                                                <tr role="row">
+                                                    <th class="sorting_asc" rowspan="1" colspan="1" aria-label="
                                                     
                                                         
                                                         Roll
                                                     
                                                 " style="width: 85.8px;">
-                                                    <div class="">
-                                                        <label class="">Roll</label>
-                                                    </div>
-                                                </th>
-                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                    rowspan="1" colspan="1"
-                                                    aria-label="Name: activate to sort column ascending"
-                                                    style="width: 80.6875px;">Name</th>
-                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                    rowspan="1" colspan="1"
-                                                    aria-label="Gender: activate to sort column ascending"
-                                                    style="width: 51.625px;">Gender</th>
-                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                    rowspan="1" colspan="1"
-                                                    aria-label="Class: activate to sort column ascending"
-                                                    style="width: 39.7125px;">Applied for Class</th>
-                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                    rowspan="1" colspan="1"
-                                                    aria-label="Address: activate to sort column ascending"
-                                                    style="width: 133.8px;">Address</th>
-                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                    rowspan="1" colspan="1"
-                                                    aria-label="Date Of Birth: activate to sort column ascending"
-                                                    style="width: 92.1125px;">Date Of Birth</th>
-                                                <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
-                                                    rowspan="1" colspan="1"
-                                                    aria-label="E-mail: activate to sort column ascending"
-                                                    style="width: 166.075px;">E-mail</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody id="studentsTable">
-                                        </tbody>
-                                    </table>
+                                                        <div class="">
+                                                            <label class="">Roll</label>
+                                                        </div>
+                                                    </th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Name: activate to sort column ascending"
+                                                        style="width: 80.6875px;">Name</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Gender: activate to sort column ascending"
+                                                        style="width: 51.625px;">Gender</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Class: activate to sort column ascending"
+                                                        style="width: 39.7125px;">Applied for Class</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Address: activate to sort column ascending"
+                                                        style="width: 133.8px;">Address</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="Date Of Birth: activate to sort column ascending"
+                                                        style="width: 92.1125px;">Date Of Birth</th>
+                                                    <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0"
+                                                        rowspan="1" colspan="1"
+                                                        aria-label="E-mail: activate to sort column ascending"
+                                                        style="width: 166.075px;">E-mail</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody id="studentsTable">
+                                            </tbody>
+                                        </table>
+                                    </div>
                                 </div>
+                            </div>
+
+                            <div id="courseWrapper" class="bg-dark mb-5 col-12">
+
+
                             </div>
                         </div>
 
-                        <div id="courseWrapper" class="bg-dark mb-5 col-12">
+                        <div class="col-12">
 
-
+                            <button type="button" id="addSubject"
+                                class="btn-fill-lg bg-blue-dark btn-hover-bluedark">Add
+                                Subject</button>
                         </div>
                     </div>
 
-                    <div class="col-12">
-
-                        <button type="button" id="addSubject" class="btn-fill-lg bg-blue-dark btn-hover-bluedark">Add
-                            Subject</button>
-                    </div>
                     <div class="col-12">
                         <div class="col-12 form-group mg-t-8 d-flex justify-content-end">
                             <button type="submit" class="btn-fill-lg btn-gradient-yellow btn-hover-bluedark">Add
                                 Class</button>
                         </div>
-
                     </div>
                 </form>
 
