@@ -289,11 +289,15 @@
         </div>
     </div>
 
-    <!-- show modal for selection -->
+
+    <!-- Remove Choose class type btn when class is choosen -->
     <script>
-        setTimeout(() => {
-            document.querySelector('.modal-trigger').click()
-        }, 100);
+        document.getElementById('staticClassBtn').addEventListener('click', (evt) => {
+            document.querySelector('.modal-trigger').remove();
+        })
+        document.getElementById('interactiveClassBtn').addEventListener('click', (evt) => {
+            document.querySelector('.modal-trigger').remove();
+        })
     </script>
 
     <!-- Render selection -->
