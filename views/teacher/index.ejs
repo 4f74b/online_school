@@ -182,14 +182,14 @@
                 <div class="row">
                     <div class="col-12">
                         <div class="dashboard-summery-two border-bottom m-0">
-                            My Classes
+                            <h5> My Classes</h5>
                         </div>
                     </div>
                     <div class="col-12">
                         <div class="row">
-                            <% if(teacher.userProfile.assigned_subjects){ %>
+                            <% if(teacher.userProfile.assigned_subjects.length){ %>
                                 <% for(let subject of teacher.userProfile.assigned_subjects){ %>
-                                    <div class="col-6-xxxl col-lg-3 col-sm-6 col-12 border-bottom">
+                                    <div class="col-6-xxxl col-12 border-bottom mb-lg-4">
                                         <div class="dashboard-summery-two d-flex m-0">
                                             <div class="d-flex flex-column w-75 w-300 border-right">
                                                 <h4 class="m-0 text-left">
@@ -232,7 +232,7 @@
                                                 <small>Total Students</small>
                                             </div>
                                         </div>
-                                        <div class="dashboard-summery-two col-12 d-flex flex-column m-0 p-2">
+                                        <div class="dashboard-summery-two col-12 d-flex flex-column m-0 p-2 rounded-0">
                                             <div class="col-12">
                                                 <h4 class="text-left">Time Table</h4>
                                             </div>
@@ -261,8 +261,12 @@
                                     </div>
                                     <% } %>
                                         <% }else{ %>
-                                            <div class="col-6-xxxl col-lg-3 col-sm-6 col-12">
-                                                No Subjects in this class
+                                            <div class="col-12">
+                                                <div class="dashboard-summery-two col-12 bg-warning">
+                                                    <h5>
+                                                        You have not been assigned any Subject
+                                                    </h5>
+                                                </div>
                                             </div>
                                             <% } %>
 

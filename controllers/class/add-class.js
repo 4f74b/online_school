@@ -15,56 +15,54 @@ module.exports.renderAddClass = async function (req, res) {
 }
 
 module.exports.addClass = async function (req, res) {
-    try {
-        let students = [];
-        // Create array of students
-        if (req.body.students) {
-            if ((typeof req.body.students.id) == 'object') {
-                req.body.students = Object.values(req.body.students);
-                if (req.body.students[0].length > 1) {
-                    for (let student of req.body.students[0]) {
-                        students.push(student);
-                    }
-                    req.body.students = students;
-
+    let students = [];
+    // Create array of students
+    if (req.body.students) {
+        if ((typeof req.body.students.id) == 'object') {
+            req.body.students = Object.values(req.body.students);
+            if (req.body.students[0].length > 1) {
+                for (let student of req.body.students[0]) {
+                    students.push(student);
                 }
-            } else {
-                req.body.students = Object.values(req.body.students);
+                req.body.students = students;
+
             }
+        } else {
+            req.body.students = Object.values(req.body.students);
         }
-        if (req.body.subjects) {
-            req.body.subjects = Object.values(req.body.subjects);
-        }
-        let cls = new Class({ ...req.body });
-
-        // add class id to each student and also add admission date
-        for (let id of req.body.students) {
-            const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id, admissionDate: Date.now() });
-        }
-        if (req.body.subjects) {
-            for (let subject of req.body.subjects) {
-                let sub = new Subject({ ...subject });
-                // Associate subject with class
-                sub.class = cls._id;
-
-                cls.courses.push(sub._id);
-                let slots = [];
-                for (let day in subject.schedule) {
-                    slots.push({ day: day, slot: subject.schedule[day].slot });
-                }
-                sub.schedule = slots;
-
-                sub = await sub.save();
-                // Also add subject and schedule to teacher
-                updateTeacher(sub._id, sub.teacher, slots);
-            }
-        }
-        await cls.save();
-
-    } catch (err) {
-        req.flash('error', err.message);
-        res.render('error/error');
     }
+    if (req.body.subjects) {
+        req.body.subjects = Object.values(req.body.subjects);
+    }
+    let cls = new Class({ ...req.body });
+
+    // add class id to each student and also add admission date
+    for (let id of req.body.students) {
+        const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id, admissionDate: Date.now() });
+    }
+    if (req.body.subjects) {
+        for (let subject of req.body.subjects) {
+            let sub = new Subject({ ...subject });
+            // Associate subject with class
+            sub.class = cls._id;
+
+            cls.courses.push(sub._id);
+            let slots = [];
+            for (let day in subject.schedule) {
+                slots.push({ day: day, slot: subject.schedule[day].slot });
+            }
+            sub.schedule = slots;
+
+            sub = await sub.save();
+            // Also add subject and schedule to teacher
+            updateTeacher(sub._id, sub.teacher, slots);
+        }
+    }
+    await cls.save();
+    req.flash('success', "Successfully created Class");
+    console.log('helllo');
+    res.redirect(`/${res.locals.domainName}/admin/all-class`)
+
 }
 
 async function updateTeacher(courseID, teacherID, schedule) {
