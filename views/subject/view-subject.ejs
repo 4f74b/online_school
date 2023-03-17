@@ -1,5 +1,7 @@
 <% layout('layouts/admin/boilerplate') %>
     <link rel="stylesheet" type="text/css" href="/plugins/editors/quill/quill.snow.css">
+    <link href="/plugins/file-upload/file-upload-with-preview.min.css" rel="stylesheet" type="text/css" />
+    <link href="/assets/css/scrollspyNav.css" rel="stylesheet" type="text/css">
 
     <div class="dashboard-content-one">
         <!-- Breadcubs Area Start Here -->
@@ -454,6 +456,39 @@
                                                 </div>
                                                 <div id="quill-tooltip">
                                                 </div>
+
+
+                                                <div id="fuMultipleFile" class="col-lg-12 layout-spacing">
+                                                    <div class="statbox widget box box-shadow">
+                                                        <div class="widget-header">
+                                                            <div class="row">
+                                                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                                    <h4>Multiple File Upload</h4>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="widget-content widget-content-area">
+                                                            <div class="custom-file-container"
+                                                                data-upload-id="mySecondImage">
+                                                                <label>Upload (Allow Multiple) <a
+                                                                        href="javascript:void(0)"
+                                                                        class="custom-file-container__image-clear"
+                                                                        title="Clear Image">x</a></label>
+                                                                <label class="custom-file-container__custom-file">
+                                                                    <input type="file"
+                                                                        class="custom-file-container__custom-file__custom-file-input"
+                                                                        multiple>
+                                                                    <input type="hidden" name="MAX_FILE_SIZE"
+                                                                        value="10485760" />
+                                                                    <span
+                                                                        class="custom-file-container__custom-file__custom-file-control"></span>
+                                                                </label>
+                                                                <div class="custom-file-container__image-preview"></div>
+                                                            </div>
+
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
                                         </div>
@@ -494,9 +529,10 @@
     <script>
         setTimeout(() => {
             document.getElementById('addMaterialBtn').click();
-
+            document.querySelector('.ql-image').remove()
         }, 100);
     </script>
 
     <script src="/plugins/editors/quill/quill.js"></script>
     <script src="/plugins/editors/quill/custom-quill.js"></script>
+    <script src="/plugins/file-upload/file-upload-with-preview.min.js"></script>
