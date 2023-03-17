@@ -437,7 +437,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <form
+                                        <form id="materialForm"
                                             action="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/add` %>"
                                             class="widget-content widget-content-area">
                                             <div id="content-container">
@@ -457,6 +457,8 @@
                                                 <div id="quill-tooltip">
                                                 </div>
 
+                                                <textarea name="materialDetail" id="materialDetail" class="d-none"
+                                                    cols="30" rows="10"></textarea>
 
                                                 <div class="mt-4">
                                                     <label for="file-upload">Choose files to upload:</label>
@@ -511,6 +513,11 @@
             document.getElementById('addMaterialBtn').click();
             document.querySelector('.ql-image').remove()
         }, 100);
+
+
+        document.getElementById('materialForm').addEventListener('submit', function (evt) {
+            document.getElementById('materialDetail').value = quill.root.innerHTML;
+        })
     </script>
 
     <script src="/plugins/editors/quill/quill.js"></script>

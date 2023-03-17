@@ -10,3 +10,7 @@ module.exports.viewSubject = async function (req, res) {
     console.log(cls);
     res.render('subject/view-subject', { cls });
 }
+
+module.exports.addMaterialToSubject = async function (req, res) {
+    console.log(req.body);
+}
