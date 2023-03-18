@@ -1,7 +1,7 @@
 <% layout('layouts/admin/boilerplate') %>
     <link rel="stylesheet" type="text/css" href="/plugins/editors/quill/quill.snow.css">
 
-    <div class="dashboard-content-one">
+    <div class="dashboard-content-one p-0 p-sm-2 p-lg-3 p-xl-5">
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
             <h3>Class</h3>
@@ -267,19 +267,19 @@
                                                                         role="tab" aria-selected="false">Assignments</a>
                                                                 </li>
                                                             </ul>
-                                                            <div class="tab-content">
-                                                                <div class="tab-pane fade active show" id="tab10"
+                                                            <div class="tab-content" style="min-width: 80%;">
+                                                                <div class="tab-pane fade active show pl-3" id="tab10"
                                                                     role="tabpanel">
                                                                     <div class="heading">
                                                                         <h3>Subject Materials</h3>
                                                                     </div>
-                                                                    <div class="col-12 mt-5">
+                                                                    <div class="col-12 mt-5 p-0">
                                                                         <% if (cls.courses[0].material.length){ %>
                                                                             <% for (let material of
                                                                                 cls.courses[0].material){ %>
 
                                                                                 <div
-                                                                                    class="dashboard-summery-one mg-b-20 p-1 p-lg-2 shadow">
+                                                                                    class="dashboard-summery-one mg-b-20 p-3 shadow">
                                                                                     <div class="header">
                                                                                         <h3>
                                                                                             <%= material.materialTitle
@@ -302,8 +302,8 @@
                                                                                                     class="row align-items-center col-12 col-xl-6 p-0 mb-3 border">
                                                                                                     <div
                                                                                                         class="col-3 p-0">
-                                                                                                        <div
-                                                                                                            class="item-icon bg-light-green m-2 w-100">
+                                                                                                        <div class="item-icon bg-light-green m-2"
+                                                                                                            style="width: 7rem; height: 7rem;">
                                                                                                             <% if
                                                                                                                 (file.filename.split('.')[1]=='docx'
                                                                                                                 ){ %>
@@ -644,6 +644,9 @@
 
         document.getElementById('materialForm').addEventListener('submit', function (evt) {
             document.getElementById('materialDetail').value = quill.root.innerHTML;
+            console.log(quill.root.innerHTML)
+            evt.preventDefault();
+            evt.stopPropagation();
         })
     </script>
 

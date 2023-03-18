@@ -41,9 +41,10 @@ module.exports.addMaterialToSubject = async function (req, res) {
             data: file.buffer
         })
         await file.save();
-        material.files.push(file._id);
+        material.files.push({ filename: file.filename, id: file._id });
     }
     material.subject = req.params.subjectId;
+    console.log(material);
     // save object id of material in subject
     await Subject.findByIdAndUpdate(req.params.subjectId, { $push: { material: material._id } });
     await material.save();

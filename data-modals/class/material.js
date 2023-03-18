@@ -7,8 +7,11 @@ const materialSchema = new mongoose.Schema({
         type: mongoose.Types.ObjectId, ref: 'Subject'
     },
     files: [{
-        type: mongoose.Types.ObjectId,
-        ref: 'SubjectFile'
+        filename: String,
+        id: {
+            type: mongoose.Types.ObjectId,
+            ref: 'SubjectFile'
+        }
     }],
     createdAt: {
         type: Date,
