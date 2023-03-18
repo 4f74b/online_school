@@ -274,7 +274,8 @@
 
                                                                         <% for (let file of material.files){ %>
 
-                                                                            <a href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file._id}/view` %>"
+                                                                            <a target="_blank"
+                                                                                href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file._id}/view` %>"
                                                                                 class="row align-items-center col-12 col-xl-5 mb-3 mr-5 border">
                                                                                 <div class="col-4">
                                                                                     <div
@@ -292,7 +293,15 @@
                                                                                                 ){ %>
                                                                                                 <img src="/svg/image.svg"
                                                                                                     alt="">
-                                                                                                <%} %>
+                                                                                                <%}else if
+                                                                                                    (file.filename.split('.')[1]=='pdf'
+                                                                                                    ){ %>
+                                                                                                    <img src="/svg/pdf.svg"
+                                                                                                        alt="">
+                                                                                                    <%}else{ %>
+                                                                                                        <img src="/svg/file.svg"
+                                                                                                            alt="">
+                                                                                                        <%}%>
 
 
                                                                                     </div>

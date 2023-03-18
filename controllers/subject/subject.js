@@ -29,7 +29,6 @@ module.exports.viewSubject = async function (req, res) {
             populate: { path: 'userInfo' }
         }
     ]);
-    console.log(cls.courses[0].material[4])
     res.render('subject/view-subject', { cls });
 }
 
@@ -77,3 +76,15 @@ module.exports.getMaterial = async function (req, res) {
         res.status(500).send('Internal server error');
     }
 };
+
+// get File related to some particular subject
+module.exports.getSubjectFile = async function (req, res) {
+    const material = await SubjectFile.findById(req.params.fileId);
+
+    // Set the headers for the response
+    res.setHeader('Content-Type', 'application/octet-stream');
+    res.setHeader('Content-Disposition', `attachment; filename="${material.filename}"`);
+
+    // Send the file data to the response
+    res.send(material);
+}
