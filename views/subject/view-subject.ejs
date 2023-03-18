@@ -1,5 +1,8 @@
 <% layout('layouts/admin/boilerplate') %>
     <link rel="stylesheet" type="text/css" href="/plugins/editors/quill/quill.snow.css">
+    <link href="/plugins/noUiSlider/nouislider.min.css" rel="stylesheet" type="text/css">
+    <link href="/plugins/noUiSlider/custom-nouiSlider.css" rel="stylesheet" type="text/css">
+    <link href="/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
 
     <div class="dashboard-content-one p-0 p-sm-2 p-lg-3 p-xl-5">
         <!-- Breadcubs Area Start Here -->
@@ -563,7 +566,7 @@
                                                 <div class="form-group mb-5 btn-outline-info">
                                                     <label for="materialTitle" id="materialTitle">Enter Title</label>
                                                     <input required type="text" name="materialTitle" id="materialTitle"
-                                                        class="form-control form-control-plaintext ">
+                                                        class="form-control form-control-plaintext btn-outline-success border-bottom-gradient">
                                                 </div>
                                                 <div class="">
 
@@ -601,22 +604,24 @@
                 </div>
                 <!-- Add Assignment Modal -->
                 <div class="modal fade" id="add-assignment" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
+                    <div class="modal-dialog col-12" role="document" style="">
                         <div class="modal-content">
                             <div id="basic" class="row layout-spacing">
                                 <div class="col-lg-12">
-                                    <div class="statbox widget box box-shadow p-5">
+                                    <div class="statbox widget box box-shadow p-0 p-sm-2 p-lg-5">
                                         <div class="widget-header">
-                                            <div class="row">
-                                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <div class="row d-flex justify-content-between">
+                                                <div class=" pl-5">
                                                     <h4> Add Assignment </h4>
                                                 </div>
+                                                <button class="btn btn-hover-yellow col-2"
+                                                    style="background-color: unset !important;" id="closeBtn">X</button>
                                             </div>
                                         </div>
                                         <form id="assignmentForm" method="post" enctype="multipart/form-data"
                                             action="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/assignment/add` %>"
-                                            class="widget-content widget-content-area">
-                                            <div id="">
+                                            class="widget-content widget-content-area col-12 d-flex flex-wrap p-0 p-sm-2">
+                                            <div id="" class="col-12 mb-5">
 
                                                 <div class="form-group mb-5">
                                                     <label for="assigmnetTitle" id="assigmnetTitle">Enter Title</label>
@@ -640,13 +645,66 @@
                                                     <input name="files" id="file-upload" type="file" multiple>
                                                 </div>
                                                 <div id="preview"></div>
+                                                <input type="text" name="teacher" class="d-none" name="teacher"
+                                                    value="<%= cls.courses[0].teacher._id %>" id="">
+                                            </div>
+                                            <div class="col-12">
+                                                <div class="card dashboard-card-thirteen">
+                                                    <div class="widget-content widget-content-area">
+                                                        <div class="input-group mb-4">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text pb-0">
+                                                                    <div class="n-chk align-self-end">
+                                                                        <label class="new-control new-radio radio-info"
+                                                                            style="height: 21px; margin-bottom: 0; margin-right: 0">
+                                                                            <input type="radio" id="ungraded-radio"
+                                                                                class="new-control-input"
+                                                                                name="assignmentType" value="ungraded"
+                                                                                checked>
+                                                                            <span class="">Ungraded</span>
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+
+                                                        <div class="input-group mb-4">
+                                                            <div class="input-group-prepend">
+                                                                <div class="input-group-text pb-0">
+                                                                    <div class="n-chk align-self-end">
+                                                                        <label class="new-control new-radio radio-info"
+                                                                            style="height: 21px; margin-bottom: 0; margin-right: 0">
+                                                                            <input type="radio" id="graded-radio"
+                                                                                class="new-control-input"
+                                                                                name="assignmentType" value="graded"
+                                                                                value="">
+                                                                            <span class="">Graded</span>
+
+                                                                        </label>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                            <input type="number" readonly class="form-control"
+                                                                name="totalPoints" id="grade-points" placeholder="100"
+                                                                aria-label="grade-points">
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="col-lg-12 col-12 p-0">
+                                                        <div class="statbox widget box box-shadow">
+                                                            <div class="form-group mb-0">
+                                                                <label for="basicFlatpickr">Pick due date</label>
+                                                                <input id="basicFlatpickr" value="" name="dueDate"
+                                                                    class="form-control flatpickr flatpickr-input active"
+                                                                    type="text" placeholder="Due date">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
 
-                                            <input type="text" name="teacher" class="d-none" name="teacher"
-                                                value="<%= cls.courses[0].teacher._id %>" id="">
-                                            <hr>
 
-                                            <div class="d-flex justify-content-end mt-5">
+                                            <div class="d-flex justify-content-end mt-5 col-12">
                                                 <button type="submit"
                                                     class="btn-fill-lg font-normal text-light gradient-orange-peel">Add</button>
                                             </div>
@@ -675,10 +733,26 @@
         })
 
         document.getElementById('assignmentForm').addEventListener('submit', function (evt) {
-            document.getElementById('assignmentDetail').value = quill.root.innerHTML;
-            console.log(quill.root.innerHTML);
+            document.getElementById('assignmentDetail').value = new Quill('#editor-container').root.innerHTML;
+            getFormData(this);
             evt.stopPropagation();
             evt.preventDefault();
+
+        })
+        function getFormData(form) {
+            var formData = new FormData(form);
+            for (var pair of formData.entries()) {
+                console.log(pair[0] + ': ' + pair[1]);
+            }
+        }
+
+        // When graded radio is choosen put 100 value to input of grade-points
+        document.getElementById('graded-radio').addEventListener('change', function (evt) {
+            console.log('added 100');
+            document.getElementById('grade-points').value = '100';
+        })
+        document.getElementById('ungraded-radio').addEventListener('click', function (evt) {
+            document.getElementById('grade-points').value = '';
         })
     </script>
 
@@ -691,3 +765,6 @@
 
     <script src="/plugins/editors/quill/quill.js"></script>
     <script src="/plugins/editors/quill/custom-quill.js"></script>
+
+    <script src="/plugins/flatpickr/flatpickr.js"></script>
+    <script src="/plugins/flatpickr/custom-flatpickr.js"></script>
