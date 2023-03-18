@@ -254,13 +254,13 @@
                                                     </div>
                                                 </div>
                                                 <div class="card ui-tab-card mt-4">
-                                                    <div class="card-body">
+                                                    <div class="card-body p-0">
                                                         <div class="vertical-tab">
                                                             <ul class="nav nav-tabs flex-column" role="tablist">
                                                                 <li class="nav-item">
                                                                     <a class="nav-link active show" data-toggle="tab"
                                                                         href="#tab10" role="tab"
-                                                                        aria-selected="true">Materails</a>
+                                                                        aria-selected="true">Materials</a>
                                                                 </li>
                                                                 <li class="nav-item">
                                                                     <a class="nav-link" data-toggle="tab" href="#tab11"
@@ -298,7 +298,7 @@
                                                                                                 material.files){ %>
 
                                                                                                 <a target="_blank"
-                                                                                                    href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file._id}/view` %>"
+                                                                                                    href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file.id}/view` %>"
                                                                                                     class="row align-items-center col-12 col-xl-6 p-0 mb-3 border">
                                                                                                     <div
                                                                                                         class="col-3 p-0">
@@ -567,7 +567,7 @@
                                                 </div>
                                                 <div class="">
 
-                                                    <label for="materialTitle" id="materialDetail">Enter
+                                                    <label for="materialDetail">Enter
                                                         Description(<small>Optional</small>)</label>
                                                     <div id="toolbar-container" class="rounded-0">
                                                         <button class="ql-bold" data-toggle="tooltip"
@@ -645,8 +645,6 @@
         document.getElementById('materialForm').addEventListener('submit', function (evt) {
             document.getElementById('materialDetail').value = quill.root.innerHTML;
             console.log(quill.root.innerHTML)
-            evt.preventDefault();
-            evt.stopPropagation();
         })
     </script>
 
