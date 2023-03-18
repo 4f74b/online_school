@@ -10,6 +10,10 @@ const subjectSchema = new mongoose.Schema({
     material: [{
         type: mongoose.Types.ObjectId,
         ref: 'Material'
+    }],
+    assignment: [{
+        type: mongoose.Types.ObjectId,
+        ref: 'Assignment'
     }]
 });
 

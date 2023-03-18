@@ -19,7 +19,7 @@ const assignmentSchema = new mongoose.Schema({
     },
     assignmentType: {
         type: String,
-        enum: ['graded', 'Ungraded'],
+        enum: ['graded', 'ungraded'],
     },
     totalPoints: {
         type: Number,
@@ -34,4 +34,4 @@ const assignmentSchema = new mongoose.Schema({
 });
 
 
-module.exports = mongoose.model('Assignmnet', assignmentSchema);
+module.exports = mongoose.model('Assignment', assignmentSchema);

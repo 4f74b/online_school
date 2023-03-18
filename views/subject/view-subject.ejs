@@ -308,20 +308,138 @@
                                                                         </div>
                                                                         <div class="tab-pane fade" id="tab5"
                                                                             role="tabpanel">
-                                                                            <p>When an unknown printer took a galley of
-                                                                                type and scrambled it to make a type
-                                                                                specimen book.
-                                                                                It has survived not only five
-                                                                                centuries,but alsowhen an unknown
-                                                                                printer took a galley of type
-                                                                                and scrambled it to make a type specimen
-                                                                                book. It has survived not only five
-                                                                                centuries, but
-                                                                                alsowhen an unknown printer took a
-                                                                                galley of type and scrambled it to make
-                                                                                a type specimen book.
-                                                                                It has survived not only five centuries,
-                                                                                but also</p>
+                                                                            <div class="col-12 mt-5 p-0">
+                                                                                <% if
+                                                                                    (cls.courses[0].assignment.length){
+                                                                                    %>
+                                                                                    <% for (let assignment of
+                                                                                        cls.courses[0].assignment){ %>
+
+                                                                                        <div
+                                                                                            class="dashboard-summery-one mg-b-20 p-3 shadow">
+                                                                                            <div
+                                                                                                class="header position-relative">
+                                                                                                <h3>
+                                                                                                    <%= assignment.assignmentTitle
+                                                                                                        %>
+                                                                                                </h3>
+                                                                                                <div class="position-absolute"
+                                                                                                    style="top: 0; right: 0;">
+                                                                                                    <% if(assignment.dueDate){
+                                                                                                        %>
+                                                                                                        <small>
+                                                                                                            <span
+                                                                                                                class="text-warning">Due
+                                                                                                                Date</span>
+                                                                                                            <%= `${assignment.dueDate.toLocaleString('default',
+                                                                                                                {
+                                                                                                                month: 'short'
+                                                                                                                })}
+                                                                                                                ${assignment.dueDate.getDate()}
+                                                                                                                ${assignment.dueDate.getFullYear()}`;
+                                                                                                                %>
+                                                                                                        </small>
+                                                                                                        <% } %>
+                                                                                                </div>
+
+
+                                                                                            </div>
+
+                                                                                            <div
+                                                                                                class="details d-flex flex-wrap justify-content-between col-12 pl-4 position-relative">
+                                                                                                <div class="position-absolute"
+                                                                                                    style="bottom: 0; right: 0;">
+
+                                                                                                    <small> Posted
+                                                                                                        <%= `${assignment.createdAt.toLocaleString('default',
+                                                                                                            {
+                                                                                                            month: 'short'
+                                                                                                            })}
+                                                                                                            ${assignment.createdAt.getDate()}
+                                                                                                            ${assignment.createdAt.getFullYear()}`;
+                                                                                                            %>
+                                                                                                    </small>
+                                                                                                    <br>
+
+                                                                                                </div>
+                                                                                                <div class="description col-12"
+                                                                                                    data-detail="<%= assignment.assignmentDetail %>">
+                                                                                                </div>
+
+                                                                                                <% if
+                                                                                                    (assignment.files){
+                                                                                                    %>
+
+                                                                                                    <% for (let file of
+                                                                                                        assignment.files){
+                                                                                                        %>
+
+                                                                                                        <a target="_blank"
+                                                                                                            href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/assignment/${assignment._id}/file/${file.id}/view` %>"
+                                                                                                            class="row align-items-center col-12 col-xl-6 p-0 mb-3 border">
+                                                                                                            <div
+                                                                                                                class="col-3 p-0">
+                                                                                                                <div class="item-icon bg-light-green m-2"
+                                                                                                                    style="width: 7rem; height: 7rem;">
+                                                                                                                    <% if
+                                                                                                                        (file.filename.split('.')[1]=='docx'
+                                                                                                                        ){
+                                                                                                                        %>
+
+                                                                                                                        <img class=""
+                                                                                                                            src="/svg/docx.svg"
+                                                                                                                            alt="">
+                                                                                                                        <%}else
+                                                                                                                            if
+                                                                                                                            (file.filename.split('.')[1]=='jpg'
+                                                                                                                            ||
+                                                                                                                            file.filename.split('.')[1]=='png'
+                                                                                                                            ){
+                                                                                                                            %>
+                                                                                                                            <img src="/svg/image.svg"
+                                                                                                                                alt="">
+                                                                                                                            <%}else
+                                                                                                                                if
+                                                                                                                                (file.filename.split('.')[1]=='pdf'
+                                                                                                                                ){
+                                                                                                                                %>
+                                                                                                                                <img src="/svg/pdf.svg"
+                                                                                                                                    alt="">
+                                                                                                                                <%}else{
+                                                                                                                                    %>
+                                                                                                                                    <img src="/svg/file.svg"
+                                                                                                                                        alt="">
+                                                                                                                                    <%}%>
+
+
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                            <div
+                                                                                                                class="col-9">
+                                                                                                                <div
+                                                                                                                    class="item-content">
+                                                                                                                    <div
+                                                                                                                        class="item-title">
+                                                                                                                        <%= file.filename
+                                                                                                                            %>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </a>
+                                                                                                        <%} %>
+                                                                                                            <%} %>
+
+                                                                                            </div>
+
+                                                                                        </div>
+                                                                                        <%} %>
+                                                                                            <%}else{ %>
+                                                                                                <h4>No Class Assignment
+                                                                                                    Uploaded
+                                                                                                </h4>
+                                                                                                <%} %>
+
+                                                                            </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
@@ -575,10 +693,13 @@
                                 <div class="col-lg-12">
                                     <div class="statbox widget box box-shadow p-5">
                                         <div class="widget-header">
-                                            <div class="row">
-                                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                            <div class="row position-relative">
+                                                <div class=" pl-5">
                                                     <h4> Add Material </h4>
                                                 </div>
+                                                <button class="btn btn-hover-yellow col-2 position-absolute"
+                                                    style="background-color: unset !important; top:0; right:0;"
+                                                    id="closeBtnMat">x</button>
                                             </div>
                                         </div>
                                         <form id="materialForm" method="post" enctype="multipart/form-data"
@@ -649,7 +770,7 @@
 
                                                 <div class="form-group mb-5">
                                                     <label for="assigmnetTitle" id="assigmnetTitle">Enter Title</label>
-                                                    <input required type="text" name="assigmnetTitle"
+                                                    <input required type="text" name="assignmentTitle"
                                                         id="assigmnetTitle"
                                                         class="form-control form-control-plaintext btn-outline-success border-bottom-gradient">
                                                 </div>
@@ -714,16 +835,10 @@
                                                         </div>
 
                                                     </div>
-                                                    <div class="col-lg-12 col-12 p-0">
-                                                        <div class="statbox widget box box-shadow">
-                                                            <div class="form-group mb-0">
-                                                                <label for="basicFlatpickr">Pick due date</label>
-                                                                <input id="basicFlatpickr" value="" name="dueDate"
-                                                                    class="form-control flatpickr flatpickr-input active"
-                                                                    type="text" placeholder="Due date">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                    <input name="dueDate"
+                                                        class="form-control flatpickr flatpickr-input active flatpickr-mobile"
+                                                        step="any" tabindex="1" type="date" placeholder="Due date">
+
                                                 </div>
                                             </div>
 
@@ -747,7 +862,7 @@
     <script>
         setTimeout(() => {
             document.getElementById('dropdownMat').click();
-            document.getElementById('addAssignmentBtn').click();
+            // document.getElementById('addAssignmentBtn').click();
         }, 500);
 
 
@@ -758,9 +873,6 @@
 
         document.getElementById('assignmentForm').addEventListener('submit', function (evt) {
             document.getElementById('assignmentDetail').value = new Quill('#editor-container').root.innerHTML;
-            getFormData(this);
-            evt.stopPropagation();
-            evt.preventDefault();
 
         })
         function getFormData(form) {
@@ -779,9 +891,13 @@
             document.getElementById('grade-points').value = '';
         })
 
-        document.getElementById('closeBtn').addEventListener('click', (evt) => {
+        document.getElementById('closeBtn').addEventListener('click', function (evt) {
             document.getElementById('add-assignment').click();
         })
+        document.getElementById('closeBtnMat').addEventListener('click', function (evt) {
+            document.getElementById('add-material').click();
+        })
+
     </script>
 
     <!-- populate descriptions for material and assignment-->

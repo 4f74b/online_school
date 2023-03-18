@@ -18,11 +18,11 @@ module.exports.viewSubject = async function (req, res) {
                 },
                 {
                     path: 'material',
-                    select: ['materialDetail', 'materialTitle', 'files'], // include the files field
-                    populate: {
-                        path: 'files',
-                        select: ['filename'], // specify the desired fields from the file collection
-                    },
+                    select: ['materialDetail', 'materialTitle', 'createdAt', 'files.filename', 'files.id'],
+                },
+                {
+                    path: 'assignment',
+                    select: ['assignmentDetail', 'assignmentTitle', 'createdAt', 'dueDate', 'files.filename', 'files.id'],
                 },
             ],
         },
@@ -31,6 +31,7 @@ module.exports.viewSubject = async function (req, res) {
             populate: { path: 'userInfo' }
         }
     ]);
+    console.log(cls.courses[0].assignment);
     res.render('subject/view-subject', { cls });
 }
 
@@ -54,6 +55,8 @@ module.exports.addMaterialToSubject = async function (req, res) {
 }
 
 module.exports.addAssigmentToSubject = async function (req, res) {
+    console.log(req.body);
+    console.log(req.files);
     let assignment = await new Assignmnent({ ...req.body });
 
     // Save files if there are any
