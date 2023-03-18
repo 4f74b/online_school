@@ -29,7 +29,7 @@ module.exports.viewSubject = async function (req, res) {
             populate: { path: 'userInfo' }
         }
     ]);
-    console.log(cls.courses[0].material)
+    console.log(cls.courses[0].material[4])
     res.render('subject/view-subject', { cls });
 }
 

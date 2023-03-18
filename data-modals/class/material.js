@@ -12,9 +12,5 @@ const materialSchema = new mongoose.Schema({
     }]
 });
 
-const subjectFileSchema = new mongoose.Schema({
-    filename: String,
-    data: Buffer
-})
 
 module.exports = mongoose.model('Material', materialSchema);

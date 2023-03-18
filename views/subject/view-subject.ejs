@@ -256,36 +256,58 @@
 
                                                 <div class="col-12 mt-5">
                                                     <% if (cls.courses[0].material.length){ %>
-                                                        <h1>heleel</h1>
                                                         <% for (let material of cls.courses[0].material){ %>
 
                                                             <div
                                                                 class="dashboard-summery-one mg-b-20 p-1 p-lg-5 shadow">
                                                                 <div class="header">
-                                                                    <h3>Title</h3>
+                                                                    <h3>
+                                                                        <%= material.materialTitle %>
+                                                                    </h3>
                                                                 </div>
                                                                 <div class="details d-flex flex-wrap col-12">
-                                                                    <div class="description col-12">
-                                                                        <p>description</p>
+                                                                    <div class="description col-12"
+                                                                        data-detail="<%= material.materialDetail %>">
                                                                     </div>
-                                                                    <a href="<%= `/${domainName}/teacher/subject/${cls.courses[0]}` %>"
-                                                                        class="row align-items-center col-12 col-lg-6 mb-3 mb-lg-0 border">
-                                                                        <div class="col-6">
-                                                                            <div class="item-icon bg-light-green ">
-                                                                                <i
-                                                                                    class="flaticon-classmates text-green"></i>
-                                                                            </div>
-                                                                        </div>
-                                                                        <div class="col-6">
-                                                                            <div class="item-content">
-                                                                                <div class="item-title">Students</div>
-                                                                                <div class="item-number"><span
-                                                                                        class="counter"
-                                                                                        data-num="150000">150000</span>
+
+                                                                    <% if (material.files){ %>
+
+                                                                        <% for (let file of material.files){ %>
+
+                                                                            <a href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file._id}/view` %>"
+                                                                                class="row align-items-center col-12 col-xl-5 mb-3 mr-5 border">
+                                                                                <div class="col-4">
+                                                                                    <div
+                                                                                        class="item-icon bg-light-green m-2">
+                                                                                        <% if
+                                                                                            (file.filename.split('.')[1]=='docx'
+                                                                                            ){ %>
+
+                                                                                            <img src="/svg/docx.svg"
+                                                                                                alt="">
+                                                                                            <%}else if
+                                                                                                (file.filename.split('.')[1]=='jpg'
+                                                                                                ||
+                                                                                                file.filename.split('.')[1]=='png'
+                                                                                                ){ %>
+                                                                                                <img src="/svg/image.svg"
+                                                                                                    alt="">
+                                                                                                <%} %>
+
+
+                                                                                    </div>
                                                                                 </div>
-                                                                            </div>
-                                                                        </div>
-                                                                    </a>
+                                                                                <div class="col-8">
+                                                                                    <div class="item-content">
+                                                                                        <div class="item-title">
+                                                                                            <%= file.filename %>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </a>
+                                                                            <%} %>
+                                                                                <%} %>
+
                                                                 </div>
 
                                                             </div>
@@ -567,6 +589,13 @@
         document.getElementById('materialForm').addEventListener('submit', function (evt) {
             document.getElementById('materialDetail').value = quill.root.innerHTML;
         })
+    </script>
+
+    <!-- populate descriptions -->
+    <script>
+        for (let wrapper of document.querySelectorAll('.description')) {
+            wrapper.insertAdjacentHTML('beforeend', wrapper.getAttribute('data-detail'));
+        }
     </script>
 
     <script src="/plugins/editors/quill/quill.js"></script>
