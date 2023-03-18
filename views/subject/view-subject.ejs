@@ -778,6 +778,10 @@
         document.getElementById('ungraded-radio').addEventListener('click', function (evt) {
             document.getElementById('grade-points').value = '';
         })
+
+        document.getElementById('closeBtn').addEventListener('click', (evt) => {
+            document.getElementById('add-assignment').click();
+        })
     </script>
 
     <!-- populate descriptions for material and assignment-->
