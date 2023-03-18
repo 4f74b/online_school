@@ -13,7 +13,16 @@ const postLogin = require('../controllers/login/login')
 const isLoggedIn = require('../controllers/login/isLoggedIn');
 
 const storage = multer.memoryStorage();
-const upload = multer({ storage });
+const upload = multer(
+    {
+        storage: storage,
+        dest: 'uploads/', // Destination folder for uploaded files
+        limits: {
+            fileSize: 10000000, // Maximum file size (in bytes)
+            files: 10 // Maximum number of files
+        }
+    }
+);
 
 
 // ==================================================Home page========================================================
@@ -38,7 +47,7 @@ router.get('/subject/:id/view', viewSubject)
 
 
 // ====================================================Material Route==============================================
-router.post('/subject/:id/material/add', addMaterialToSubject)
+router.post('/subject/:id/material/add', upload.array("files"), addMaterialToSubject)
 
 
 

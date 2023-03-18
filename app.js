@@ -5,7 +5,7 @@ const ejs = require('ejs');
 const ejsMate = require('ejs-mate');
 const path = require('path');
 const session = require('express-session');
-const bodyParser = require("body-parser");
+// const bodyParser = require("body-parser");
 const passport = require("passport");
 const flash = require("connect-flash");
 const cors = require("cors");
@@ -38,7 +38,7 @@ const port = process.env.PORT || 3000;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
-app.use(bodyParser({ limit: "50mb" }));
+// app.use(bodyParser({ limit: "50mb" }));
 
 
 app.engine("ejs", ejsMate);

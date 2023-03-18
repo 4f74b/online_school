@@ -437,7 +437,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <form id="materialForm"
+                                        <form id="materialForm" method="post" enctype="multipart/form-data"
                                             action="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/add` %>"
                                             class="widget-content widget-content-area">
                                             <div id="content-container">
@@ -462,7 +462,7 @@
 
                                                 <div class="mt-4">
                                                     <label for="file-upload">Choose files to upload:</label>
-                                                    <input id="file-upload" type="file" multiple>
+                                                    <input name="files" id="file-upload" type="file" multiple>
                                                 </div>
                                                 <div id="preview"></div>
                                             </div>
