@@ -253,79 +253,123 @@
                                                         </div>
                                                     </div>
                                                 </div>
-
-                                                <div class="col-12 mt-5">
-                                                    <% if (cls.courses[0].material.length){ %>
-                                                        <% for (let material of cls.courses[0].material){ %>
-
-                                                            <div
-                                                                class="dashboard-summery-one mg-b-20 p-1 p-lg-5 shadow">
-                                                                <div class="header">
-                                                                    <h3>
-                                                                        <%= material.materialTitle %>
-                                                                    </h3>
-                                                                </div>
-                                                                <div class="details d-flex flex-wrap col-12">
-                                                                    <div class="description col-12"
-                                                                        data-detail="<%= material.materialDetail %>">
+                                                <div class="card ui-tab-card mt-4">
+                                                    <div class="card-body">
+                                                        <div class="vertical-tab">
+                                                            <ul class="nav nav-tabs flex-column" role="tablist">
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link active show" data-toggle="tab"
+                                                                        href="#tab10" role="tab"
+                                                                        aria-selected="true">Materails</a>
+                                                                </li>
+                                                                <li class="nav-item">
+                                                                    <a class="nav-link" data-toggle="tab" href="#tab11"
+                                                                        role="tab" aria-selected="false">Assignments</a>
+                                                                </li>
+                                                            </ul>
+                                                            <div class="tab-content">
+                                                                <div class="tab-pane fade active show" id="tab10"
+                                                                    role="tabpanel">
+                                                                    <div class="heading">
+                                                                        <h3>Subject Materials</h3>
                                                                     </div>
+                                                                    <div class="col-12 mt-5">
+                                                                        <% if (cls.courses[0].material.length){ %>
+                                                                            <% for (let material of
+                                                                                cls.courses[0].material){ %>
 
-                                                                    <% if (material.files){ %>
-
-                                                                        <% for (let file of material.files){ %>
-
-                                                                            <a target="_blank"
-                                                                                href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file._id}/view` %>"
-                                                                                class="row align-items-center col-12 col-xl-5 mb-3 mr-5 border">
-                                                                                <div class="col-4">
+                                                                                <div
+                                                                                    class="dashboard-summery-one mg-b-20 p-1 p-lg-2 shadow">
+                                                                                    <div class="header">
+                                                                                        <h3>
+                                                                                            <%= material.materialTitle
+                                                                                                %>
+                                                                                        </h3>
+                                                                                    </div>
                                                                                     <div
-                                                                                        class="item-icon bg-light-green m-2">
-                                                                                        <% if
-                                                                                            (file.filename.split('.')[1]=='docx'
-                                                                                            ){ %>
-
-                                                                                            <img src="/svg/docx.svg"
-                                                                                                alt="">
-                                                                                            <%}else if
-                                                                                                (file.filename.split('.')[1]=='jpg'
-                                                                                                ||
-                                                                                                file.filename.split('.')[1]=='png'
-                                                                                                ){ %>
-                                                                                                <img src="/svg/image.svg"
-                                                                                                    alt="">
-                                                                                                <%}else if
-                                                                                                    (file.filename.split('.')[1]=='pdf'
-                                                                                                    ){ %>
-                                                                                                    <img src="/svg/pdf.svg"
-                                                                                                        alt="">
-                                                                                                    <%}else{ %>
-                                                                                                        <img src="/svg/file.svg"
-                                                                                                            alt="">
-                                                                                                        <%}%>
-
-
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-8">
-                                                                                    <div class="item-content">
-                                                                                        <div class="item-title">
-                                                                                            <%= file.filename %>
+                                                                                        class="details d-flex flex-wrap justify-content-between col-12 pl-4">
+                                                                                        <div class="description col-12"
+                                                                                            data-detail="<%= material.materialDetail %>">
                                                                                         </div>
+
+                                                                                        <% if (material.files){ %>
+
+                                                                                            <% for (let file of
+                                                                                                material.files){ %>
+
+                                                                                                <a target="_blank"
+                                                                                                    href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file._id}/view` %>"
+                                                                                                    class="row align-items-center col-12 col-xl-6 p-0 mb-3 border">
+                                                                                                    <div
+                                                                                                        class="col-3 p-0">
+                                                                                                        <div
+                                                                                                            class="item-icon bg-light-green m-2 w-100">
+                                                                                                            <% if
+                                                                                                                (file.filename.split('.')[1]=='docx'
+                                                                                                                ){ %>
+
+                                                                                                                <img class=""
+                                                                                                                    src="/svg/docx.svg"
+                                                                                                                    alt="">
+                                                                                                                <%}else
+                                                                                                                    if
+                                                                                                                    (file.filename.split('.')[1]=='jpg'
+                                                                                                                    ||
+                                                                                                                    file.filename.split('.')[1]=='png'
+                                                                                                                    ){
+                                                                                                                    %>
+                                                                                                                    <img src="/svg/image.svg"
+                                                                                                                        alt="">
+                                                                                                                    <%}else
+                                                                                                                        if
+                                                                                                                        (file.filename.split('.')[1]=='pdf'
+                                                                                                                        ){
+                                                                                                                        %>
+                                                                                                                        <img src="/svg/pdf.svg"
+                                                                                                                            alt="">
+                                                                                                                        <%}else{
+                                                                                                                            %>
+                                                                                                                            <img src="/svg/file.svg"
+                                                                                                                                alt="">
+                                                                                                                            <%}%>
+
+
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                    <div class="col-9">
+                                                                                                        <div
+                                                                                                            class="item-content">
+                                                                                                            <div
+                                                                                                                class="item-title">
+                                                                                                                <%= file.filename
+                                                                                                                    %>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </a>
+                                                                                                <%} %>
+                                                                                                    <%} %>
+
                                                                                     </div>
+
                                                                                 </div>
-                                                                            </a>
-                                                                            <%} %>
                                                                                 <%} %>
+                                                                                    <%}else{ %>
+                                                                                        <h4>No Class Material Uploaded
+                                                                                        </h4>
+                                                                                        <%} %>
 
+                                                                    </div>
                                                                 </div>
-
+                                                                <div class="tab-pane fade" id="tab11" role="tabpanel">
+                                                                    <p>Assignments are shown here</p>
+                                                                </div>
                                                             </div>
-                                                            <%} %>
-                                                                <%}else{ %>
-                                                                    <h4>No Class Material Uploaded</h4>
-                                                                    <%} %>
-
+                                                        </div>
+                                                    </div>
                                                 </div>
+
+
 
                                             </div>
                                             <div class="tab-pane fade" id="tab3" role="tabpanel">
