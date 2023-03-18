@@ -5,9 +5,8 @@ const materialSchema = new mongoose.Schema({
     subject: {
         type: mongoose.Types.ObjectId, ref: 'Subject'
     },
-    subject_material: [{
+    files: [{
         filename: String,
-        contentType: String,
         data: Buffer
     }]
 });

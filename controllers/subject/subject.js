@@ -12,5 +12,15 @@ module.exports.viewSubject = async function (req, res) {
 }
 
 module.exports.addMaterialToSubject = async function (req, res) {
-    let material = await new Material({ ...req.body })
+    let material = await new Material({ ...req.body });
+    for (let file of req.files) {
+        material.files.push({
+            filename: file.originalname,
+            data: file.buffer
+        })
+    }
+    material.subject = req.params.subjectId;
+    await material.save();
+    req.flash('success', 'Successfully added new material to class');
+    res.redirect(`/${res.locals.domainName}/teacher/subject/${req.params.subjectId}/view`)
 }

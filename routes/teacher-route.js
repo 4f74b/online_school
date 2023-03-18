@@ -47,7 +47,7 @@ router.get('/subject/:id/view', viewSubject)
 
 
 // ====================================================Material Route==============================================
-router.post('/subject/:id/material/add', upload.array("files"), addMaterialToSubject)
+router.post('/subject/:subjectId/material/add', upload.array("files"), addMaterialToSubject)
 
 
 
