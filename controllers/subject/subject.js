@@ -31,7 +31,6 @@ module.exports.viewSubject = async function (req, res) {
             populate: { path: 'userInfo' }
         }
     ]);
-    console.log(cls.courses[0].assignment);
     res.render('subject/view-subject', { cls });
 }
 
@@ -55,8 +54,6 @@ module.exports.addMaterialToSubject = async function (req, res) {
 }
 
 module.exports.addAssigmentToSubject = async function (req, res) {
-    console.log(req.body);
-    console.log(req.files);
     let assignment = await new Assignmnent({ ...req.body });
 
     // Save files if there are any
