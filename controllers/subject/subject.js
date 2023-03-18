@@ -22,7 +22,7 @@ module.exports.viewSubject = async function (req, res) {
                 },
                 {
                     path: 'assignment',
-                    select: ['assignmentDetail', 'assignmentTitle', 'createdAt', 'dueDate', 'files.filename', 'files.id'],
+                    select: ['assignmentDetail', 'assignmentTitle', 'createdAt', 'dueDate', 'assignmentType', 'totalPoints', 'files.filename', 'files.id'],
                 },
             ],
         },
@@ -104,6 +104,21 @@ module.exports.getMaterial = async function (req, res) {
 
 // get File related to some particular subject
 module.exports.getSubjectFile = async function (req, res) {
+    const file = await SubjectFile.findById(req.params.fileId);
+
+    // Get the content type based on the file extension
+    const contentType = mime.lookup(file.filename);
+
+    // Set the headers for the response
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Content-Disposition', `attachment; filename="${file.filename}"`);
+
+    // Send the file data to the response
+    res.send(file.data);
+}
+
+// get File related to some particular subject
+module.exports.getAssignmentFile = async function (req, res) {
     const file = await SubjectFile.findById(req.params.fileId);
 
     // Get the content type based on the file extension

@@ -8,7 +8,7 @@ const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/render-home');
 const { viewClass } = require('../controllers/class/class')
 const { viewSubject } = require('../controllers/subject/subject');
-const { addMaterialToSubject, addAssigmentToSubject } = require('../controllers/subject/subject');
+const { addMaterialToSubject, addAssigmentToSubject, getAssignmentFile } = require('../controllers/subject/subject');
 const { getMaterial } = require('../controllers/subject/subject');
 const { getSubjectFile } = require('../controllers/subject/subject');
 const postLogin = require('../controllers/login/login')
@@ -59,6 +59,7 @@ router.post('/subject/:subjectId/assignment/add', upload.array("files"), addAssi
 
 // ====================================================File Route==============================================
 router.get('/subject/:subjectId/material/:materialId/file/:fileId/view', getSubjectFile);
+router.get('/subject/:subjectId/assignment/:assignmentId/file/:fileId/view', getAssignmentFile);
 
 
 
