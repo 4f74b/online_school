@@ -9,7 +9,11 @@ const materialSchema = new mongoose.Schema({
     files: [{
         type: mongoose.Types.ObjectId,
         ref: 'SubjectFile'
-    }]
+    }],
+    createdAt: {
+        type: Date,
+        default: Date.now
+    }
 });
 
 
