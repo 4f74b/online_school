@@ -2,6 +2,7 @@ const Class = require('../../data-modals/class/class');
 const Subject = require('../../data-modals/class/subject');
 const Material = require('../../data-modals/class/material');
 const SubjectFile = require('../../data-modals/class/subjectFile')
+const mime = require('mime-types')
 
 module.exports.viewSubject = async function (req, res) {
     const subject = await Subject.findById(req.params.id);
@@ -44,7 +45,6 @@ module.exports.addMaterialToSubject = async function (req, res) {
         material.files.push({ filename: file.filename, id: file._id });
     }
     material.subject = req.params.subjectId;
-    console.log(material);
     // save object id of material in subject
     await Subject.findByIdAndUpdate(req.params.subjectId, { $push: { material: material._id } });
     await material.save();
@@ -80,12 +80,16 @@ module.exports.getMaterial = async function (req, res) {
 
 // get File related to some particular subject
 module.exports.getSubjectFile = async function (req, res) {
-    const material = await SubjectFile.findById(req.params.fileId);
+    const file = await SubjectFile.findById(req.params.fileId);
+
+    // Get the content type based on the file extension
+    const contentType = mime.lookup(file.filename);
+    console.log(contentType)
 
     // Set the headers for the response
-    res.setHeader('Content-Type', 'application/octet-stream');
-    res.setHeader('Content-Disposition', `attachment; filename="${material.filename}"`);
+    res.setHeader('Content-Type', contentType);
+    res.setHeader('Content-Disposition', `attachment; filename="${file.filename}"`);
 
     // Send the file data to the response
-    res.send(material);
+    res.send(file.data);
 }
