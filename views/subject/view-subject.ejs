@@ -221,9 +221,9 @@
                                                                         </path>
                                                                     </g>
                                                                 </svg> Material</button>
-                                                            <a type="button" data-toggle="modal"
-                                                                data-target="#add-assignment" class="dropdown-item"
-                                                                href="#">
+                                                            <button type="button" data-toggle="modal"
+                                                                id="addAssignmentBtn" data-target="#add-assignment"
+                                                                class="dropdown-item">
                                                                 <svg viewBox="0 0 48 48" width="20"
                                                                     xmlns="http://www.w3.org/2000/svg" fill="#000000">
                                                                     <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
@@ -249,7 +249,7 @@
                                                                         </g>
                                                                     </g>
                                                                 </svg> Assignment
-                                                            </a>
+                                                            </button>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -569,15 +569,6 @@
 
                                                     <label for="materialDetail">Enter
                                                         Description(<small>Optional</small>)</label>
-                                                    <div id="toolbar-container" class="rounded-0">
-                                                        <button class="ql-bold" data-toggle="tooltip"
-                                                            data-placement="bottom" title="Bold"></button>
-                                                        <button class="ql-underline" data-toggle="tooltip"
-                                                            data-placement="bottom" title="Underline"></button>
-                                                        <button class="ql-italic" data-toggle="tooltip"
-                                                            data-placement="bottom"
-                                                            title="Add italic text <cmd+i>"></button>
-                                                    </div>
                                                     <div id="quill-tooltip" class="mt-0">
                                                     </div>
                                                 </div>
@@ -610,24 +601,59 @@
                 </div>
                 <!-- Add Assignment Modal -->
                 <div class="modal fade" id="add-assignment" tabindex="-1" role="dialog" aria-hidden="true">
-                    <div class="modal-dialog modal-sm" role="document">
+                    <div class="modal-dialog modal-lg" role="document">
                         <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title">Small Modal</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">×</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <h3 class="font-semibold">This is Small Modal</h3>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur,
-                                    assumenda aut eaque eius error, veniam vitae!
-                                </p>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="footer-btn bg-dark-low" data-dismiss="modal">Close</button>
-                                <button type="button" class="footer-btn bg-linkedin">Save
-                                    Changes</button>
+                            <div id="basic" class="row layout-spacing">
+                                <div class="col-lg-12">
+                                    <div class="statbox widget box box-shadow p-5">
+                                        <div class="widget-header">
+                                            <div class="row">
+                                                <div class="col-xl-12 col-md-12 col-sm-12 col-12">
+                                                    <h4> Add Assignment </h4>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <form id="assignmentForm" method="post" enctype="multipart/form-data"
+                                            action="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/assignment/add` %>"
+                                            class="widget-content widget-content-area">
+                                            <div id="">
+
+                                                <div class="form-group mb-5">
+                                                    <label for="assigmnetTitle" id="assigmnetTitle">Enter Title</label>
+                                                    <input required type="text" name="assigmnetTitle"
+                                                        id="assigmnetTitle"
+                                                        class="form-control form-control-plaintext btn-outline-success border-bottom-gradient">
+                                                </div>
+                                                <div class="">
+
+                                                    <label for="assignmentDetail">Enter
+                                                        Description(<small>Optional</small>)</label>
+                                                    <div id="editor-container" class="mt-0">
+                                                    </div>
+                                                </div>
+
+                                                <textarea name="assignmentDetail" id="assignmentDetail" class="d-none"
+                                                    cols="30" rows="10"></textarea>
+
+                                                <div class="mt-4">
+                                                    <label for="file-upload">Choose files to upload:</label>
+                                                    <input name="files" id="file-upload" type="file" multiple>
+                                                </div>
+                                                <div id="preview"></div>
+                                            </div>
+
+                                            <input type="text" name="teacher" class="d-none" name="teacher"
+                                                value="<%= cls.courses[0].teacher._id %>" id="">
+                                            <hr>
+
+                                            <div class="d-flex justify-content-end mt-5">
+                                                <button type="submit"
+                                                    class="btn-fill-lg font-normal text-light gradient-orange-peel">Add</button>
+                                            </div>
+
+                                        </form>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -639,16 +665,24 @@
     <script>
         setTimeout(() => {
             document.getElementById('dropdownMat').click();
+            document.getElementById('addAssignmentBtn').click();
         }, 500);
+
 
 
         document.getElementById('materialForm').addEventListener('submit', function (evt) {
             document.getElementById('materialDetail').value = quill.root.innerHTML;
-            console.log(quill.root.innerHTML)
+        })
+
+        document.getElementById('assignmentForm').addEventListener('submit', function (evt) {
+            document.getElementById('assignmentDetail').value = quill.root.innerHTML;
+            console.log(quill.root.innerHTML);
+            evt.stopPropagation();
+            evt.preventDefault();
         })
     </script>
 
-    <!-- populate descriptions -->
+    <!-- populate descriptions for material and assignment-->
     <script>
         for (let wrapper of document.querySelectorAll('.description')) {
             wrapper.insertAdjacentHTML('beforeend', wrapper.getAttribute('data-detail'));

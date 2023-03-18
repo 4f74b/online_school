@@ -1,7 +1,8 @@
 const Class = require('../../data-modals/class/class');
 const Subject = require('../../data-modals/class/subject');
 const Material = require('../../data-modals/class/material');
-const SubjectFile = require('../../data-modals/class/subjectFile')
+const SubjectFile = require('../../data-modals/class/subjectFile');
+const Assignmnent = require('../../data-modals/class/assignment');
 const mime = require('mime-types')
 
 module.exports.viewSubject = async function (req, res) {
@@ -52,6 +53,26 @@ module.exports.addMaterialToSubject = async function (req, res) {
     res.redirect(`/${res.locals.domainName}/teacher/subject/${req.params.subjectId}/view`)
 }
 
+module.exports.addAssigmentToSubject = async function (req, res) {
+    let assignment = await new Assignmnent({ ...req.body });
+
+    // Save files if there are any
+    for (let file of req.files) {
+        file = await new SubjectFile({
+            filename: file.originalname,
+            data: file.buffer
+        })
+        await file.save();
+        assignment.files.push({ filename: file.filename, id: file._id });
+    }
+    assignment.subject = req.params.subjectId;
+    // save object id of assignment in subject
+    await Subject.findByIdAndUpdate(req.params.subjectId, { $push: { assignment: assignment._id } });
+    await assignment.save();
+    req.flash('success', 'Successfully added new assignment to class');
+    res.redirect(`/${res.locals.domainName}/teacher/subject/${req.params.subjectId}/view`)
+}
+
 module.exports.getMaterial = async function (req, res) {
     const fileId = req.params.materialId;
 
@@ -84,7 +105,6 @@ module.exports.getSubjectFile = async function (req, res) {
 
     // Get the content type based on the file extension
     const contentType = mime.lookup(file.filename);
-    console.log(contentType)
 
     // Set the headers for the response
     res.setHeader('Content-Type', contentType);
