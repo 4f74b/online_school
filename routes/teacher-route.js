@@ -9,6 +9,7 @@ const renderHomePage = require('../controllers/render-home');
 const { viewClass } = require('../controllers/class/class')
 const { viewSubject } = require('../controllers/subject/subject');
 const { addMaterialToSubject } = require('../controllers/subject/subject');
+const { getMaterial } = require('../controllers/subject/subject');
 const postLogin = require('../controllers/login/login')
 const isLoggedIn = require('../controllers/login/isLoggedIn');
 
@@ -48,6 +49,7 @@ router.get('/subject/:id/view', viewSubject)
 
 // ====================================================Material Route==============================================
 router.post('/subject/:subjectId/material/add', upload.array("files"), addMaterialToSubject)
+router.get('/subject/:subjectId/material/:materialId/get', getMaterial);
 
 
 
