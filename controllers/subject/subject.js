@@ -31,6 +31,8 @@ module.exports.viewSubject = async function (req, res) {
             populate: { path: 'userInfo' }
         }
     ]);
+    cls.courses[0].material = cls.courses[0].material.reverse();
+    cls.courses[0].assignment = cls.courses[0].assignment.reverse();
     res.render('subject/view-subject', { cls });
 }
 

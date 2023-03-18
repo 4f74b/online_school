@@ -219,12 +219,30 @@
                                                                                         cls.courses[0].material){ %>
 
                                                                                         <div
-                                                                                            class="dashboard-summery-one mg-b-20 p-3 shadow">
+                                                                                            class="dashboard-summery-one mg-b-20 p-3 shadow position-relative">
                                                                                             <div class="header">
                                                                                                 <h3>
                                                                                                     <%= material.materialTitle
                                                                                                         %>
                                                                                                 </h3>
+                                                                                            </div>
+
+                                                                                            <div class="position-absolute"
+                                                                                                style="top: 0; right: 0;">
+                                                                                                <% if(material.createdAt){
+                                                                                                    %>
+                                                                                                    <small>
+                                                                                                        <span
+                                                                                                            class="text-warning">Posted</span>
+                                                                                                        <%= `${material.createdAt.toLocaleString('default',
+                                                                                                            {
+                                                                                                            month: 'short'
+                                                                                                            })}
+                                                                                                            ${material.createdAt.getDate()}
+                                                                                                            ${material.createdAt.getFullYear()}`;
+                                                                                                            %>
+                                                                                                    </small>
+                                                                                                    <% } %>
                                                                                             </div>
                                                                                             <div
                                                                                                 class="details d-flex flex-wrap justify-content-between col-12 pl-4">
@@ -241,7 +259,7 @@
 
                                                                                                         <a target="_blank"
                                                                                                             href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file.id}/view` %>"
-                                                                                                            class="row align-items-center col-12 col-xl-6 p-0 mb-3 border">
+                                                                                                            class=" row align-items-center col-12 col-xl-6 p-0 mb-3 border">
                                                                                                             <div
                                                                                                                 class="col-3 p-0">
                                                                                                                 <div class="item-icon bg-light-green m-2"
@@ -319,7 +337,7 @@
                                                                                             class="dashboard-summery-one mg-b-20  shadow p-1">
                                                                                             <div
                                                                                                 class="header position-relative">
-                                                                                                <h3>
+                                                                                                <h3 class="pl-3">
                                                                                                     <%= assignment.assignmentTitle
                                                                                                         %>
                                                                                                 </h3>
@@ -348,7 +366,7 @@
                                                                                             <div
                                                                                                 class="details d-flex flex-wrap justify-content-between col-12 pl-4 position-relative">
                                                                                                 <div class="position-absolute"
-                                                                                                    style="bottom: 0; right: 0;">
+                                                                                                    style="bottom: 0; left: 0;">
 
                                                                                                     <small> Posted
                                                                                                         <%= `${assignment.createdAt.toLocaleString('default',
@@ -359,75 +377,94 @@
                                                                                                             ${assignment.createdAt.getFullYear()}`;
                                                                                                             %>
                                                                                                     </small>
-                                                                                                    <br>
 
                                                                                                 </div>
-                                                                                                <div class="description col-12"
-                                                                                                    data-detail="<%= assignment.assignmentDetail %>">
-                                                                                                </div>
 
-                                                                                                <% if
-                                                                                                    (assignment.files){
+                                                                                                <% if(assignment.totalPoints){
                                                                                                     %>
+                                                                                                    <div class="position-absolute"
+                                                                                                        style="bottom: 0; right: 0;">
+                                                                                                        <small>
+                                                                                                            <em
+                                                                                                                class="text-danger">
+                                                                                                                Graded
+                                                                                                            </em>
+                                                                                                            <small>(<%=
+                                                                                                                    `${assignment.totalPoints}`;
+                                                                                                                    %>
+                                                                                                                    points)
+                                                                                                            </small>
+                                                                                                        </small>
+                                                                                                    </div>
+                                                                                                    <%}%>
+                                                                                                        <div class="description col-12"
+                                                                                                            data-detail="<%= assignment.assignmentDetail %>">
+                                                                                                        </div>
 
-                                                                                                    <% for (let file of
-                                                                                                        assignment.files){
-                                                                                                        %>
+                                                                                                        <% if
+                                                                                                            (assignment.files){
+                                                                                                            %>
 
-                                                                                                        <a target="_blank"
-                                                                                                            href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/assignment/${assignment._id}/file/${file.id}/view` %>"
-                                                                                                            class="row align-items-center col-12 col-xl-6 p-0 mb-5 border">
-                                                                                                            <div
-                                                                                                                class="col-3 p-0">
-                                                                                                                <div class="item-icon bg-light-green m-2"
-                                                                                                                    style="width: 7rem; height: 7rem;">
-                                                                                                                    <% if
-                                                                                                                        (file.filename.split('.')[1]=='docx'
-                                                                                                                        ){
-                                                                                                                        %>
+                                                                                                            <% for (let
+                                                                                                                file of
+                                                                                                                assignment.files){
+                                                                                                                %>
 
-                                                                                                                        <img class=""
-                                                                                                                            src="/svg/docx.svg"
-                                                                                                                            alt="">
-                                                                                                                        <%}else
-                                                                                                                            if
-                                                                                                                            (file.filename.split('.')[1]=='jpg'
-                                                                                                                            ||
-                                                                                                                            file.filename.split('.')[1]=='png'
-                                                                                                                            ){
-                                                                                                                            %>
-                                                                                                                            <img src="/svg/image.svg"
-                                                                                                                                alt="">
-                                                                                                                            <%}else
-                                                                                                                                if
-                                                                                                                                (file.filename.split('.')[1]=='pdf'
+                                                                                                                <a target="_blank"
+                                                                                                                    href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/assignment/${assignment._id}/file/${file.id}/view` %>"
+                                                                                                                    class="row align-items-center col-12 col-xl-6 p-0 mb-5 border">
+                                                                                                                    <div
+                                                                                                                        class="col-3 p-0">
+                                                                                                                        <div class="item-icon bg-light-green m-2"
+                                                                                                                            style="width: 7rem; height: 7rem;">
+                                                                                                                            <% if
+                                                                                                                                (file.filename.split('.')[1]=='docx'
                                                                                                                                 ){
                                                                                                                                 %>
-                                                                                                                                <img src="/svg/pdf.svg"
+
+                                                                                                                                <img class=""
+                                                                                                                                    src="/svg/docx.svg"
                                                                                                                                     alt="">
-                                                                                                                                <%}else{
+                                                                                                                                <%}else
+                                                                                                                                    if
+                                                                                                                                    (file.filename.split('.')[1]=='jpg'
+                                                                                                                                    ||
+                                                                                                                                    file.filename.split('.')[1]=='png'
+                                                                                                                                    ){
                                                                                                                                     %>
-                                                                                                                                    <img src="/svg/file.svg"
+                                                                                                                                    <img src="/svg/image.svg"
                                                                                                                                         alt="">
-                                                                                                                                    <%}%>
+                                                                                                                                    <%}else
+                                                                                                                                        if
+                                                                                                                                        (file.filename.split('.')[1]=='pdf'
+                                                                                                                                        ){
+                                                                                                                                        %>
+                                                                                                                                        <img src="/svg/pdf.svg"
+                                                                                                                                            alt="">
+                                                                                                                                        <%}else{
+                                                                                                                                            %>
+                                                                                                                                            <img src="/svg/file.svg"
+                                                                                                                                                alt="">
+                                                                                                                                            <%}%>
 
 
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                            <div
-                                                                                                                class="col-9">
-                                                                                                                <div
-                                                                                                                    class="item-content">
-                                                                                                                    <div
-                                                                                                                        class="item-title">
-                                                                                                                        <%= file.filename
-                                                                                                                            %>
+                                                                                                                        </div>
                                                                                                                     </div>
-                                                                                                                </div>
-                                                                                                            </div>
-                                                                                                        </a>
-                                                                                                        <%} %>
-                                                                                                            <%} %>
+                                                                                                                    <div
+                                                                                                                        class="col-9">
+                                                                                                                        <div
+                                                                                                                            class="item-content">
+                                                                                                                            <div
+                                                                                                                                class="item-title">
+                                                                                                                                <%= file.filename
+                                                                                                                                    %>
+                                                                                                                            </div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </a>
+                                                                                                                <%} %>
+                                                                                                                    <%}
+                                                                                                                        %>
 
                                                                                             </div>
 
@@ -516,9 +553,9 @@
 
 
                                             </div>
-                                            <div class="tab-pane fade" id="tab3" role="tabpanel">
+                                            <div class="tab-pane fade p-0 p-lg-3" id="tab3" role="tabpanel">
                                                 <div class="card height-auto">
-                                                    <div class="card-body" style="box-shadow: unset;">
+                                                    <div class="card-body p-0 " style="box-shadow: unset;">
                                                         <% if (cls.students.length){ %>
                                                             <div class="table-responsive">
 
