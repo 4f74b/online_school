@@ -6,7 +6,7 @@ const Assignmnent = require('../../data-modals/class/assignment');
 const mime = require('mime-types')
 
 module.exports.viewSubject = async function (req, res) {
-    const subject = await Subject.findById(req.params.id);
+    const subject = await Subject.findById(req.params.subjectId);
     const cls = await Class.findById(subject.class).populate([
         {
             path: 'courses',
@@ -33,7 +33,11 @@ module.exports.viewSubject = async function (req, res) {
     ]);
     cls.courses[0].material = cls.courses[0].material.reverse();
     cls.courses[0].assignment = cls.courses[0].assignment.reverse();
-    res.render('subject/view-subject', { cls });
+    if (cls.classType == 'interactive') {
+        res.render('subject/view-subject', { cls });
+    } else {
+        res.render('subject/view-static-subject', { cls });
+    }
 }
 
 module.exports.addMaterialToSubject = async function (req, res) {

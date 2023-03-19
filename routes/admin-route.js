@@ -17,6 +17,7 @@ const { addClass } = require('../controllers/class/add-class');
 const { renderAllClasses } = require('../controllers/class/class');
 const { viewClass } = require('../controllers/class/class');
 const { renderViewUser } = require('../controllers/view/view-user');
+const { viewSubject } = require("../controllers/subject/subject");
 
 
 
@@ -44,6 +45,9 @@ router.route('/add-class')
 router.get('/all-class', renderAllClasses)
 
 router.get('/class/:id/view', viewClass);
+
+// ==================================================Subject Related========================================================
+router.get('/class/:classId/subject/:subjectId/view', viewSubject)
 
 
 // ==================================================Student========================================================

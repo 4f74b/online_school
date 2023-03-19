@@ -2,12 +2,14 @@ const mongoose = require('mongoose');
 const classSchema = new mongoose.Schema({
     classType: {
         type: String,
-        enum: ['interactive', 'static']
+        enum: ['interactive', 'static'],
+        required: true
     },
     classLevel: {
         type: Number,
         min: 1,
-        max: 12
+        max: 12,
+        required: true
     },
     section: {
         type: String,

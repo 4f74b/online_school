@@ -45,7 +45,7 @@ router.post('/create', register);
 router.get('/class/:id/view', viewClass);
 
 // =================--------------------------Subject related routes======================================================
-router.get('/subject/:id/view', viewSubject)
+router.get('/subject/:subjectId/view', viewSubject)
 
 
 // ====================================================Material Route==============================================

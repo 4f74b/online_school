@@ -15,19 +15,18 @@ module.exports.renderAddClass = async function (req, res) {
 }
 
 module.exports.addClass = async function (req, res) {
-    if (req.body.classType == 'interactive') {
-        addInteractiveClass(req, res);
-    } else if (req.body.classType == 'static') {
-        addStaticClass(req, res);
-    }
-    console.log('added');
+    addInteractiveClass(req, res);
+    // if (req.body.classType == 'interactive') {
+    // } else if (req.body.classType == 'static') {
+    //     addStaticClass(req, res);
+    // }
     req.flash('success', "Successfully created Class");
     res.redirect(`/${res.locals.domainName}/admin/all-class`)
 
 }
 
 async function addStaticClass(req, res) {
-
+    console.log(req.body);
 }
 
 async function addInteractiveClass(req, res) {
@@ -53,8 +52,10 @@ async function addInteractiveClass(req, res) {
     let cls = new Class({ ...req.body });
 
     // add class id to each student and also add admission date
-    for (let id of req.body.students) {
-        const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id, admissionDate: Date.now() });
+    if (req.body.students) {
+        for (let id of req.body.students) {
+            const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id, admissionDate: Date.now() });
+        }
     }
     if (req.body.subjects) {
         for (let subject of req.body.subjects) {
