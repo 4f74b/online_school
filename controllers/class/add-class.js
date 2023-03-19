@@ -15,6 +15,22 @@ module.exports.renderAddClass = async function (req, res) {
 }
 
 module.exports.addClass = async function (req, res) {
+    if (req.body.classType == 'interactive') {
+        addInteractiveClass(req, res);
+    } else if (req.body.classType == 'static') {
+        addStaticClass(req, res);
+    }
+    console.log('added');
+    req.flash('success', "Successfully created Class");
+    res.redirect(`/${res.locals.domainName}/admin/all-class`)
+
+}
+
+async function addStaticClass(req, res) {
+
+}
+
+async function addInteractiveClass(req, res) {
     let students = [];
     // Create array of students
     if (req.body.students) {
@@ -59,10 +75,6 @@ module.exports.addClass = async function (req, res) {
         }
     }
     await cls.save();
-    req.flash('success', "Successfully created Class");
-    console.log('helllo');
-    res.redirect(`/${res.locals.domainName}/admin/all-class`)
-
 }
 
 async function updateTeacher(courseID, teacherID, schedule) {
