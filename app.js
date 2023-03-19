@@ -20,6 +20,7 @@ const adminRoute = require('./routes/admin-route');
 
 const configurePassport = require('./controllers/passport/configure-passport');
 const postLogin = require('./controllers/login/login');
+const renderHome = require('./controllers/render-home');
 
 // load environment vairables
 dotEnv.config();
@@ -73,7 +74,7 @@ path.join(__dirname, "/views");
 
 // Configure session
 const sessionOptions = {
-    secret: "somesecret",
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
 };
@@ -103,25 +104,30 @@ app.use((req, res, next) => {
 // add current url and domain name to res.locals
 app.use((req, res, next) => {
     res.locals.currentUrl = req.originalUrl;
-    res.locals.domainName = "eduafghan"
+    res.locals.domainName = process.env.DOMAIN_NAME;
     next();
 });
 // ====================================================Routes start here=====================================
 
+
+// Home route
+app.get('/', renderHome);
+
+
 // generic login route
-app.get('/eduafghan/login', (req, res) => {
+app.get('/' + process.env.DOMAIN_NAME + '/login', (req, res) => {
     res.render("login/login");
 })
-app.post('/eduafghan/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/eduafghan/login" }), postLogin);
+app.post('/' + process.env.DOMAIN_NAME + '/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/" + process.env.DOMAIN_NAME + "/login" }), postLogin);
 
 // student routes
-app.use('/eduafghan/student', studentRoute);
+app.use('/' + process.env.DOMAIN_NAME + '/student', studentRoute);
 
 // teacher routes
-app.use('/eduafghan/teacher', teacherRoute);
+app.use('/' + process.env.DOMAIN_NAME + '/teacher', teacherRoute);
 
 // admin routes
-app.use('/eduafghan/admin', adminRoute);
+app.use('/' + process.env.DOMAIN_NAME + '/admin', adminRoute);
 
 
 
