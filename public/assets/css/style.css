@@ -13649,10 +13649,9 @@ ul.rbt-dropdown-menu.currency-menu li .sub-menu {
     position: relative;
 }
 
-.popup-mobile-menu .mainmenu .has-menu-child-item>a::after,
+.popup-mobile-menu .mainmenu>a::after,
 .popup-mobile-menu .mainmenu .has-dropdown>a::after {
     position: absolute;
-    content: "\e9b1";
     font-family: "feather" !important;
     right: 0;
     top: 50%;
@@ -13660,10 +13659,6 @@ ul.rbt-dropdown-menu.currency-menu li .sub-menu {
     transition: 0.4s;
 }
 
-.popup-mobile-menu .mainmenu .has-menu-child-item>a.open::after,
-.popup-mobile-menu .mainmenu .has-dropdown>a.open::after {
-    content: "\e996";
-}
 
 .popup-mobile-menu .mainmenu .rbt-megamenu {
     padding: 0;
