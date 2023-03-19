@@ -3,6 +3,7 @@
     <link href="/plugins/noUiSlider/nouislider.min.css" rel="stylesheet" type="text/css">
     <link href="/plugins/noUiSlider/custom-nouiSlider.css" rel="stylesheet" type="text/css">
     <link href="/plugins/flatpickr/custom-flatpickr.css" rel="stylesheet" type="text/css">
+    <link href="/plugins/loaders/custom-loader.css" rel="stylesheet" type="text/css">
 
     <div class="dashboard-content-one p-0 p-sm-2 p-lg-3 p-xl-5">
         <!-- Breadcubs Area Start Here -->
@@ -192,6 +193,7 @@
                                                                     </path>
                                                                 </g>
                                                             </svg> Create</a>
+
 
                                                         <div class="card ui-tab-card mt-5">
                                                             <div class="card-body p-0" style="box-shadow: unset;">
@@ -771,9 +773,10 @@
                                                 value="<%= cls.courses[0].teacher._id %>" id="">
                                             <hr>
 
-                                            <div class="d-flex justify-content-end mt-5">
+                                            <div class="d-flex justify-content-end mt-5 mb-3">
                                                 <button type="submit"
-                                                    class="btn-fill-lg font-normal text-light gradient-orange-peel">Add</button>
+                                                    class="submitData btn-fill-lg font-normal text-light gradient-orange-peel">Add
+                                                    Material</button>
                                             </div>
 
                                         </form>
@@ -880,9 +883,10 @@
                                             </div>
 
 
-                                            <div class="d-flex justify-content-end mt-5 col-12">
+                                            <div class="d-flex justify-content-end mt-5 col-12 mb-3">
                                                 <button type="submit"
-                                                    class="btn-fill-lg font-normal text-light gradient-orange-peel">Add</button>
+                                                    class="submitData btn-fill-lg font-normal text-light gradient-orange-peel">Add
+                                                    Assignment</button>
                                             </div>
 
                                         </form>
@@ -906,10 +910,13 @@
 
         document.getElementById('materialForm').addEventListener('submit', function (evt) {
             document.getElementById('materialDetail').value = quill.root.innerHTML;
+            showLoadingBtn(this)
+
         })
 
         document.getElementById('assignmentForm').addEventListener('submit', function (evt) {
             document.getElementById('assignmentDetail').value = new Quill('#editor-container').root.innerHTML;
+            showLoadingBtn(this)
 
         })
         function getFormData(form) {
@@ -917,6 +924,12 @@
             for (var pair of formData.entries()) {
                 console.log(pair[0] + ': ' + pair[1]);
             }
+        }
+
+        function showLoadingBtn(self) {
+            let loadingBtn = '<div class="spinner-border text-success  align-self-center loader-lg">Loading...</div>'
+            self.querySelector('.submitData').parentElement.insertAdjacentHTML('beforeend', loadingBtn);
+            self.querySelector('.submitData').remove();
         }
 
         // When graded radio is choosen put 100 value to input of grade-points
@@ -934,6 +947,7 @@
         document.getElementById('closeBtnMat').addEventListener('click', function (evt) {
             document.getElementById('add-material').click();
         })
+
 
     </script>
 
