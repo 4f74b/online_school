@@ -1,4 +1,5 @@
 const User = require('../data-modals/user');
+const getPageGeneralInfo = require('./get-page-general-info');
 module.exports = async function (req, res) {
     if (req.user) {
         switch (req.user.role) {
@@ -38,3 +39,4 @@ function addAdditionalInfoToTeacher(teacher) {
     }
     return teacher;
 }
+

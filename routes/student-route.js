@@ -6,13 +6,14 @@ const multer = require("multer");
 
 const register = require('../controllers/register/register');
 const renderHomePage = require('../controllers/render-home');
+const catchAsync = require('../utils/catchAsync');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
 
 
 // ==================================================Home page========================================================
-router.get('/', renderHomePage);
+router.get('/', catchAsync(renderHomePage));
 
 // =================--------------------------Register related routes======================================================
 router
@@ -22,7 +23,7 @@ router
     res.render("register/register-student");
   })
   //   render register data
-  .post(register);
+  .post(catchAsync(register));
 
 
 // =================--------------------------login/logout related routes======================================================

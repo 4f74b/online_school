@@ -18,6 +18,7 @@ const { renderAllClasses } = require('../controllers/class/class');
 const { viewClass } = require('../controllers/class/class');
 const { renderViewUser } = require('../controllers/view/view-user');
 const { viewSubject } = require("../controllers/subject/subject");
+const catchAsync = require('../utils/catchAsync');
 
 
 
@@ -25,7 +26,7 @@ const { viewSubject } = require("../controllers/subject/subject");
 
 
 // ==================================================Home page========================================================
-router.get('/', isLoggedIn, renderHomePage);
+router.get('/', catchAsync(isLoggedIn), catchAsync(renderHomePage));
 
 // =================--------------------------Register related routes======================================================
 router
@@ -35,32 +36,32 @@ router
         res.render("register/register-admin");
     })
     //   render register data
-    .post(register);
+    .post(catchAsync(register));
 
 // ==================================================Class Related========================================================
 router.route('/add-class')
-    .get(renderAddClass)
-    .post(addClass)
+    .get(catchAsync(renderAddClass))
+    .post(catchAsync(addClass))
 
-router.get('/all-class', renderAllClasses)
+router.get('/all-class', catchAsync(renderAllClasses))
 
-router.get('/class/:id/view', viewClass);
+router.get('/class/:id/view', catchAsync(viewClass));
 
 // ==================================================Subject Related========================================================
-router.get('/class/:classId/subject/:subjectId/view', viewSubject)
+router.get('/class/:classId/subject/:subjectId/view', catchAsync(viewSubject))
 
 
 // ==================================================Student========================================================
 // get student related to particular class
-router.get('/get-student/with-grade/:class', getStudentWithGrade)
+router.get('/get-student/with-grade/:class', catchAsync(getStudentWithGrade))
 // render view student
-router.get('/student/:id/view', renderViewUser);
+router.get('/student/:id/view', catchAsync(renderViewUser));
 
 // ==================================================Teacher========================================================
 // get Teacher related to particular course
-router.get('/get-teacher', getTeacherQuery)
+router.get('/get-teacher', catchAsync(getTeacherQuery))
 // render view Teacher
-router.get('/teacher/:id/view', renderViewUser);
+router.get('/teacher/:id/view', catchAsync(renderViewUser));
 
 
 // =================--------------------------login/logout related routes======================================================

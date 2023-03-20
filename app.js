@@ -21,6 +21,11 @@ const adminRoute = require('./routes/admin-route');
 const configurePassport = require('./controllers/passport/configure-passport');
 const postLogin = require('./controllers/login/login');
 const renderHome = require('./controllers/render-home');
+const renderRegister = require('./controllers/register/render-register')
+const { viewStaticClass, viewInteractiveClass } = require('./controllers/class/view')
+const { getPageGeneralInfo } = require('./controllers/get-page-general-info');
+const catchAsync = require('./utils/catchAsync');
+const ExpressError = require('./utils/ExpressError');
 
 // load environment vairables
 dotEnv.config();
@@ -95,6 +100,7 @@ app.use((req, res, next) => {
 
 // add currently logged in user to res.locals
 app.use((req, res, next) => {
+    res.locals.currentUser = undefined;
     if (req.user) {
         res.locals.currentUser = req.user;
     }
@@ -109,15 +115,26 @@ app.use((req, res, next) => {
 });
 // ====================================================Routes start here=====================================
 
+// Fill general Information about page
+app.use(catchAsync(async (req, res, next) => {
+    res.locals.pageInfo = await getPageGeneralInfo(req, res);
+    next();
+}))
 
 // Home route
-app.get('/', renderHome);
+app.get('/' + process.env.DOMAIN_NAME, catchAsync(renderHome));
 
 
 // generic login route
 app.get('/' + process.env.DOMAIN_NAME + '/login', (req, res) => {
     res.render("login/login");
 })
+// generic register route
+app.get(`/${process.env.DOMAIN_NAME}/register`, renderRegister);
+
+// view Class
+app.get(`/${process.env.DOMAIN_NAME}/class/static/:classId/view`, viewStaticClass)
+
 app.post('/' + process.env.DOMAIN_NAME + '/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/" + process.env.DOMAIN_NAME + "/login" }), postLogin);
 
 // student routes
@@ -145,5 +162,5 @@ app.use('/' + process.env.DOMAIN_NAME + '/admin', adminRoute);
 // app.use((err, req, res, next) => {
 //     const { status = 500 } = err;
 //     if (!err.message) err.message = "Something went wrong";
-//     res.status(status).render("error", { err });
+//     res.status(status).render("error/error", { err });
 // });
