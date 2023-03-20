@@ -1,13 +1,24 @@
 <!-- Start Header Area -->
+
+<style>
+    .background-choice-gradient {
+        background: linear-gradient(to right, #97b2c9, #0059a2) !important;
+    }
+
+    .background-choice {
+        background-color: #0059a2 !important;
+    }
+</style>
+
 <header class="rbt-header rbt-header-10">
-    <div class="rbt-header-wrapper header-space-betwween header-sticky">
+    <div class="rbt-header-wrapper header-space-betwween header-sticky background-choice-gradient" style="">
         <div class="container-fluid">
             <div class="mainbar-row rbt-navigation-center align-items-center">
                 <div class="header-left rbt-header-content">
                     <div class="header-info">
                         <div class="logo">
                             <a href="<%= `/${domainName}/` %>">
-                                <img src="/logos/logo-1.jpg" alt="Soraya Online School Logo">
+                                <img src="/logos/logo-2.png" alt="Soraya Online School Logo">
                             </a>
                         </div>
                     </div>
@@ -17,8 +28,8 @@
                     <nav class="mainmenu-nav">
                         <ul class="mainmenu">
                             <% if(pageInfo.classes){ %>
-                                <li class="with-megamenu has-menu-child-item">
-                                    <a href="#">Courses </a>
+                                <li class="with-megamenu has-menu-child-item ">
+                                    <a href="#">Classes </a>
                                     <!-- Start Mega Menu  -->
                                     <div class="rbt-megamenu grid-item-2">
                                         <div class="wrapper">
