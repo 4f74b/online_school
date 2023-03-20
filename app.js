@@ -154,13 +154,13 @@ app.use('/' + process.env.DOMAIN_NAME + '/admin', adminRoute);
 // ======================================================Routes end here====================================
 
 // The following route will respond if and only if the requested path and method do not match the above specified ones
-// app.all("*", (req, res, next) => {
-//     throw new ExpressError(404, "page not found");
-// });
+app.all("*", (req, res, next) => {
+    throw new ExpressError(404, "page not found");
+});
 
-// // The following is our custom error handler
-// app.use((err, req, res, next) => {
-//     const { status = 500 } = err;
-//     if (!err.message) err.message = "Something went wrong";
-//     res.status(status).render("error/error", { err });
-// });
+// The following is our custom error handler
+app.use((err, req, res, next) => {
+    const { status = 500 } = err;
+    if (!err.message) err.message = "Something went wrong";
+    res.status(status).render("error/error", { err });
+});
