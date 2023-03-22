@@ -30,7 +30,7 @@ const ExpressError = require('./utils/ExpressError');
 // load environment vairables
 dotEnv.config();
 const app = express();
-const port = process.env.PORT || 80;
+const port = process.env.PORT || 443;
 
 
 
