@@ -21,7 +21,7 @@ module.exports.addClass = async function (req, res) {
     //     addStaticClass(req, res);
     // }
     req.flash('success', "Successfully created Class");
-    res.redirect(`/${res.locals.domainName}/admin/all-class`)
+    res.redirect(`/admin/all-class`)
 
 }
 

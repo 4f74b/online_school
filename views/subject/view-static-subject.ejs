@@ -151,7 +151,7 @@
                                                                                                         %>
 
                                                                                                         <a target="_blank"
-                                                                                                            href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file.id}/view` %>"
+                                                                                                            href="<%= `/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file.id}/view` %>"
                                                                                                             class=" row align-items-center col-12 col-xl-6 p-0 mb-3 border">
                                                                                                             <div
                                                                                                                 class="col-3 p-0">
@@ -304,7 +304,7 @@
                                                                                                                 %>
 
                                                                                                                 <a target="_blank"
-                                                                                                                    href="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/assignment/${assignment._id}/file/${file.id}/view` %>"
+                                                                                                                    href="<%= `/teacher/subject/${cls.courses[0]._id}/assignment/${assignment._id}/file/${file.id}/view` %>"
                                                                                                                     class="row align-items-center col-12 col-xl-6 p-0 mb-5 border">
                                                                                                                     <div
                                                                                                                         class="col-3 p-0">
@@ -528,7 +528,7 @@
                                                                                 <tr role="row" class="odd">
                                                                                     <td class="sorting_1">
                                                                                         <a
-                                                                                            href="<%= `/${domainName}/admin/student/${student._id}/view` %>">
+                                                                                            href="<%= `/admin/student/${student._id}/view` %>">
                                                                                             <%= student._id %>
                                                                                         </a>
                                                                                     </td>
@@ -633,7 +633,7 @@
                                             </div>
                                         </div>
                                         <form id="materialForm" method="post" enctype="multipart/form-data"
-                                            action="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/material/add` %>"
+                                            action="<%= `/teacher/subject/${cls.courses[0]._id}/material/add` %>"
                                             class="widget-content widget-content-area">
                                             <div id="content-container">
 
@@ -696,7 +696,7 @@
                                             </div>
                                         </div>
                                         <form id="assignmentForm" method="post" enctype="multipart/form-data"
-                                            action="<%= `/${domainName}/teacher/subject/${cls.courses[0]._id}/assignment/add` %>"
+                                            action="<%= `/teacher/subject/${cls.courses[0]._id}/assignment/add` %>"
                                             class="widget-content widget-content-area col-12 d-flex flex-wrap p-0 p-sm-2">
                                             <div id="" class="col-12 mb-5">
 

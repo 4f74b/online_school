@@ -62,8 +62,9 @@ app.listen(3000, () => {
 //     useNewUrlParser: true,
 //     useUnifiedTopology: true,
 // });
+const mongoUrl = process.env.MONGOURL
 
-mongoose.connect("mongodb+srv://" + process.env.MONGO_USERNAME + ":" + process.env.MONGO_KEY + "@cluster0.j6ogqxn.mongodb.net/?retryWrites=true&w=majority", {
+mongoose.connect(mongoUrl, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -122,29 +123,29 @@ app.use(catchAsync(async (req, res, next) => {
 }))
 
 // Home route
-app.get('/' + process.env.DOMAIN_NAME, catchAsync(renderHome));
+app.get('/', catchAsync(renderHome));
 
 
 // generic login route
-app.get('/' + process.env.DOMAIN_NAME + '/login', (req, res) => {
+app.get('/login', (req, res) => {
     res.render("login/login");
 })
 // generic register route
-app.get(`/${process.env.DOMAIN_NAME}/register`, renderRegister);
+app.get(`/register`, renderRegister);
 
 // view Class
-app.get(`/${process.env.DOMAIN_NAME}/class/static/:classId/view`, viewStaticClass)
+app.get(`/class/static/:classId/view`, viewStaticClass)
 
-app.post('/' + process.env.DOMAIN_NAME + '/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/" + process.env.DOMAIN_NAME + "/login" }), postLogin);
+app.post('/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/login" }), postLogin);
 
 // student routes
-app.use('/' + process.env.DOMAIN_NAME + '/student', studentRoute);
+app.use('/student', studentRoute);
 
 // teacher routes
-app.use('/' + process.env.DOMAIN_NAME + '/teacher', teacherRoute);
+app.use('/teacher', teacherRoute);
 
 // admin routes
-app.use('/' + process.env.DOMAIN_NAME + '/admin', adminRoute);
+app.use('/admin', adminRoute);
 
 
 

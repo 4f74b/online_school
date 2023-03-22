@@ -17,7 +17,7 @@
                 <div class="header-left rbt-header-content">
                     <div class="header-info">
                         <div class="logo">
-                            <a href="<%= `/${domainName}/` %>">
+                            <a href="<%= `/` %>">
                                 <img src="/logos/logo-2.png" alt="Soraya Online School Logo">
                             </a>
                         </div>
@@ -50,7 +50,7 @@
                                                         <% if(pageInfo.classes.interactiveClasses){ %>
                                                             <% for(let cls of pageInfo.classes.interactiveClasses){ %>
                                                                 <li><a
-                                                                        href="<%= `/${domainName}/class/interactive/${cls._id}/view` %>">
+                                                                        href="<%= `/class/interactive/${cls._id}/view` %>">
                                                                         Class &nbsp;<%= cls.classLevel %>
                                                                     </a>
                                                                 </li>
@@ -63,8 +63,7 @@
                                                     <ul class="mega-menu-item">
                                                         <% if(pageInfo.classes.staticClasses){ %>
                                                             <% for(let cls of pageInfo.classes.staticClasses){ %>
-                                                                <li><a
-                                                                        href="<%= `/${domainName}/class/static/${cls._id}/view` %>">
+                                                                <li><a href="<%= `/class/static/${cls._id}/view` %>">
                                                                         Class &nbsp;<%= cls.classLevel %>
                                                                     </a>
                                                                 </li>
@@ -771,7 +770,7 @@
 
                         <div class="rbt-btn-wrapper d-none d-xl-block">
                             <a class="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none d-flex justify-content-center align-items-center"
-                                href="<%= `/${domainName}/register` %>">
+                                href="<%= `/register` %>">
                                 <span data-text="Register">Register</span>
                             </a>
                         </div>
@@ -810,7 +809,7 @@
         <div class="inner-top">
             <div class="content">
                 <div class="logo">
-                    <a href="<%= `/${domainName}/` %>">
+                    <a href="<%= `/` %>">
                         <img src="/logos/logo-1.jpg" alt="Education Logo Images">
                     </a>
                 </div>

@@ -47,10 +47,10 @@ async function register(req, res) {
             req.login(std, (err) => {
                 if (err) {
                     req.flash('error', "Error occured while logging in");
-                    res.redirect("/" + res.locals.domainName + "/" + req.body.role + "/login");
+                    res.redirect("/" + req.body.role + "/login");
                 } else {
                     req.flash("success", "Welcome!!!");
-                    const redirectUrl = req.session.returnTo || "/" + res.locals.domainName + "/student";
+                    const redirectUrl = req.session.returnTo || "/student";
                     delete req.session.returnTo;
                     res.redirect(redirectUrl);
                 }
@@ -59,12 +59,12 @@ async function register(req, res) {
         } catch (err) {
             req.flash("error", err.message + " (You may have left some of the fields empty)");
             res.status(403);
-            res.redirect("/" + res.locals.domainName + "/" + req.body.role + "/register");
+            res.redirect("/" + req.body.role + "/register");
         }
 
     } else {
         req.flash("error", req.body.role + " with the provided email '" + req.body.email + "' is already registered");
-        res.redirect("/" + res.locals.domainName + "/" + req.body.role + "/register");
+        res.redirect("/" + req.body.role + "/register");
     }
 }
 

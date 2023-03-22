@@ -103,14 +103,14 @@
                                                                             Close
                                                                         </a>
                                                                         <a class="dropdown-item"
-                                                                            href="/<%= domainName %>/admin/class/<%= cls._id %>/course/<%= course._id %>/edit">
+                                                                            href="/admin/class/<%= cls._id %>/course/<%= course._id %>/edit">
                                                                             <i
                                                                                 class="fas fa-cogs text-dark-pastel-green">
                                                                             </i>
                                                                             Edit
                                                                         </a>
                                                                         <a class="dropdown-item"
-                                                                            href="/<%= domainName %>/admin/class/<%= cls._id %>/course/<%= course._id %>/delete">
+                                                                            href="/admin/class/<%= cls._id %>/course/<%= course._id %>/delete">
                                                                             <i class="fas fa-redo-alt text-orange-peel">
                                                                             </i>
                                                                             Delete
@@ -122,7 +122,7 @@
                                                         <div class="d-flex">
                                                             <% if(course.teacher){ %>
                                                                 <h6>Teacher: <small> <a
-                                                                            href="/<%= domainName %>/admin/teacher/<%= course.teacher._id %>/view">
+                                                                            href="/admin/teacher/<%= course.teacher._id %>/view">
                                                                             <%= course.teacher.userInfo.fullName.charAt(0).toUpperCase()+course.teacher.userInfo.fullName.slice(1)
                                                                                 %>
                                                                         </a>
@@ -178,7 +178,7 @@
                                                                     <div class="d-flex">
                                                                         <% if(course.teacher){ %>
                                                                             <h6>Teacher: <small> <a
-                                                                                        href="/<%= domainName %>/admin/teacher/<%= course.teacher._id %>/view">
+                                                                                        href="/admin/teacher/<%= course.teacher._id %>/view">
                                                                                         <%= course.teacher.userInfo.fullName.charAt(0).toUpperCase()+course.teacher.userInfo.fullName.slice(1)
                                                                                             %>
                                                                                     </a>
@@ -188,7 +188,7 @@
                                                                     </div>
                                                                     <div class="col-12 d-flex justify-content-center">
                                                                         <a
-                                                                            href="/<%= domainName %>/admin/class/<%= cls._id %>/subject/<%= course._id %>/view">
+                                                                            href="/admin/class/<%= cls._id %>/subject/<%= course._id %>/view">
                                                                             <h6 class=" text-info"><u> View details and
                                                                                     Add material</u></h6>
                                                                         </a>
@@ -281,7 +281,7 @@
                                                                         <tr role="row" class="odd">
                                                                             <td class="sorting_1">
                                                                                 <a
-                                                                                    href="<%= `/${domainName}/admin/student/${student._id}/view` %>">
+                                                                                    href="<%= `/admin/student/${student._id}/view` %>">
                                                                                     <%= student._id %>
                                                                                 </a>
                                                                             </td>

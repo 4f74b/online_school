@@ -10,7 +10,7 @@
             <h3>Grades</h3>
             <ul>
                 <li>
-                    <a href="/<%= domainName %>/admin">Home</a>
+                    <a href="/admin">Home</a>
                 </li>
                 <li>Add New Class</li>
             </ul>
@@ -91,8 +91,7 @@
                 </button>
 
                 <!-- interactive class form -->
-                <form method="post" action="/<%= domainName %>/admin/add-class" class="new-added-form d-none"
-                    id="interactiveClass">
+                <form method="post" action="/admin/add-class" class="new-added-form d-none" id="interactiveClass">
                     <div>
                         <input type="text" name="classType" value="interactive" id="" class="d-none">
                         <div class="row">
@@ -212,8 +211,7 @@
 
 
                 <!-- statc Class form -->
-                <form method="post" action="/<%= domainName %>/admin/add-class" class="new-added-form d-none"
-                    id="staticClass">
+                <form method="post" action="/admin/add-class" class="new-added-form d-none" id="staticClass">
                     <input type="text" name="classType" value="static" id="" class="d-none">
                     <div class="row border-bottom">
                         <div class="col-xl-3 col-lg-6 col-12 form-group">
@@ -348,12 +346,12 @@
                 }
                 // look for students of the selected grade
                 try {
-                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-student/with-grade/' + this.value);
+                    let res = await fetch('/admin/get-student/with-grade/' + this.value);
                     res = await res.json();
                     document.getElementById('relatedStudents').classList.remove('d-none');
                     if (res.length) {
                         for (let student of res) {
-                            tbody.innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student._id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student._id + '</span> </label> </td> <td> <td> <a href="/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/student/' + student._id + '/view">' + student.userInfo.fullName + '</a></td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + student.contact.address.streetAddress + '</td> <td>' + student.DOB[0] + '/' + student.DOB[1] + '/' + student.DOB[2] + '</td> <td>' + student.userInfo.email + '</td> </tr>'
+                            tbody.innerHTML += '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="checkbox" name="students[id]" class="new-control-input" value="' + student._id + '"> <span class="new-control-indicator"></span> <span class="new-chk-content">#' + student._id + '</span> </label> </td> <td> <td> <a href="/admin/student/' + student._id + '/view">' + student.userInfo.fullName + '</a></td> <td>' + student.gender + '</td> <td>' + student.grade + '</td> <td>' + student.contact.address.streetAddress + '</td> <td>' + student.DOB[0] + '/' + student.DOB[1] + '/' + student.DOB[2] + '</td> <td>' + student.userInfo.email + '</td> </tr>'
                         }
                     } else {
                         // document.getElementById('relatedStudents').classList.add('d-none');
@@ -392,7 +390,7 @@
                     for (let qual of teacher.qualifications) {
                         quals += '<div>' + qual.name + '</div>';
                     }
-                    wrapper.insertAdjacentHTML('beforeend', '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="radio" name="subjects[subject' + subNo + '][teacher]" class="new- control - input" value="' + teacher._id + '"> <span class="new- control - indicator"></span> <span class="new- chk - content">#' + teacher._id + '</span> </label> </td> <td> <a href="/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/teacher/' + teacher._id + '/view">' + teacher.fullName + '</a></td> <td>' + teacher.gender + '</td> <td>' + teacher.address + '</td> <td>' + teacher.email + '</td> <td><small>' + quals + '</div></small></td> </tr>')
+                    wrapper.insertAdjacentHTML('beforeend', '<tr role="row" class="odd"> <td class="sorting_1 p-0 pl-4"> <label class="new-control new-checkbox new-checkbox-text checkbox-primary d-flex align-items-center m-0"> <input type="radio" name="subjects[subject' + subNo + '][teacher]" class="new- control - input" value="' + teacher._id + '"> <span class="new- control - indicator"></span> <span class="new- chk - content">#' + teacher._id + '</span> </label> </td> <td> <a href="/admin/teacher/' + teacher._id + '/view">' + teacher.fullName + '</a></td> <td>' + teacher.gender + '</td> <td>' + teacher.address + '</td> <td>' + teacher.email + '</td> <td><small>' + quals + '</div></small></td> </tr>')
                 }
             } else {
                 wrapper.innerHTML = '';
@@ -412,7 +410,7 @@
             }
             // look for teachers of the selected grade
             try {
-                let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value);
+                let res = await fetch('/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value);
                 res = await res.json();
                 console.log(res);
                 createTeacherTable(res, tbody, subNo);
@@ -460,7 +458,7 @@
                 }
                 // look for teachers of the selected slot and subject
                 try {
-                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value + '&slot=' + document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value);
+                    let res = await fetch('/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value + '&slot=' + document.querySelector('input[name="subjects[subject' + subNo + '][slot]"]:checked').value);
                     res = await res.json();
                     createTeacherTable(res, tbody, subNo);
                 } catch (err) {
@@ -488,7 +486,7 @@
             if (document.querySelector('.coursesSelect' + subNo).value && self.value && days.includes(parentNode.id.replace(/\d+$/, ""))) {
                 // look for teachers of the selected slot,subject and day
                 try {
-                    let res = await fetch('/' + document.querySelector('body').getAttribute('data-domainName') + '/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value + '&day=' + parentNode.id.replace(/\d+$/, "") + '&slot=' + self.value);
+                    let res = await fetch('/admin/get-teacher?subject=' + document.querySelector('.coursesSelect' + subNo).value + '&day=' + parentNode.id.replace(/\d+$/, "") + '&slot=' + self.value);
                     res = await res.json();
                     let tbody = document.getElementById('teachersTable' + subNo);
                     if (res.length) {
