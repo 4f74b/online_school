@@ -45,3 +45,8 @@ module.exports.viewInteractiveClass = async function (req, res) {
     ]);
     res.render('class/overview-interactive-class', { cls });
 }
+
+
+module.exports.viewAllClasses = async function (req, res) {
+    console.log(req.originalUrl.split('/')[2]);
+}

@@ -15,14 +15,11 @@ const dotEnv = require("dotenv");
 const studentRoute = require('./routes/student-route');
 const teacherRoute = require('./routes/teacher-route');
 const adminRoute = require('./routes/admin-route');
+const publicRoute = require('./routes/public-route');
 // const zoomRouter = require("./routes/zoom-route");
 
 
 const configurePassport = require('./controllers/passport/configure-passport');
-const postLogin = require('./controllers/login/login');
-const renderHome = require('./controllers/render-home');
-const renderRegister = require('./controllers/register/render-register')
-const { viewStaticClass, viewInteractiveClass } = require('./controllers/class/view')
 const { getPageGeneralInfo } = require('./controllers/get-page-general-info');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
@@ -114,30 +111,23 @@ app.use((req, res, next) => {
     res.locals.domainName = process.env.DOMAIN_NAME;
     next();
 });
-// ====================================================Routes start here=====================================
-
-// Fill general Information about page
+// Fill general Information about page like the information that must always reside in the navebar etc
 app.use(catchAsync(async (req, res, next) => {
     res.locals.pageInfo = await getPageGeneralInfo(req, res);
     next();
 }))
 
-// Home route
-app.get('/', catchAsync(renderHome));
 
 
-// generic login route
-app.get('/login', (req, res) => {
-    res.render("login/login");
-})
-// generic register route
-app.get(`/register`, renderRegister);
 
-// view Class
-app.get(`/class/static/:classId/view`, viewStaticClass);
-app.get(`/class/interactive/:classId/view`, viewInteractiveClass);
 
-app.post('/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/login" }), postLogin);
+
+// ====================================================Routes start here=====================================
+
+
+// Public Routes
+app.use('/', publicRoute);
+
 
 // student routes
 app.use('/student', studentRoute);
@@ -153,12 +143,13 @@ app.use('/admin', adminRoute);
 
 
 
+
 // ======================================================Routes end here====================================
 
 // The following route will respond if and only if the requested path and method do not match the above specified ones
-app.all("*", (req, res, next) => {
-    throw new ExpressError(404, "page not found");
-});
+// app.all("*", (req, res, next) => {
+//     throw new ExpressError(404, "page not found");
+// });
 
 // The following is our custom error handler
 // app.use((err, req, res, next) => {
