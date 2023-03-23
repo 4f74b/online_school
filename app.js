@@ -134,7 +134,8 @@ app.get('/login', (req, res) => {
 app.get(`/register`, renderRegister);
 
 // view Class
-app.get(`/class/static/:classId/view`, viewStaticClass)
+app.get(`/class/static/:classId/view`, viewStaticClass);
+app.get(`/class/iteractive/:classId/view`, viewStaticClass);
 
 app.post('/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/login" }), postLogin);
 

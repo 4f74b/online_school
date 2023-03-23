@@ -14,7 +14,7 @@ const { getStudentWithGrade } = require('../controllers/admin/get-student');
 const { getTeacherQuery } = require("../controllers/admin/getTeacher");
 const { renderAddClass } = require('../controllers/class/add-class');
 const { addClass } = require('../controllers/class/add-class');
-const { renderAllClasses } = require('../controllers/class/class');
+const { renderAllClasses, addOrRemoveFromHomePage } = require('../controllers/class/class');
 const { viewClass } = require('../controllers/class/class');
 const { renderViewUser } = require('../controllers/view/view-user');
 const { viewSubject } = require("../controllers/subject/subject");
@@ -45,11 +45,14 @@ router.route('/add-class')
 
 router.get('/all-class', catchAsync(renderAllClasses))
 
+// Add class to homepage
+router.get('/class/:classId/home/', catchAsync(addOrRemoveFromHomePage));
+
 router.get('/class/:id/view', catchAsync(viewClass));
+
 
 // ==================================================Subject Related========================================================
 router.get('/class/:classId/subject/:subjectId/view', catchAsync(viewSubject))
-
 
 // ==================================================Student========================================================
 // get student related to particular class

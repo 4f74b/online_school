@@ -21,6 +21,10 @@ const classSchema = new mongoose.Schema({
     created: {
         type: Date,
         default: Date.now,
+    },
+    putOnHomePage: {
+        type: Boolean,
+        default: false
     }
 });
 

@@ -117,141 +117,32 @@
                                                                         <% if(subject.material.length){ %>
                                                                             <% for (let material of subject.material){
                                                                                 %>
-                                                                                <li>
-                                                                                    <div id="<%= material._id %>+1"
-                                                                                        class="p-5">
-                                                                                        <div class="col-12">
-                                                                                            <h2 class="accordion-header card-header"
-                                                                                                id="headingTwo2<%= material._id %>">
-                                                                                                <button
-                                                                                                    class="accordion-button collapsed"
-                                                                                                    type="button"
-                                                                                                    data-bs-toggle="collapse"
-                                                                                                    data-bs-target="#collapseTwo2<%= material._id %>"
-                                                                                                    aria-expanded="false"
-                                                                                                    aria-controls="collapseTwo2<%= material._id %>">
-                                                                                                    <%= material.materialTitle.charAt(0).toUpperCase()+
-                                                                                                        material.materialTitle.slice(1)
-                                                                                                        %>
-                                                                                                </button>
-                                                                                            </h2>
+                                                                                <li><a href="#">
+                                                                                        <div
+                                                                                            class="course-content-left">
+                                                                                            <span class="text">Course
+                                                                                                Intro</span>
                                                                                         </div>
-                                                                                        <div id="collapseTwo2<%= material._id %>"
-                                                                                            class="accordion-collapse collapse"
-                                                                                            aria-labelledby="headingTwo2<%= material._id %>"
-                                                                                            data-bs-parent="#<%= material._id %>+1">
-                                                                                            <div
-                                                                                                class="dashboard-summery-one mg-b-20 p-3 shadow position-relative">
-                                                                                                <div class="header">
-                                                                                                    <h3>
-                                                                                                        <%= material.materialTitle
-                                                                                                            %>
-                                                                                                    </h3>
-                                                                                                </div>
-
-                                                                                                <div class="position-absolute"
-                                                                                                    style="top: 0; right: 0;">
-                                                                                                    <% if(material.createdAt){
-                                                                                                        %>
-                                                                                                        <small>
-                                                                                                            <span
-                                                                                                                class="text-warning">Posted</span>
-                                                                                                            <%= `${material.createdAt.toLocaleString('default',
-                                                                                                                {
-                                                                                                                month: 'short'
-                                                                                                                })}
-                                                                                                                ${material.createdAt.getDate()}
-                                                                                                                ${material.createdAt.getFullYear()}`;
-                                                                                                                %>
-                                                                                                        </small>
-                                                                                                        <% } %>
-                                                                                                </div>
-                                                                                                <div
-                                                                                                    class="details d-flex flex-wrap justify-content-between col-12 pl-4">
-                                                                                                    <div class="description col-12"
-                                                                                                        data-detail="<%= material.materialDetail %>">
-                                                                                                    </div>
-
-                                                                                                    <% if
-                                                                                                        (material.files){
-                                                                                                        %>
-
-                                                                                                        <% for (let file
-                                                                                                            of
-                                                                                                            material.files){
-                                                                                                            %>
-
-                                                                                                            <a target="_blank"
-                                                                                                                href="<%= `/teacher/subject/${cls.courses[0]._id}/material/${material._id}/file/${file.id}/view` %>"
-                                                                                                                class=" row align-items-center col-12 col-xl-6 p-0 mb-3 border">
-                                                                                                                <div
-                                                                                                                    class="col-3 p-0">
-                                                                                                                    <div class="item-icon bg-light-green m-2"
-                                                                                                                        style="width: 7rem; height: 7rem;">
-                                                                                                                        <% if
-                                                                                                                            (file.filename.split('.')[1]=='docx'
-                                                                                                                            ){
-                                                                                                                            %>
-
-                                                                                                                            <img class=""
-                                                                                                                                src="/svg/docx.svg"
-                                                                                                                                alt="">
-                                                                                                                            <%}else
-                                                                                                                                if
-                                                                                                                                (file.filename.split('.')[1]=='jpg'
-                                                                                                                                ||
-                                                                                                                                file.filename.split('.')[1]=='png'
-                                                                                                                                ){
-                                                                                                                                %>
-                                                                                                                                <img src="/svg/image.svg"
-                                                                                                                                    alt="">
-                                                                                                                                <%}else
-                                                                                                                                    if
-                                                                                                                                    (file.filename.split('.')[1]=='pdf'
-                                                                                                                                    ){
-                                                                                                                                    %>
-                                                                                                                                    <img src="/svg/pdf.svg"
-                                                                                                                                        alt="">
-                                                                                                                                    <%}else{
-                                                                                                                                        %>
-                                                                                                                                        <img src="/svg/file.svg"
-                                                                                                                                            alt="">
-                                                                                                                                        <%}%>
-
-
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                                <div
-                                                                                                                    class="col-9">
-                                                                                                                    <div
-                                                                                                                        class="item-content">
-                                                                                                                        <div
-                                                                                                                            class="item-title">
-                                                                                                                            <%= file.filename
-                                                                                                                                %>
-                                                                                                                        </div>
-                                                                                                                    </div>
-                                                                                                                </div>
-                                                                                                            </a>
-                                                                                                            <%} %>
-                                                                                                                <%} %>
-
-                                                                                                </div>
-
-                                                                                            </div>
+                                                                                        <div
+                                                                                            class="course-content-right">
+                                                                                            <span class="course-lock"><i
+                                                                                                    class="feather-lock"></i></span>
                                                                                         </div>
-                                                                                    </div>
-                                                                                </li>
+                                                                                    </a></li>
                                                                                 <% } %>
                                                                                     <% }else{ %>
-                                                                                        <li><a class="pl-5" href="#">
+                                                                                        <li><a href="#">
                                                                                                 <div
                                                                                                     class="course-content-left">
                                                                                                     <span
-                                                                                                        class="text">No
-                                                                                                        Material is
-                                                                                                        added to this
-                                                                                                        subject.</span>
+                                                                                                        class="text">Course
+                                                                                                        Intro</span>
+                                                                                                </div>
+                                                                                                <div
+                                                                                                    class="course-content-right">
+                                                                                                    <span
+                                                                                                        class="course-lock"><i
+                                                                                                            class="feather-lock"></i></span>
                                                                                                 </div>
                                                                                             </a></li>
                                                                                         <% } %>
