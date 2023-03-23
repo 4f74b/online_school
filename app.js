@@ -27,7 +27,7 @@ const ExpressError = require('./utils/ExpressError');
 // load environment vairables
 dotEnv.config();
 const app = express();
-const port = process.env.PORT || 443;
+const port = process.env.PORT || 3000;
 
 
 
@@ -51,7 +51,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "./public")));
 
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log("Server started on port" + port);
 });
 
