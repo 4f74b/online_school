@@ -118,10 +118,21 @@
                                                                     aria-labelledby="headingTwo2"
                                                                     data-bs-parent="#accordionExampleb2">
                                                                     <div class="accordion-body card-body pr--0">
-                                                                        <h6>Materials and Assignments related to this
-                                                                            <%= subject.name.charAt(0).toUpperCase()+subject.name.slice(1)
-                                                                                %>
-                                                                        </h6>
+                                                                        <div class="rbt-author-meta mb--10">
+                                                                            <div class="rbt-avater">
+                                                                                <a href="#">
+                                                                                    <img src="/img/female-profile.jpg"
+                                                                                        alt="Sophia Jaymes">
+                                                                                </a>
+                                                                            </div>
+                                                                            <div class="rbt-author-info">
+                                                                                By <a
+                                                                                    href="<%= `/teacher/${subject.teacher._id}/view` %>">
+                                                                                    <%= subject.teacher.userInfo.fullName
+                                                                                        %>
+                                                                                </a>
+                                                                            </div>
+                                                                        </div>
 
                                                                         <div class="col-12">
                                                                             <div class="rbt-default-tab">
