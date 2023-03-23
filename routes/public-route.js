@@ -39,7 +39,8 @@ router.get(`/class/static/:classId/view`, catchAsync(viewStaticClass));
 router.get(`/class/interactive/:classId/view`, catchAsync(viewInteractiveClass));
 
 // show all interactive classes
-router.get('/class/interactive/view/all', catchAsync(viewAllClasses));
+router.get('/class/view/all/interactive', catchAsync(viewAllClasses));
+router.get('/class/view/all/static', catchAsync(viewAllClasses));
 
 
 module.exports = router;

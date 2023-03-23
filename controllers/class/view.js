@@ -86,7 +86,8 @@ function generateScheduleTable(data) {
 
 module.exports.viewAllClasses = async function (req, res) {
     let cls;
-    switch (req.originalUrl.split('/')[2]) {
+    // respond with data depending upon whether the request if for all interacive classes or all static classes
+    switch (req.originalUrl.split('/')[4]) {
         case 'interactive':
             clss = await Class.find({ classType: 'interactive' }).populate([
                 {
@@ -107,8 +108,30 @@ module.exports.viewAllClasses = async function (req, res) {
                     ],
                 },
             ]);
-            console.log(clss[0])
             res.render('class/overview-all-interactive', { clss });
+            break;
+        case 'static':
+            clss = await Class.find({ classType: 'static' }).populate([
+                {
+                    path: 'courses',
+                    populate: [
+                        {
+                            path: 'teacher',
+                            populate: { path: 'userInfo' }
+                        },
+                        {
+                            path: 'material',
+                            select: ['materialDetail', 'materialTitle', 'createdAt', 'files.filename', 'files.id'],
+                        },
+                        {
+                            path: 'assignment',
+                            select: ['assignmentDetail', 'assignmentTitle', 'createdAt', 'dueDate', 'assignmentType', 'totalPoints', 'files.filename', 'files.id'],
+                        },
+                    ],
+                },
+            ]);
+            res.render('class/overview-all-static', { clss });
+            break;
 
     }
 }

@@ -1,0 +1,159 @@
+<% layout('layouts/admin/boilerplate') %>
+    <link href="/plugins/loaders/custom-loader.css" rel="stylesheet" type="text/css">
+    <div class="dashboard-content-one">
+        <!-- Breadcubs Area Start Here -->
+        <div class="breadcrumbs-area">
+            <h3>Classes</h3>
+            <ul>
+                <li>
+                    <a href="index.html">Home</a>
+                </li>
+                <li>All Classes</li>
+            </ul>
+        </div>
+        <!-- Breadcubs Area End Here -->
+        <!-- Class Table Area Start Here -->
+        <div class="card height-auto">
+            <div class="card-body">
+                <div class="heading-layout1">
+                    <div class="item-title">
+                        <h3>All Classes</h3>
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="table display data-table text-nowrap">
+                        <thead>
+                            <tr>
+                                <th>
+                                    ID
+                                </th>
+                                <th>Name</th>
+                                <th>Phone #</th>
+                                <th>Address</th>
+                                <th>Email</th>
+                                <th class="d-none">
+                                    Add to homepage</th>
+                                <th class="">Edit</th>
+                                <th class="d-none">Time</th>
+                                <th class="d-none">Phone</th>
+                                <th class="d-none">E-mail</th>
+                                <th class="d-none"></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+
+                            <% if (allAdmins){ %>
+                                <% for (let admin of allAdmins){ %>
+                                    <tr>
+                                        <td>
+                                            <a href="/admin/<%= admin._id %>/view">
+                                                <%= admin._id %>
+                                            </a>
+                                        </td>
+                                        <td class="">
+                                            <%= admin.userInfo.fullName %>
+                                        </td>
+                                        <td>
+                                            <%= admin.phoneNo %>
+                                        </td>
+                                        <td>
+                                            <%= admin.address %>
+                                        </td>
+                                        <td>
+                                            <%= admin.userInfo.email %>
+
+                                        </td>
+                                        <td class="">
+                                            <div class="heading-layout1">
+                                                <div class="dropdown">
+                                                    <a class="dropdown-toggle" href="#" role="button"
+                                                        data-toggle="dropdown" aria-expanded="false">...</a>
+
+                                                    <div class="dropdown-menu dropdown-menu-right"
+                                                        x-placement="bottom-end"
+                                                        style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(49px, 51px, 0px);">
+                                                        <a class="dropdown-item d-none"
+                                                            href="/admin/class/641bed5512a0349df9e2ba28/course/641bed5612a0349df9e2ba33/edit">
+                                                            <i class="fas fa-cogs text-dark-pastel-green">
+                                                            </i>
+                                                            Edit
+                                                        </a>
+                                                        <a class="dropdown-item" href="/admin/<%= admin._id %>/delete">
+                                                            <i class="fas fa-redo-alt text-orange-peel">
+                                                            </i>
+                                                            Delete
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </td>
+                                        <td class="d-none">02/05/2001</td>
+                                        <td class="d-none">10.00 am - 11.30 am</td>
+                                        <td class="d-none">+ 123 9988568</td>
+                                        <td class="d-none">kazifahim93@gmail.com</td>
+                                        <td class="d-none">
+                                            <div class="dropdown">
+                                                <a href="#" class="dropdown-toggle" data-toggle="dropdown"
+                                                    aria-expanded="false">
+                                                    <span class="flaticon-more-button-of-three-dots"></span>
+                                                </a>
+                                                <div class="dropdown-menu dropdown-menu-right">
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fas fa-times text-orange-red"></i>Close</a>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fas fa-cogs text-dark-pastel-green"></i>Edit</a>
+                                                    <a class="dropdown-item" href="#"><i
+                                                            class="fas fa-redo-alt text-orange-peel"></i>Refresh</a>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <% }} %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="col-12 form-group d-flex justify-content-end mt-5">
+                    <a href="/admin/add/admin" class="col-6 fw-btn-fill btn-gradient-yellow text-center">Add Admin</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <!-- add or remove a class from home page -->
+    <script>
+        for (let input of document.querySelectorAll('.addToHome')) {
+            input.addEventListener('change', async function (evt) {
+                let parent = this.parentNode;
+                if (this.checked) {
+                    this.setAttribute('loading', '');
+                    try {
+                        replaceByLoader(parent)
+                        let res = await fetch(`/admin/class/${this.getAttribute('id')}/home?add=true`);
+                        reAddcheckBox(parent, this);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                } else if (!this.checked) {
+                    try {
+                        replaceByLoader(parent)
+                        let res = await fetch(`/admin/class/${this.getAttribute('id')}/home?add=false`);
+                        reAddcheckBox(parent, this);
+                    } catch (err) {
+                        console.log(err);
+                    }
+                }
+            })
+
+        }
+
+        function replaceByLoader(parent) {
+            const loader = '<div id="loader" class="spinner-border text-success  align-self-center loader-sm"> Loading...</div>';
+            parent.innerHTML = loader;
+        }
+        function reAddcheckBox(parent, self) {
+            parent.children[0].remove();
+            parent.appendChild(self);
+        }
+    </script>
