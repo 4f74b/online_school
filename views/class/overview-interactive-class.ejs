@@ -4,6 +4,25 @@
         <!-- Start Banner BG Image  -->
         <div class=""></div>
         <!-- End Banner BG Image  -->
+        <div class="rbt-banner-content">
+            <!-- Start Banner Content Top  -->
+            <div class="rbt-banner-content-top rbt-breadcrumb-style-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-lg-8 offset-lg-2">
+                            <div class="content text-center">
+                                <h2 class="title text-white">
+                                    Class <%= cls.classLevel %>, Section <%= cls.section %>(<small>
+                                                <%= cls.classType.charAt(0).toUpperCase()+cls.classType.slice(1) %>
+                                            </small>)
+                                </h2>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Banner Content Top  -->
+        </div>
     </div>
 
     <div class="rbt-section-overlayping-top rbt-section-gapBottom">
@@ -69,6 +88,9 @@
                                         <ul class="mainmenu">
                                             <li class="">
                                                 <a href="#coursecontent">Subject</a>
+                                            </li>
+                                            <li class="">
+                                                <a href="#details">Details</a>
                                             </li>
                                             <li>
                                                 <a href="#review">Review</a>
@@ -577,6 +599,51 @@
                                     </div>
                                 </div>
                                 <!-- End Course Content  -->
+
+
+                                <div class="rbt-course-feature-box rbt-shadow-box details-wrapper mt--30 overflow-auto"
+                                    id="details">
+                                    <div class="row g-5">
+                                        <table>
+                                            <thead>
+                                                <tr class="">
+                                                    <td colspan="8" class="h5">
+                                                        Time Table for Class <%= cls.classLevel %>,
+                                                            Section <%= cls.section %>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <% for(let day of cls.table[0]){ %>
+                                                        <td class="p-1 p-sm-2 p-lg-3">
+                                                            <%= day.charAt(0).toUpperCase()+day.substring(0,3).slice(1)
+                                                                %>
+                                                        </td>
+                                                        <%}%>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <% for(let i=1; i<cls.table.length; i++){ %>
+                                                    <tr>
+                                                        <% for(let j=0; j<cls.table[i].length; j++){ %>
+
+                                                            <td class="p-1 p-sm-2 p-lg-3">
+                                                                <%if (j==0){%>
+                                                                    <%= cls.table[i][j].charAt(0).toUpperCase()+cls.table[i][j].slice(1)
+                                                                        %>
+                                                                        <%}else{%>
+                                                                            <%= cls.table[i][j] %>
+                                                                                <%}%>
+
+                                                            </td>
+                                                            <%}%>
+                                                    </tr>
+                                                    <%}%>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                </div>
+
+
 
                                 <!-- Start Edu Review List  -->
                                 <div class="rbt-review-wrapper rbt-shadow-box review-wrapper mt--30" id="review">
@@ -1100,6 +1167,13 @@
             for (let wrapper of document.querySelectorAll('.description')) {
                 wrapper.insertAdjacentHTML('beforeend', wrapper.getAttribute('data-detail'));
             }
+        </script>
+
+
+        <!-- Create schedule table -->
+        <script>
+
+
         </script>
 
 
