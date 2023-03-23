@@ -20,7 +20,7 @@
                                     <div class="content-item-content">
                                         <div class="rbt-widget-details has-show-more">
                                             <div class="section-title">
-                                                <h4 class="rbt-title-style-3">Course Overview</h4>
+                                                <h4 class="rbt-title-style-3">Class Overview</h4>
                                             </div>
                                             <ul class="has-show-more-inner-content rbt-course-details-list-wrapper">
                                                 <li><span>Start Date</span><span class="rbt-feature-value rbt-badge-5">
@@ -70,9 +70,6 @@
                                             <li class="">
                                                 <a href="#coursecontent">Subject</a>
                                             </li>
-                                            <li class="">
-                                                <a href="#intructor">Intructor</a>
-                                            </li>
                                             <li>
                                                 <a href="#review">Review</a>
                                             </li>
@@ -83,7 +80,8 @@
 
 
                                 <!-- Start Course Content  -->
-                                <div class="rbt-instructor rbt-shadow-box intructor-wrapper mt--30 p-0" id="intructor">
+                                <div class="rbt-instructor rbt-shadow-box intructor-wrapper mt--30 p-0"
+                                    id="coursecontent">
 
                                     <div class="course-content rbt-shadow-box coursecontent-wrapper mt--30  p-1 p-sm-2 p-lg-4"
                                         id="coursecontent">
@@ -101,16 +99,38 @@
                                                             <div class="accordion-item card">
                                                                 <h2 class="accordion-header card-header"
                                                                     id="headingTwo2">
-                                                                    <button class="accordion-button collapsed"
-                                                                        type="button" data-bs-toggle="collapse"
+                                                                    <div class="h4 p-0 m-0" style="cursor: pointer;"
+                                                                        data-bs-toggle="collapse"
                                                                         data-bs-target="#collapseTwo2<%= subject._id %>"
                                                                         aria-expanded="false"
                                                                         aria-controls="collapseTwo2<%= subject._id %>">
-                                                                        <%= subject.name.charAt(0).toUpperCase()+
-                                                                            subject.name.slice(1) %> <span
-                                                                                class="rbt-badge-5 ml--10">2hr
-                                                                                30min</span>
-                                                                    </button>
+                                                                        <div class="d-flex justify-content-between">
+                                                                            <div
+                                                                                class=" d-flex justify-content-left align-items-center">
+                                                                                <%= subject.name.charAt(0).toUpperCase()+
+                                                                                    subject.name.slice(1) %> <span
+                                                                                        class="rbt-badge-5 ml--10">2hr
+                                                                                        30min</span>
+                                                                            </div>
+                                                                            <svg width="20" fill="#000000"
+                                                                                viewBox="0 0 32 32" version="1.1"
+                                                                                xmlns="http://www.w3.org/2000/svg"
+                                                                                transform="rotate(180)">
+                                                                                <g id="SVGRepo_bgCarrier"
+                                                                                    stroke-width="0"></g>
+                                                                                <g id="SVGRepo_tracerCarrier"
+                                                                                    stroke-linecap="round"
+                                                                                    stroke-linejoin="round"></g>
+                                                                                <g id="SVGRepo_iconCarrier">
+                                                                                    <path
+                                                                                        d="M0.256 23.481c0 0.269 0.106 0.544 0.313 0.75 0.412 0.413 1.087 0.413 1.5 0l14.119-14.119 13.913 13.912c0.413 0.413 1.087 0.413 1.5 0s0.413-1.087 0-1.5l-14.663-14.669c-0.413-0.412-1.088-0.412-1.5 0l-14.869 14.869c-0.213 0.212-0.313 0.481-0.313 0.756z">
+                                                                                    </path>
+                                                                                </g>
+                                                                            </svg>
+
+                                                                        </div>
+
+                                                                    </div>
                                                                 </h2>
 
                                                                 <div id="collapseTwo2<%= subject._id %>"
@@ -120,7 +140,8 @@
                                                                     <div class="accordion-body card-body pr--0">
                                                                         <div class="rbt-author-meta mb--10">
                                                                             <div class="rbt-avater">
-                                                                                <a href="#">
+                                                                                <a
+                                                                                    href="<%= `/teacher/${subject.teacher._id}/view` %>">
                                                                                     <img src="/img/female-profile.jpg"
                                                                                         alt="Sophia Jaymes">
                                                                                 </a>
@@ -143,9 +164,9 @@
                                                                                         <button class="nav-link"
                                                                                             id="home-tab-5"
                                                                                             data-bs-toggle="tab"
-                                                                                            data-bs-target="#home5"
+                                                                                            data-bs-target="#home5<%= subject._id %>"
                                                                                             type="button" role="tab"
-                                                                                            aria-controls="home5"
+                                                                                            aria-controls="home5<%= subject._id %>"
                                                                                             aria-selected="false">Materials</button>
                                                                                     </li>
                                                                                     <li class="nav-item tabs__tab "
@@ -153,16 +174,17 @@
                                                                                         <button class="nav-link"
                                                                                             id="profile-tab5"
                                                                                             data-bs-toggle="tab"
-                                                                                            data-bs-target="#profile5"
+                                                                                            data-bs-target="#profile5<%= subject._id %>"
                                                                                             type="button" role="tab"
-                                                                                            aria-controls="profile5"
+                                                                                            aria-controls="profile5<%= subject._id %>"
                                                                                             aria-selected="false">Assignments</button>
                                                                                     </li>
                                                                                 </ul>
                                                                                 <div
                                                                                     class="rainbow-tab-content tab-content p-0">
                                                                                     <div class="tab-pane fade"
-                                                                                        id="home5" role="tabpanel"
+                                                                                        id="home5<%= subject._id %>"
+                                                                                        role="tabpanel"
                                                                                         aria-labelledby="home-tab-5">
                                                                                         <ul
                                                                                             class="rbt-course-main-content liststyle">
@@ -348,7 +370,8 @@
                                                                                     </div>
 
                                                                                     <div class="tab-pane fade"
-                                                                                        id="profile5" role="tabpanel"
+                                                                                        id="profile5<%= subject._id %>"
+                                                                                        role="tabpanel"
                                                                                         aria-labelledby="profile-tab5">
                                                                                         <div class="col-12 p-0">
                                                                                             <% if
@@ -554,66 +577,6 @@
                                     </div>
                                 </div>
                                 <!-- End Course Content  -->
-
-                                <!-- Start Intructor Area  -->
-                                <div class="rbt-instructor rbt-shadow-box intructor-wrapper p-0 mt--30" id="intructor">
-                                    <div class="about-author border-0 pb--0 pt--0 p-1 p-sm-2 p-lg-4">
-                                        <div class="section-title mb--30 pt-2">
-                                            <h4 class="rbt-title-style-3">Instructor</h4>
-                                        </div>
-                                        <div class="media align-items-center">
-                                            <div class="thumbnail">
-                                                <a href="#">
-                                                    <img src="assets/images/testimonial/testimonial-7.jpg"
-                                                        alt="Author Images">
-                                                </a>
-                                            </div>
-                                            <div class="media-body">
-                                                <div class="author-info">
-                                                    <h5 class="title">
-                                                        <a class="hover-flip-item-wrapper" href="author.html">B.M.
-                                                            Rafekul Islam</a>
-                                                    </h5>
-                                                    <span class="b3 subtitle">Advanced Educator</span>
-                                                    <ul class="rbt-meta mb--20 mt--10">
-                                                        <li>75,237 Reviews <span class="rbt-badge-5 ml--5">4.4
-                                                                Rating</span></li>
-                                                        <li>912,970 Students</li>
-                                                        <li><a href="#">16 Courses</a></li>
-                                                    </ul>
-                                                </div>
-                                                <div class="content">
-                                                    <p class="description">John is a brilliant educator, whose life was
-                                                        spent
-                                                        for computer science and love of nature.</p>
-
-                                                    <ul
-                                                        class="social-icon social-default icon-naked justify-content-start">
-                                                        <li><a href="https://www.facebook.com/">
-                                                                <i class="feather-facebook"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="https://www.twitter.com">
-                                                                <i class="feather-twitter"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="https://www.instagram.com/">
-                                                                <i class="feather-instagram"></i>
-                                                            </a>
-                                                        </li>
-                                                        <li><a href="https://www.linkdin.com/">
-                                                                <i class="feather-linkedin"></i>
-                                                            </a>
-                                                        </li>
-                                                    </ul>
-
-                                                </div>
-
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <!-- End Intructor Area  -->
 
                                 <!-- Start Edu Review List  -->
                                 <div class="rbt-review-wrapper rbt-shadow-box review-wrapper mt--30" id="review">
