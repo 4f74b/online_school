@@ -39,7 +39,7 @@
                                             <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
                                             <circle cx="12" cy="7" r="4"></circle>
                                         </svg>
-                                        <input id="fullName" name="fullName" type="text" class="form-control"
+                                        <input required id="fullName" name="fullName" type="text" class="form-control"
                                             placeholder="Full Name">
                                     </div>
                                     <div id="email-field" class="field-wrapper input">
@@ -50,7 +50,7 @@
                                             <circle cx="12" cy="12" r="4"></circle>
                                             <path d="M16 8v5a3 3 0 0 0 6 0v-1a10 10 0 1 0-3.92 7.94"></path>
                                         </svg>
-                                        <input id="email" name="email" type="text" placeholder="Email">
+                                        <input required id="email" name="email" type="email" placeholder="Email">
                                     </div>
                                     <div id="" class="field-wrapper input">
                                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
@@ -66,7 +66,7 @@
                                                     stroke-linejoin="round"></path>
                                             </g>
                                         </svg>
-                                        <input id="phoneNo" name="phoneNo" type="text" value=""
+                                        <input required id="phoneNo" name="phoneNo" type="number" value=""
                                             placeholder="Enter Phone number">
                                     </div>
                                     <div id="" class="field-wrapper input">
@@ -91,7 +91,7 @@
                                                 <rect class="st0" width="24" height="24"></rect>
                                             </g>
                                         </svg>
-                                        <input id="address" name="address" type="text" value=""
+                                        <input required id="address" name="address" type="text" value=""
                                             placeholder="Enter address">
                                     </div>
                                     <div id="password-field" class="field-wrapper input mb-2">
@@ -101,10 +101,10 @@
                                             <rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect>
                                             <path d="M7 11V7a5 5 0 0 1 10 0v4"></path>
                                         </svg>
-                                        <input id="password" name="password" type="password" value=""
+                                        <input required id="password" name="password" type="password" value=""
                                             placeholder="Password">
                                     </div>
-                                    <input type="text" name="role" value="admin" class="d-none">
+                                    <input required type="text" name="role" value="admin" class="d-none">
                                     <div class="d-sm-flex justify-content-between">
                                         <div class="field-wrapper toggle-pass">
                                             <p class="d-inline-block">Show Password</p>
