@@ -161,8 +161,8 @@ app.all("*", (req, res, next) => {
 });
 
 // The following is our custom error handler
-app.use((err, req, res, next) => {
-    const { status = 500 } = err;
-    if (!err.message) err.message = "Something went wrong";
-    res.status(status).render("error/error", { err });
-});
+// app.use((err, req, res, next) => {
+//     const { status = 500 } = err;
+//     if (!err.message) err.message = "Something went wrong";
+//     res.status(status).render("error/error", { err });
+// });
