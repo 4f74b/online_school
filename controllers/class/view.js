@@ -70,6 +70,7 @@ module.exports.viewAllClasses = async function (req, res) {
                     ],
                 },
             ]);
+            console.log(clss[0])
             res.render('class/overview-all-interactive', { clss });
 
     }
