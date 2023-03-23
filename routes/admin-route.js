@@ -19,13 +19,14 @@ const { viewClass } = require('../controllers/class/class');
 const { renderViewUser } = require('../controllers/view/view-user');
 const { viewSubject } = require("../controllers/subject/subject");
 const { viewAllAdmins } = require('../controllers/admin/view');
+const { deleteAdmin } = require('../controllers/admin/delete-admin');
 const catchAsync = require('../utils/catchAsync');
 
 
 
 
 router
-    .route("/register")
+    .route("/add/admin")
     // render register form
     .get((req, res) => {
         res.render("register/register-admin");
@@ -38,7 +39,10 @@ router
 router.get('/', catchAsync(isLoggedIn), catchAsync(renderHomePage));
 
 // ==================================================Admin Manipulate========================================================
-router.get('/view/all-admins', viewAllAdmins);
+router.get('/view/all-admins', catchAsync(viewAllAdmins));
+
+// Delete Admin
+router.get('/:id/delete', catchAsync(deleteAdmin));
 
 // =================--------------------------Register related routes======================================================
 router.use(isLoggedIn);

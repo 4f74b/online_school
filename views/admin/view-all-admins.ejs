@@ -1,5 +1,7 @@
 <% layout('layouts/admin/boilerplate') %>
     <link href="/plugins/loaders/custom-loader.css" rel="stylesheet" type="text/css">
+    <link href="/plugins/loaders/custom-loader.css" rel="stylesheet" type="text/css">
+
     <div class="dashboard-content-one">
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
@@ -166,6 +168,12 @@
         Confirm Deletion
     </button>
 
+    <div class="d-none">
+        <form action="" method="get" id="deleteForm">
+            <input type="text" name="adminId" id="adminId">
+        </form>
+    </div>
+
     <!-- Delete confirmation Modal -->
     <div class="modal fade" id="confirmation-modal" tabindex="-1" role="dialog" style="display: none;"
         aria-hidden="true">
@@ -195,7 +203,7 @@
                     </div>
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn-fill-xl text-light bg-red">Delete</button>
+                    <button type="button" id="processDelete" class="btn-fill-xl text-light bg-red">Delete</button>
                     <button type="button" class="footer-btn bg-dark-low" data-dismiss="modal">Cancel</button>
                 </div>
             </div>
@@ -246,8 +254,20 @@
         // Delete Admin
         for (let deleteBtn of document.querySelectorAll('.deleteAdmin')) {
             deleteBtn.addEventListener('click', async function (evt) {
-                let del = false;
+                let id = this.getAttribute('data-id');
                 document.getElementById('confirmDelete').click();
+                document.getElementById('processDelete').addEventListener('click', async function (evt) {
+                    showLoadingBtn(this)
+                    document.getElementById('adminId').value = this.getAttribute('data-id');
+                    document.getElementById('deleteForm').setAttribute('action', `/admin/${id}/delete`);
+                    document.getElementById('deleteForm').submit();
+                })
             })
+        }
+
+        function showLoadingBtn(self) {
+            let loadingBtn = '<div class="spinner-border text-danger  align-self-center loader-lg">Loading...</div>'
+            self.parentElement.insertAdjacentHTML('afterbegin', loadingBtn);
+            self.remove();
         }
     </script>
