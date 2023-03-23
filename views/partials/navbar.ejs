@@ -373,7 +373,7 @@
                     <!-- Navbar Icons -->
                     <ul class="quick-access">
 
-                        <div class="header-info">
+                        <div class="header-info m-2">
                             <ul class="rbt-dropdown-menu switcher-language">
                                 <li class="has-child-menu">
                                     <a href="#">
@@ -854,13 +854,13 @@
 
                     <% if (!currentUser){ %>
 
-                        <div class="rbt-btn-wrapper d-none d-xl-block">
+                        <div class="rbt-btn-wrapper d-block">
                             <a class="rbt-btn rbt-marquee-btn marquee-auto btn-border-gradient radius-round btn-sm hover-transform-none d-flex justify-content-center align-items-center"
                                 style="box-shadow: unset;" href="<%= `/register` %>">
                                 <span data-text="Register">Register</span>
                             </a>
                         </div>
-                        <div class="rbt-btn-wrapper d-none d-xl-block">
+                        <div class="rbt-btn-wrapper d-block">
                             <a class="rbt-btn btn-white btn-sm m-2" href="#">Login</a>
                         </div>
                         <% } %>
