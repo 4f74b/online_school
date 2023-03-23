@@ -48,5 +48,29 @@ module.exports.viewInteractiveClass = async function (req, res) {
 
 
 module.exports.viewAllClasses = async function (req, res) {
-    console.log(req.originalUrl.split('/')[2]);
+    let cls;
+    switch (req.originalUrl.split('/')[2]) {
+        case 'interactive':
+            clss = await Class.find().populate([
+                {
+                    path: 'courses',
+                    populate: [
+                        {
+                            path: 'teacher',
+                            populate: { path: 'userInfo' }
+                        },
+                        {
+                            path: 'material',
+                            select: ['materialDetail', 'materialTitle', 'createdAt', 'files.filename', 'files.id'],
+                        },
+                        {
+                            path: 'assignment',
+                            select: ['assignmentDetail', 'assignmentTitle', 'createdAt', 'dueDate', 'assignmentType', 'totalPoints', 'files.filename', 'files.id'],
+                        },
+                    ],
+                },
+            ]);
+            res.render('class/overview-all-interactive', { clss });
+
+    }
 }
