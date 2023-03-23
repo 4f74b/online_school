@@ -50,7 +50,7 @@ async function register(req, res) {
                     res.redirect("/" + req.body.role + "/login");
                 } else {
                     req.flash("success", "Welcome!!!");
-                    const redirectUrl = req.session.returnTo || "/student";
+                    const redirectUrl = req.session.returnTo || "/" + req.body.role;
                     delete req.session.returnTo;
                     res.redirect(redirectUrl);
                 }

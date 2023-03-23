@@ -51,7 +51,7 @@ module.exports.viewAllClasses = async function (req, res) {
     let cls;
     switch (req.originalUrl.split('/')[2]) {
         case 'interactive':
-            clss = await Class.find().populate([
+            clss = await Class.find({ classType: 'interactive' }).populate([
                 {
                     path: 'courses',
                     populate: [

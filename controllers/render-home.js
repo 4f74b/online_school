@@ -4,7 +4,7 @@ module.exports = async function (req, res) {
     if (req.user) {
         switch (req.user.role) {
             case 'student':
-                res.render('student/home-page', { currentUser: req.user });
+                res.render('', { currentUser: req.user });
                 break;
             case 'teacher':
                 let teacher = await User.findById(req.user._id).populate([
