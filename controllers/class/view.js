@@ -1,4 +1,5 @@
 const Class = require('../../data-modals/class/class');
+const { generateTimeTable } = require('../../controllers/generate-time-table');
 module.exports.viewStaticClass = async function (req, res) {
     const cls = await Class.findById(req.params.classId).populate([
         {
@@ -43,44 +44,56 @@ module.exports.viewInteractiveClass = async function (req, res) {
             ],
         },
     ]);
-    cls.table = generateScheduleTable(cls.courses);
-    console.log(cls.table);
+    cls.table = generateTimeTable(cls.courses);
     res.render('class/overview-interactive-class', { cls });
 }
 
 
 
-function generateScheduleTable(data) {
-    const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
 
-    // Create a mapping of subjects to their schedule
-    const scheduleMap = {};
-    data.forEach(subject => {
-        const schedule = subject.schedule;
-        schedule.forEach(sched => {
-            const day = sched.day;
-            const slot = sched.slot;
-            if (!scheduleMap[subject.name]) {
-                scheduleMap[subject.name] = {};
-            }
-            scheduleMap[subject.name][day] = slot;
-        });
-    });
 
-    // Create the array of objects
-    const scheduleTable = [];
-    scheduleTable.push(['', ...daysOfWeek]); // Add header row
-    Object.keys(scheduleMap).forEach(subject => {
-        const row = [subject];
-        daysOfWeek.forEach(day => {
-            const slot = scheduleMap[subject][day];
-            row.push(slot || '-');
-        });
-        scheduleTable.push(row);
-    });
 
-    return scheduleTable;
-}
+
+
+
+
+
+
+
+
+
+
+// function generateScheduleTable(data) {
+//     const daysOfWeek = ['monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'];
+
+//     // Create a mapping of subjects to their schedule
+//     const scheduleMap = {};
+//     data.forEach(subject => {
+//         const schedule = subject.schedule;
+//         schedule.forEach(sched => {
+//             const day = sched.day;
+//             const slot = sched.slot;
+//             if (!scheduleMap[subject.name]) {
+//                 scheduleMap[subject.name] = {};
+//             }
+//             scheduleMap[subject.name][day] = slot;
+//         });
+//     });
+
+//     // Create the array of objects
+//     const scheduleTable = [];
+//     scheduleTable.push(['', ...daysOfWeek]); // Add header row
+//     Object.keys(scheduleMap).forEach(subject => {
+//         const row = [subject];
+//         daysOfWeek.forEach(day => {
+//             const slot = scheduleMap[subject][day];
+//             row.push(slot || '-');
+//         });
+//         scheduleTable.push(row);
+//     });
+
+//     return scheduleTable;
+// }
 
 
 

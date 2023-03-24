@@ -114,7 +114,6 @@ app.use((req, res, next) => {
 // Fill general Information about page like the information that must always reside in the navebar etc
 app.use(catchAsync(async (req, res, next) => {
     res.locals.pageInfo = await getPageGeneralInfo(req, res);
-    console.log(res.locals.pageInfo);
     next();
 }))
 

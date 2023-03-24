@@ -1,5 +1,14 @@
 <% layout('layouts/boilerplate') %>
 
+    <style>
+        td {
+            text-align: center;
+        }
+
+        .text-left {
+            text-align: left;
+        }
+    </style>
 
 
     <div class="rbt-page-banner-wrapper background-choice">
@@ -607,20 +616,33 @@
                                     id="details">
                                     <div class="row g-5">
                                         <table>
+                                            <caption>
+                                                <div class="">
+                                                    <h4 class="rbt-title-style-3">Time Table</h4>
+                                                </div>
+                                            </caption>
                                             <thead>
                                                 <tr class="">
                                                     <td colspan="8" class="h5">
-                                                        Time Table for Class <%= cls.classLevel %>,
+                                                        Class <%= cls.classLevel %>,
                                                             Section <%= cls.section %>
                                                     </td>
                                                 </tr>
                                                 <tr>
                                                     <% for(let day of cls.table[0]){ %>
-                                                        <td class="p-1 p-sm-2 p-lg-3">
-                                                            <%= day.charAt(0).toUpperCase()+day.substring(0,3).slice(1)
-                                                                %>
-                                                        </td>
-                                                        <%}%>
+                                                        <% if(!(cls.table[0].indexOf(day)==0)){ %>
+                                                            <td class="p-1 p-sm-2 p-lg-3 bg-dark text-white">
+                                                                <%= day.charAt(0).toUpperCase()+day.substring(0,3).slice(1)
+                                                                    %>
+                                                            </td>
+
+                                                            <%}else{%>
+                                                                <td class="p-1 p-sm-2 p-lg-3 text-white text-left"
+                                                                    style="background-color:rgb(65, 110, 150);">
+                                                                    <%= day.charAt(0).toUpperCase()+day.slice(1) %>
+                                                                </td>
+                                                                <%}%>
+                                                                    <%}%>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -628,16 +650,25 @@
                                                     <tr>
                                                         <% for(let j=0; j<cls.table[i].length; j++){ %>
 
-                                                            <td class="p-1 p-sm-2 p-lg-3">
-                                                                <%if (j==0){%>
+                                                            <%if (j==0){%>
+                                                                <td class="p-1 p-sm-2 p-lg-3 text-white text-left"
+                                                                    style="background-color:rgb(65, 110, 150);">
                                                                     <%= cls.table[i][j].charAt(0).toUpperCase()+cls.table[i][j].slice(1)
                                                                         %>
-                                                                        <%}else{%>
-                                                                            <%= cls.table[i][j] %>
-                                                                                <%}%>
 
-                                                            </td>
-                                                            <%}%>
+                                                                </td>
+                                                                <%}else{%>
+                                                                    <td class="p-1 p-sm-2 p-lg-3">
+
+                                                                        <%= cls.table[i][j].split('(')[0] %> <br>
+                                                                            <%= cls.table[i][j].split('(')[1] %>
+
+
+
+                                                                    </td>
+
+                                                                    <%}%>
+                                                                        <%}%>
                                                     </tr>
                                                     <%}%>
                                             </tbody>

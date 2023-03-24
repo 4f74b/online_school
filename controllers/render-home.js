@@ -1,5 +1,7 @@
 const User = require('../data-modals/user');
 const getPageGeneralInfo = require('./get-page-general-info');
+const { generateTimeTable } = require('../controllers/generate-time-table');
+
 module.exports = async function (req, res) {
     if (req.user) {
         switch (req.user.role) {
@@ -12,6 +14,8 @@ module.exports = async function (req, res) {
 
                 ])
                 teacher = addAdditionalInfoToTeacher(teacher);
+                teacher.tableArray = generateTimeTable(teacher.userProfile.assigned_subjects);
+                console.log(teacher.tableArray);
                 res.render('teacher/index', { teacher });
                 break;
             case 'admin':
