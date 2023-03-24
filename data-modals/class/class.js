@@ -1,5 +1,8 @@
 const mongoose = require('mongoose');
-const System = require('../system-data');
+var System = require('../system-data');
+
+
+
 const classSchema = new mongoose.Schema({
     classType: {
         type: String,
@@ -29,21 +32,7 @@ const classSchema = new mongoose.Schema({
     }
 });
 
-// When a class is saved then icrement the system data
-// When a user is saved then icrement the system data
-UserSchema.post('save', async (cls, next) => {
-    let sys;
-    console.log(await System.find());
-    // switch (cls.role) {
-    //     case 's':
-    //         sys = await System.findOneAndUpdate({}, { $inc: { totalStudents: 1 } }, { new: true })
-    //         break;
-    //     case 'teacher':
-    //         sys = await System.findOneAndUpdate({}, { $inc: { totalTeachers: 1 } }, { new: true })
-    //         break;
-    // }
-    next();
-});
+
 
 module.exports = mongoose.model('Class', classSchema);
 

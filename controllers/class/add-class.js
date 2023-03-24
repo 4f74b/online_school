@@ -2,6 +2,7 @@ const Class = require('../../data-modals/class/class');
 const Subject = require('../../data-modals/class/subject');
 const Student = require('../../data-modals/user-models/student-model');
 const Teacher = require('../../data-modals/user-models/teacher-model');
+const System = require('../../data-modals/system-data');
 
 
 module.exports.renderAddClass = async function (req, res) {
@@ -16,10 +17,15 @@ module.exports.renderAddClass = async function (req, res) {
 
 module.exports.addClass = async function (req, res) {
     await addStaticOrInteractive(req, res);
-    // if (req.body.classType == 'interactive') {
-    // } else if (req.body.classType == 'static') {
-    //     addStaticClass(req, res);
-    // }
+
+    // Update the number of classes in system-data
+    await System.findOneAndUpdate({}, { $inc: { totalClasses: 1 } }, { new: true });
+    if (req.body.classType == 'interactive') {
+        sys = await System.findOneAndUpdate({}, { $inc: { totalInteractiveClasses: 1 } }, { new: true });
+    } else if (req.body.classType == 'static') {
+        sys = await System.findOneAndUpdate({}, { $inc: { totalStaticClasses: 1 } }, { $inc: { totalClasses: 1 } }, { new: true });
+
+    }
     req.flash('success', "Successfully created Class");
     res.redirect(`/admin/all-class`)
 
