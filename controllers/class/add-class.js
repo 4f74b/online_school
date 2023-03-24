@@ -15,7 +15,7 @@ module.exports.renderAddClass = async function (req, res) {
 }
 
 module.exports.addClass = async function (req, res) {
-    addInteractiveClass(req, res);
+    await addStaticOrInteractive(req, res);
     // if (req.body.classType == 'interactive') {
     // } else if (req.body.classType == 'static') {
     //     addStaticClass(req, res);
@@ -25,12 +25,7 @@ module.exports.addClass = async function (req, res) {
 
 }
 
-async function addStaticClass(req, res) {
-    console.log(req.body);
-}
-
-async function addInteractiveClass(req, res) {
-    console.log('jello');
+async function addStaticOrInteractive(req, res) {
     let students = [];
     // Create array of students
     if (req.body.students) {
