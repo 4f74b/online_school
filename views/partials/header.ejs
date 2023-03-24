@@ -59,4 +59,21 @@
             background-color: #0059a2 !important;
         }
     </style>
+    <style>
+        .rbt-show-more-btn.active::after {
+            content: url(/svg/expand-arrow.svg);
+            fill: #000;
+            background-image: url(/svg/expand-arrow.svg);
+            background-color: #000;
+            transform: rotate(180deg);
+        }
+
+        .rbt-show-more-btn::after,
+        .rbt-accordion-style .card .card-header button.collapsed::before {
+            content: url(/svg/expand-arrow.svg);
+            fill: #000;
+            background-image: url(/svg/expand-arrow.svg);
+            background-color: #000;
+        }
+    </style>
 </head>

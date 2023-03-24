@@ -1,10 +1,12 @@
 <!-- Start Header Area -->
 <style>
-    .white:hover {
+    #about-us:hover,
+    #school-classes:hover,
+    #other-course:hover {
         color: white !important;
     }
 
-    nav a:hover {
+    nav .with-megamenu .has-menu-child-item .position-static a:hover {
         color: white !important;
     }
 </style>
@@ -29,7 +31,7 @@
                         <ul class="mainmenu">
                             <% if(pageInfo.classes){ %>
                                 <li class="with-megamenu has-menu-child-item ">
-                                    <a href="#">School Classes </a>
+                                    <a href="#" id="school-classes">School Classes </a>
                                     <!-- Start Mega Menu  -->
                                     <div class="rbt-megamenu grid-item-2">
                                         <div class="wrapper">
@@ -83,7 +85,7 @@
                                 <% } %>
 
                                     <li class="has-dropdown has-menu-child-item">
-                                        <a href="#">Other Courses
+                                        <a href="#" id="other-course">Other Courses
 
                                         </a>
                                         <ul class="submenu d-none">
@@ -97,7 +99,7 @@
                                     </li>
 
                                     <li class="with-megamenu has-menu-child-item position-static">
-                                        <a href="#" class="">About Us </a>
+                                        <a href="#" class="" id="about-us">About Us </a>
                                     </li>
                         </ul>
                     </nav>
