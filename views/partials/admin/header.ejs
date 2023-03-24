@@ -3,11 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>AKKHOR | Home 1</title>
+    <title>
+        SorayaOnlineSchool | <%= currentUrl.split('/')[1] %>
+    </title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/img/favicon.png">
+    <link rel="shortcut icon" type="image/x-icon" href="/logos/logo-2.png">
     <!-- Normalize CSS -->
     <link rel="stylesheet" href="/css/normalize.css">
     <!-- Main CSS -->
@@ -35,6 +37,19 @@
 
         .background-choice {
             background-color: #0059a2 !important;
+        }
+
+        .breadcrumbs-area ul li:before {
+            content: url(/svg/greater-sign.svg);
+        }
+
+        .sidebar-menu-one .sidebar-menu-content .nav-sidebar-menu .sidebar-nav-item>.nav-link:after {
+            content: url(/svg/expand-arrow.svg);
+        }
+
+        .sidebar-main * {
+            color: white !important;
+            box-shadow: unset !important;
         }
     </style>
 
