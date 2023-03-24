@@ -1,5 +1,5 @@
 const Class = require('../../data-modals/class/class');
-const { generateTimeTable } = require('../../controllers/generate-time-table');
+const { generateTimeTableStudent } = require('../../controllers/generate-time-table');
 module.exports.viewStaticClass = async function (req, res) {
     const cls = await Class.findById(req.params.classId).populate([
         {
@@ -44,7 +44,7 @@ module.exports.viewInteractiveClass = async function (req, res) {
             ],
         },
     ]);
-    cls.table = generateTimeTable(cls.courses);
+    cls.table = generateTimeTableStudent(cls.courses);
     res.render('class/overview-interactive-class', { cls });
 }
 

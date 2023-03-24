@@ -1,5 +1,13 @@
 <% layout('layouts/admin/boilerplate') %>
+    <style>
+        td {
+            text-align: center;
+        }
 
+        .text-left {
+            text-align: left;
+        }
+    </style>
     <div class="dashboard-content-one">
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
@@ -180,6 +188,63 @@
                             <div class="table-box-wrap">
                                 <div class="table-responsive student-table-box">
 
+                                    <table class="w-100">
+                                        <caption>
+                                            <div class="">
+                                                <h4 class="rbt-title-style-3">Time Table</h4>
+                                            </div>
+                                        </caption>
+                                        <thead>
+                                            <tr class="">
+                                                <td colspan="8" class="h5">
+                                                    Time Table
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <% for(let day of teacher.table[0]){ %>
+                                                    <% if(!(teacher.table[0].indexOf(day)==0)){ %>
+                                                        <td class="p-1 p-sm-2 p-lg-3 bg-dark text-white">
+                                                            <%= day.charAt(0).toUpperCase()+day.substring(0,3).slice(1)
+                                                                %>
+                                                        </td>
+
+                                                        <%}else{%>
+                                                            <td class="p-1 p-sm-2 p-lg-3 text-white text-left"
+                                                                style="background-color:rgb(65, 110, 150);">
+                                                                <%= day.charAt(0).toUpperCase()+day.slice(1) %>
+                                                            </td>
+                                                            <%}%>
+                                                                <%}%>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <% for(let i=1; i<teacher.table.length; i++){ %>
+                                                <tr>
+                                                    <% for(let j=0; j<teacher.table[i].length; j++){ %>
+
+                                                        <%if (j==0){%>
+                                                            <td class="p-1 p-sm-2 p-lg-3 text-white text-left"
+                                                                style="background-color:rgb(65, 110, 150);">
+                                                                <%= teacher.table[i][j].charAt(0).toUpperCase()+teacher.table[i][j].slice(1)
+                                                                    %>
+
+                                                            </td>
+                                                            <%}else{%>
+                                                                <td class="p-1 p-sm-2 p-lg-3 border">
+
+                                                                    <%= teacher.table[i][j].split('_')[0] %> <br>
+                                                                        <%= teacher.table[i][j].split('_')[1] %>
+
+
+
+                                                                </td>
+
+                                                                <%}%>
+                                                                    <%}%>
+                                                </tr>
+                                                <%}%>
+                                        </tbody>
+                                    </table>
                                 </div>
                             </div>
                         </div>
