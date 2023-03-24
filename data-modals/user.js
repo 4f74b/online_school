@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const passportLocalMongoose = require("passport-local-mongoose");
+const System = require('./system-data');
 
 const UserSchema = new mongoose.Schema({
   profileImage: {
@@ -30,25 +31,21 @@ const UserSchema = new mongoose.Schema({
 
 
 
-// adding a post delete middleware to student schema so that it could run before deleting some student
-UserSchema.post("findOneAndDelete", async function (deletedHostellite, next) {
-  //   //Delete any associated files
-  //   if (deletedHostellite.profileImage) {
-  //     fs.unlink("public/hostel-files/hostellite-profile-images/" + deletedHostellite.profileImage, (err) => {
-  //       if (err) {
-  //         throw err;
-  //       }
-  //     });
-  //   }
-
-  //   // Delete any complaints
-  //   if (deletedHostellite.complaint.length) {
-  //     for (complaintId of deletedHostellite.complaint) {
-  //       await Complaint.findByIdAndDelete(complaintId);
-  //     }
-  //   }
+// When a user is saved then icrement the system data
+UserSchema.post('save', async (user, next) => {
+  let sys;
+  switch (user.role) {
+    case 'student':
+      sys = await System.findOneAndUpdate({}, { $inc: { totalStudents: 1 } }, { new: true })
+      break;
+    case 'teacher':
+      sys = await System.findOneAndUpdate({}, { $inc: { totalTeachers: 1 } }, { new: true })
+      break;
+  }
   next();
 });
+
+
 
 // pre findOneAndUpdate check if the password is updated, if so, then hash the password
 // studentSchema.pre("updateOne", async function (next) {

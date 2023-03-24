@@ -10,6 +10,7 @@ const renderHome = require('../controllers/render-home');
 const renderRegister = require('../controllers/register/render-register');
 const { viewStaticClass, viewInteractiveClass, viewAllClasses } = require('../controllers/class/view')
 const postLogin = require('../controllers/login/login');
+const { logout } = require('../controllers/logout/logout');
 
 
 
@@ -28,8 +29,12 @@ router.get('/', catchAsync(renderHome));
 router.get('/login', (req, res) => {
     res.render("login/login");
 })
+
 router.post('/login', passport.authenticate("User", { failureFlash: true, failureRedirect: "/login" }), catchAsync(postLogin));
 
+
+// logout
+router.get('/logout', logout)
 
 // generic register route
 router.get(`/register`, catchAsync(renderRegister));

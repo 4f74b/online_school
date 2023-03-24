@@ -42,29 +42,27 @@
             <li class="navbar-item dropdown header-admin">
                 <a class="navbar-nav-link dropdown-toggle" href="/#" role="button" data-toggle="dropdown"
                     aria-expanded="false">
-                    <div class="admin-title">
-                        <h5 class="item-title">Stevne Zone</h5>
-                        <span>Admin</span>
+                    <div class="admin-img">
+                        <img width="30" src="/img/female-profile.jpg" alt="Admin">
                     </div>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <div class="item-header">
-                        <h6 class="item-title">Steven Zone</h6>
+                        <h6 class="item-title">
+                            <%= currentUser.fullName %>
+                        </h6>
                     </div>
                     <div class="item-content">
                         <ul class="settings-list">
-                            <li><a href="#"><i class="flaticon-user"></i>My Profile</a></li>
-                            <li><a href="#"><i class="flaticon-list"></i>Task</a></li>
-                            <li><a href="#"><i
-                                        class="flaticon-chat-comment-oval-speech-bubble-with-text-lines"></i>Message</a>
-                            </li>
-                            <li><a href="/#"><i class="flaticon-gear-loading"></i>Account Settings</a></li>
-                            <li><a href="/login.html"><i class="flaticon-turn-off"></i>Log Out</a></li>
+                            <li><a> <img src="/svg/email.svg" alt="">
+                                    <%= currentUser.email %>
+                                </a></li>
+                            <li><a href="/logout"> <img src="/svg/logout.svg" alt=""> Log Out</a></li>
                         </ul>
                     </div>
                 </div>
             </li>
-            <li class="navbar-item dropdown header-message">
+            <li class="navbar-item dropdown header-message d-none">
                 <a class="navbar-nav-link dropdown-toggle" href="/#" role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     <i class="far fa-envelope"></i>
@@ -140,7 +138,7 @@
                     </div>
                 </div>
             </li>
-            <li class="navbar-item dropdown header-notification">
+            <li class="navbar-item dropdown header-notification d-none">
                 <a class="navbar-nav-link dropdown-toggle" href="/#" role="button" data-toggle="dropdown"
                     aria-expanded="false">
                     <i class="far fa-bell"></i>
@@ -188,9 +186,8 @@
                     aria-expanded="false"><i class="fas fa-globe-americas"></i>EN</a>
                 <div class="dropdown-menu dropdown-menu-right">
                     <a class="dropdown-item" href="/#">English</a>
-                    <a class="dropdown-item" href="/#">Spanish</a>
-                    <a class="dropdown-item" href="/#">Franchis</a>
-                    <a class="dropdown-item" href="/#">Chiness</a>
+                    <a class="dropdown-item" href="/#">Pushto</a>
+                    <a class="dropdown-item" href="/#">Dari</a>
                 </div>
             </li>
         </ul>

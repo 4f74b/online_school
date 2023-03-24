@@ -50,7 +50,7 @@ async function addStaticOrInteractive(req, res) {
     // add class id to each student and also add admission date
     if (req.body.students) {
         for (let id of req.body.students) {
-            const upd = await Student.findByIdAndUpdate(id, { admittedClass: cls._id, admissionDate: Date.now() });
+            const upd = await Student.findByIdAndUpdate(id, { admitted: true, admittedClass: cls._id, admissionDate: Date.now() });
         }
     }
     if (req.body.subjects) {
