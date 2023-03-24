@@ -30,6 +30,7 @@ async function addStaticClass(req, res) {
 }
 
 async function addInteractiveClass(req, res) {
+    console.log('jello');
     let students = [];
     // Create array of students
     if (req.body.students) {
