@@ -43,18 +43,17 @@
                                                         class="rbt-btn-link color-primary"
                                                         href="/class/view/all/static">self paced
                                                         classes</a> and study
-                                                    on your own OR you can <a class="rbt-btn-link color-primary"
-                                                        href="/class/interactive/apply">apply</a>
-                                                    for collaborative classes
+                                                    on your own untill you are enrolled
                                                 </li>
                                                 <% }else if(!student.userProfile.admitted &&
                                                     student.userProfile.admissionRequested){ %>
                                                     <li class="text-danger"> <img src="/svg/class.svg" width="15"
-                                                            alt="">&nbsp;You have requested admission, You can access <a
-                                                            class="rbt-btn-link color-primary"
+                                                            alt="">&nbsp;
+                                                        <span class="d-none"> You have requested admission,</span> You
+                                                        can access <a class="rbt-btn-link color-primary"
                                                             href="/class/view/all/static">self paced
                                                             classes</a> and study
-                                                        on your own untill you are enrolled in the requested class
+                                                        on your own untill you are enrolled
                                                     </li>
                                                     <% } %>
                                                         <li><img src="/svg/certificate.svg" width="15" alt="">&nbsp;0
@@ -159,7 +158,7 @@
                                                                 <h3 class="without-icon color-danger">
                                                                     <span class="">No Enrolled</span>
                                                                 </h3>
-                                                                <span class="rbt-title-style-2 d-block"><a
+                                                                <span class="rbt-title-style-2 d-block d-none"><a
                                                                         class="rbt-btn-link color-primary"
                                                                         href="/class/interactive/apply">Apply for
                                                                         online
@@ -175,7 +174,7 @@
                                                 </div>
                                                 <% }else if(!student.userProfile.admitted &&
                                                     student.userProfile.admissionRequested){ %>
-                                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12 d-none">
                                                         <div
                                                             class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
                                                             <div class="inner">
