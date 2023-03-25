@@ -11,6 +11,7 @@ const renderRegister = require('../controllers/register/render-register');
 const { viewStaticClass, viewInteractiveClass, viewAllClasses } = require('../controllers/class/view')
 const postLogin = require('../controllers/login/login');
 const { logout } = require('../controllers/logout/logout');
+const { renderAboutUs } = require('../controllers/about-us');
 
 
 
@@ -23,6 +24,9 @@ const upload = multer({ storage });
 
 // Home route
 router.get('/', catchAsync(renderHome));
+
+// About Us
+router.get('/about-us', renderAboutUs);
 
 
 // generic login route

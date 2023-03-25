@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Soraya Online School | <%= currentUrl.split('/')[2].charAt(0).toUpperCase()+
-            currentUrl.split('/')[2].slice(1) %>
+    <title>Soraya Online School | <%= currentUrl.split('/')[2] ? (currentUrl.split('/')[2].charAt(0).toUpperCase()+
+            currentUrl.split('/')[2].slice(1)) : '' %>
     </title>
     <meta name="robots" content="noindex, follow">
     <meta name="description" content="">
