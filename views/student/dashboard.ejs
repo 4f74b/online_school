@@ -26,10 +26,12 @@
                                     <img src="/img/female-profile.jpg" alt="Instructor">
                                 </div>
                                 <div class="tutor-content">
-                                    <h5 class="title">Binte Hawa</h5>
+                                    <h5 class="title">
+                                        <%= student.fullName %>
+                                    </h5>
                                     <ul class="rbt-meta rbt-meta-white mt--5">
-                                        <li> <img src="/svg/class.svg" width="15" alt=""> 5 Courses Enroled</li>
-                                        <li><img src="/svg/certificate.svg" width="15" alt="">0 Certificate</li>
+                                        <li> <img src="/svg/class.svg" width="15" alt="">&nbsp; Enrolled</li>
+                                        <li><img src="/svg/certificate.svg" width="15" alt="">&nbsp;0 Certificate</li>
                                     </ul>
                                 </div>
                             </div>
@@ -116,7 +118,7 @@
                                                 class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-secondary-opacity">
                                                 <div class="inner">
                                                     <div class="rbt-round-icon bg-secondary-opacity">
-                                                        <img src="/svg/grade.svg" alt="Current Grade">
+                                                        <img src="/svg/achievement.svg" alt="Current Grade">
                                                     </div>
                                                     <div class="content">
                                                         <h3 class="without-icon color-primary">
@@ -126,34 +128,6 @@
                                                 </div>
                                             </div>
 
-                                        </div>
-                                        <!-- End Single Card  -->
-
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div
-                                                class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-violet-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-violet-opacity">
-                                                        <i class="feather-award"></i>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="counter without-icon color-violet"><span
-                                                                class="odometer odometer-auto-theme" data-count="7">
-                                                                <div class="odometer-inside"><span
-                                                                        class="odometer-digit"><span
-                                                                            class="odometer-digit-spacer">8</span><span
-                                                                            class="odometer-digit-inner"><span
-                                                                                class="odometer-ribbon"><span
-                                                                                    class="odometer-ribbon-inner"><span
-                                                                                        class="odometer-value">0</span></span></span></span></span>
-                                                                </div>
-                                                            </span>
-                                                        </h3>
-                                                        <span class="rbt-title-style-2 d-block">Completed Courses</span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                         </div>
                                         <!-- End Single Card  -->
 
@@ -171,14 +145,6 @@
         <div class="container">
             <hr class="rbt-separator m-0">
         </div>
-    </div>
-    <!-- End Footer aera -->
-    <div class="rbt-progress-parent">
-        <svg class="rbt-back-circle svg-inner" width="100%" height="100%" viewBox="-1 -1 102 102">
-            <path d="M50,1 a49,49 0 0,1 0,98 a49,49 0 0,1 0,-98"
-                style="transition: stroke-dashoffset 10ms linear 0s; stroke-dasharray: 307.919, 307.919; stroke-dashoffset: 249.936;">
-            </path>
-        </svg>
     </div>
 
     <%- include('../partials/footer') %>

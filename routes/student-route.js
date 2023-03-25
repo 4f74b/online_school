@@ -9,6 +9,8 @@ const { showStudentDashboard } = require('../controllers/dashboard');
 
 const storage = multer.memoryStorage();
 const upload = multer({ storage });
+const isLoggedIn = require('../controllers/login/isLoggedIn');
+const { isStudent } = require("../controllers/role");
 
 
 // ==================================================Home page========================================================
@@ -24,6 +26,7 @@ router
   //   render register data
   .post(catchAsync(register));
 
+router.use(isLoggedIn, isStudent)
 router.get('/dashboard', showStudentDashboard);
 
 
