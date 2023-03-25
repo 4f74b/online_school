@@ -18,10 +18,11 @@ const { renderAllClasses, addOrRemoveFromHomePage } = require('../controllers/cl
 const { viewClass } = require('../controllers/class/class');
 const { renderViewUser } = require('../controllers/view/view-user');
 const { viewSubject } = require("../controllers/subject/subject");
-const { viewAllAdmins } = require('../controllers/admin/view');
+const { viewAllAdmins, viewAllEnrolledStudents, viewAllStaticStudents, viewAllAdmissionRequests, viewAllTeachers } = require('../controllers/admin/view');
 const { deleteAdmin } = require('../controllers/admin/delete-admin');
 const catchAsync = require('../utils/catchAsync');
 const { isAdmin } = require('../controllers/role');
+
 
 
 // =================--------------------------Check if the client is logged in and admin==============================================
@@ -70,12 +71,21 @@ router.get('/class/:classId/subject/:subjectId/view', catchAsync(viewSubject))
 router.get('/get-student/with-grade/:class', catchAsync(getStudentWithGrade))
 // render view student
 router.get('/student/:id/view', catchAsync(renderViewUser));
+// View all Enrolled students
+router.get('/student/view/enrolled/all', catchAsync(viewAllEnrolledStudents));
+// View All self Paced Students
+router.get('/student/view/static/all', catchAsync(viewAllStaticStudents));
+// View all admission requested Students
+router.get('/student/view/requests/all', catchAsync(viewAllAdmissionRequests))
 
 // ==================================================Teacher========================================================
 // get Teacher related to particular course
 router.get('/get-teacher', catchAsync(getTeacherQuery))
 // render view Teacher
 router.get('/teacher/:id/view', catchAsync(renderViewUser));
+// View all teachers
+router.get('/teacher/view/all', (viewAllTeachers));
+
 
 
 module.exports = router;
