@@ -10,7 +10,6 @@ module.exports.isTeacher = async function (req, res, next) {
     }
 }
 module.exports.isAdmin = async function (req, res, next) {
-    console.log(req.user);
     if (req.user) {
         if (req.user.role == 'admin') {
             next();
