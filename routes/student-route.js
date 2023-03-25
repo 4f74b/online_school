@@ -27,7 +27,7 @@ router
   .post(catchAsync(register));
 
 router.use(isLoggedIn, isStudent)
-router.get('/dashboard', showStudentDashboard);
+router.get('/dashboard', catchAsync(showStudentDashboard));
 
 
 module.exports = router;

@@ -26,7 +26,7 @@ const upload = multer({ storage });
 router.get('/', catchAsync(renderHome));
 
 // About Us
-router.get('/about-us', renderAboutUs);
+router.get('/about-us', catchAsync(renderAboutUs));
 
 
 // generic login route

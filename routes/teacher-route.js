@@ -45,26 +45,26 @@ router.use(isLoggedIn, isTeacher);
 
 
 // ==================================================Home page========================================================
-router.get('/', renderHomePage);
+router.get('/', catchAsync(renderHomePage));
 
 
 // =================--------------------------Class related routes======================================================
-router.get('/class/:id/view', viewClass);
+router.get('/class/:id/view', catchAsync(viewClass));
 
 // =================--------------------------Subject related routes======================================================
-router.get('/subject/:subjectId/view', viewSubject)
+router.get('/subject/:subjectId/view', catchAsync(viewSubject))
 
 
 // ====================================================Material Route==============================================
-router.post('/subject/:subjectId/material/add', upload.array("files"), addMaterialToSubject)
-router.get('/subject/:subjectId/material/:materialId/get', getMaterial);
+router.post('/subject/:subjectId/material/add', upload.array("files"), catchAsync(addMaterialToSubject))
+router.get('/subject/:subjectId/material/:materialId/get', catchAsync(getMaterial));
 
 
 // ====================================================Assignmnent Route==============================================
-router.post('/subject/:subjectId/assignment/add', upload.array("files"), addAssigmentToSubject)
+router.post('/subject/:subjectId/assignment/add', upload.array("files"), catchAsync(addAssigmentToSubject))
 
 
 // ====================================================File Route==============================================
-router.get('/subject/:subjectId/material/:materialId/file/:fileId/view', getSubjectFile);
-router.get('/subject/:subjectId/assignment/:assignmentId/file/:fileId/view', getAssignmentFile);
+router.get('/subject/:subjectId/material/:materialId/file/:fileId/view', catchAsync(getSubjectFile));
+router.get('/subject/:subjectId/assignment/:assignmentId/file/:fileId/view', catchAsync(getAssignmentFile));
 module.exports = router;
