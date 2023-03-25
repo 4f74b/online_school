@@ -84,7 +84,7 @@ router.get('/get-teacher', catchAsync(getTeacherQuery))
 // render view Teacher
 router.get('/teacher/:id/view', catchAsync(renderViewUser));
 // View all teachers
-router.get('/teacher/view/all', (viewAllTeachers));
+router.get('/teacher/view/all', catchAsync(viewAllTeachers));
 
 
 
