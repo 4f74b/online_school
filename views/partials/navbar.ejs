@@ -432,7 +432,7 @@
                                                 <span class="name">
                                                     <%= currentUser.fullName %>
                                                 </span>
-                                                <a class="rbt-btn-link color-primary" href="">View
+                                                <a class="rbt-btn-link color-primary" href="/student/dashboard">View
                                                     Profile</a>
                                             </div>
                                         </div>
@@ -489,10 +489,11 @@
                                                             <% }%>
 
                                             </li>
-                                            <% if(currentUser.role=='student' ){ %>
+                                            <% if(currentUser.role=='student' && student.userProfile.admitted ){ %>
 
                                                 <li>
-                                                    <a href="instructor-enrolled-courses.html">
+                                                    <a
+                                                        href="/class/<%= student.userProfile.admittedClass.classType %>/<%= student.userProfile.admittedClass._id %>/view">
                                                         <svg width="15" viewBox="0 0 48 48" id="Layer_1" version="1.1"
                                                             xml:space="preserve" xmlns="http://www.w3.org/2000/svg"
                                                             xmlns:xlink="http://www.w3.org/1999/xlink" fill="#000000">
@@ -534,7 +535,7 @@
                                                         </a>
                                                     </li>
                                                     <li>
-                                                        <a href="instructor-my-quiz-attempts.html">
+                                                        <a href="">
                                                             <svg width="15" viewBox="0 0 24 24" fill="none"
                                                                 xmlns="http://www.w3.org/2000/svg">
                                                                 <g id="SVGRepo_bgCarrier" stroke-width="0"></g>

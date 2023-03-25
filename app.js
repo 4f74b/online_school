@@ -23,6 +23,7 @@ const configurePassport = require('./controllers/passport/configure-passport');
 const { getPageGeneralInfo } = require('./controllers/get-page-general-info');
 const catchAsync = require('./utils/catchAsync');
 const ExpressError = require('./utils/ExpressError');
+const { addCurrentUserToLocals } = require('./controllers/addCurrentUserToLocals')
 
 // load environment vairables
 dotEnv.config();
@@ -97,13 +98,7 @@ app.use((req, res, next) => {
 });
 
 // add currently logged in user to res.locals
-app.use((req, res, next) => {
-    res.locals.currentUser = undefined;
-    if (req.user) {
-        res.locals.currentUser = req.user;
-    }
-    next();
-});
+app.use(catchAsync(addCurrentUserToLocals));
 
 // add current url and domain name to res.locals
 app.use((req, res, next) => {
