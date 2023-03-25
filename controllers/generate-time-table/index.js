@@ -100,7 +100,7 @@ module.exports.generateTimetableTeacher = function (subjects) {
     subjects.forEach((subject, index) => {
         subject.schedule.forEach((schedule) => {
             const dayIndex = daysOfWeek.indexOf(schedule.day);
-            subjectsRows[index][dayIndex + 1] = `${schedule.slot} _ ${subject.class.section}`;
+            subjectsRows[index][dayIndex + 1] = `${schedule.slot} _ Class ${subject.class.classLevel + ' Section ' + subject.class.section}`;
         });
     });
 

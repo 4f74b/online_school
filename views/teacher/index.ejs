@@ -177,28 +177,20 @@
 
 
                 <!-- Time Table for teacher starts here -->
-                <div class="col-lg-12">
+                <div class="col-lg-12 p-0 p-sm-2 p-lg-4">
                     <div class="card dashboard-card-eleven">
-                        <div class="card-body">
+                        <div class="card-body p-0 p-sm-2 p-lg-3 p-lg-4">
                             <div class="heading-layout1">
                                 <div class="item-title">
-                                    <h3>My Students</h3>
+                                    <h3>Your Time Table</h3>
                                 </div>
                             </div>
                             <div class="table-box-wrap">
                                 <div class="table-responsive student-table-box">
 
                                     <table class="w-100">
-                                        <caption>
-                                            <div class="">
-                                                <h4 class="rbt-title-style-3">Time Table</h4>
-                                            </div>
-                                        </caption>
                                         <thead>
                                             <tr class="">
-                                                <td colspan="8" class="h5">
-                                                    Time Table
-                                                </td>
                                             </tr>
                                             <tr>
                                                 <% for(let day of teacher.table[0]){ %>
@@ -220,27 +212,35 @@
                                         <tbody>
                                             <% for(let i=1; i<teacher.table.length; i++){ %>
                                                 <tr>
-                                                    <% for(let j=0; j<teacher.table[i].length; j++){ %>
+                                                    <% for(let j=0; j<8; j++){ %>
+                                                        <%if (teacher.table[i][j]){%>
 
-                                                        <%if (j==0){%>
-                                                            <td class="p-1 p-sm-2 p-lg-3 text-white text-left"
-                                                                style="background-color:rgb(65, 110, 150);">
-                                                                <%= teacher.table[i][j].charAt(0).toUpperCase()+teacher.table[i][j].slice(1)
-                                                                    %>
-
-                                                            </td>
-                                                            <%}else{%>
-                                                                <td class="p-1 p-sm-2 p-lg-3 border">
-
-                                                                    <%= teacher.table[i][j].split('_')[0] %> <br>
-                                                                        <%= teacher.table[i][j].split('_')[1] %>
-
-
+                                                            <%if (j==0){%>
+                                                                <td class="p-1 p-sm-2 p-lg-3 text-white text-left"
+                                                                    style="background-color:rgb(65, 110, 150);">
+                                                                    <%= teacher.table[i][j].charAt(0).toUpperCase()+teacher.table[i][j].slice(1)
+                                                                        %>
 
                                                                 </td>
+                                                                <%}else{%>
+                                                                    <td class="p-1 p-sm-2 p-lg-3 border">
 
-                                                                <%}%>
+                                                                        <%= teacher.table[i][j].split('_')[0] %> <br>
+                                                                            <small>
+                                                                                <%= teacher.table[i][j].split('_')[1] %>
+                                                                            </small>
+
+
+
+                                                                    </td>
+
                                                                     <%}%>
+                                                                        <%}else{%>
+                                                                            <td class="p-1 p-sm-2 p-lg-3 border">--
+                                                                            </td>
+                                                                            <%}%>
+                                                                                <%}%>
+
                                                 </tr>
                                                 <%}%>
                                         </tbody>
@@ -269,7 +269,7 @@
                             <div class="row">
                                 <% if(teacher.userProfile.assigned_subjects.length){ %>
                                     <% for(let subject of teacher.userProfile.assigned_subjects){ %>
-                                        <div class="col-6-xxxl col-12 border-bottom mb-lg-4">
+                                        <div class="col-6-xxxl col-12 border-bottom mb-3 mb-lg-4">
                                             <div class="dashboard-summery-two d-flex m-0">
                                                 <div class="d-flex flex-column w-75 w-300 border-right">
                                                     <h4 class="m-0 text-left">
