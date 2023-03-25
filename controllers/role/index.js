@@ -10,8 +10,9 @@ module.exports.isTeacher = async function (req, res, next) {
     }
 }
 module.exports.isAdmin = async function (req, res, next) {
+    console.log(req.user);
     if (req.user) {
-        if (req.user == 'admin') {
+        if (req.user.role == 'admin') {
             next();
         } else {
             res.render('error/error');
@@ -22,7 +23,7 @@ module.exports.isAdmin = async function (req, res, next) {
 }
 module.exports.isStudent = async function (req, res, next) {
     if (req.user) {
-        if (req.user == 'student') {
+        if (req.user.role == 'student') {
             next();
         } else {
             res.render('error/error');

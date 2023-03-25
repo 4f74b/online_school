@@ -20,7 +20,6 @@ module.exports.viewStaticClass = async function (req, res) {
             ],
         },
     ]);
-    console.log(cls);
     res.render('class/overview-static-class', { cls });
 }
 
