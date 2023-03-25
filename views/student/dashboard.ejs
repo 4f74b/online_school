@@ -30,8 +30,19 @@
                                         <%= student.fullName %>
                                     </h5>
                                     <ul class="rbt-meta rbt-meta-white mt--5">
-                                        <li> <img src="/svg/class.svg" width="15" alt="">&nbsp; Enrolled</li>
-                                        <li><img src="/svg/certificate.svg" width="15" alt="">&nbsp;0 Certificate</li>
+                                        <% if (student.userProfile.admitted){ %>
+                                            <li> <img src="/svg/class.svg" width="15" alt="">&nbsp;You are Enrolled in
+                                                class <%= student.userProfile.admittedClass.classLevel + ', Section ' +
+                                                    student.userProfile.admittedClass.section %>
+                                            </li>
+                                            <% }else{ %>
+                                                <li> <img src="/svg/class.svg" width="15" alt="">&nbsp;You are not
+                                                    enrolled in any class
+                                                </li>
+                                                <% } %>
+                                                    <li><img src="/svg/certificate.svg" width="15" alt="">&nbsp;0
+                                                        Certificate
+                                                    </li>
                                     </ul>
                                 </div>
                             </div>
@@ -49,16 +60,18 @@
 
                                         <div class="rbt-default-sidebar-wrapper">
                                             <div class="section-title mb--20">
-                                                <h6 class="rbt-title-style-2">Welcome, Jone Due</h6>
+                                                <h6 class="rbt-title-style-2">Welcome, <%= student.fullName %>
+                                                </h6>
                                             </div>
                                             <nav class="mainmenu-nav">
                                                 <ul class="dashboard-mainmenu rbt-default-sidebar-list">
-                                                    <li><a href="student-enrolled-courses.html"><img
+                                                    <li><a
+                                                            href="/class/<%= student.userProfile.admittedClass.classType %>/<%= student.userProfile.admittedClass._id %>/view"><img
                                                                 src="/svg/class.svg" width="15" alt=""> &nbsp;
                                                             <span>Enrolled
                                                                 Class</span></a></li>
-                                                    <li><a href="student-my-quiz-attempts.html"><img src="/svg/exam.svg"
-                                                                width="15" alt=""> &nbsp;<span>My assignment
+                                                    <li><a href="#"><img src="/svg/exam.svg" width="15" alt="">
+                                                            &nbsp;<span>My assignment
                                                                 Attempts</span></a></li>
                                                     </li>
                                                 </ul>
@@ -94,7 +107,8 @@
                                     <div class="row g-5">
 
                                         <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                        <a href="/class/<%= student.userProfile.admittedClass.classType %>/<%= student.userProfile.admittedClass._id %>/view"
+                                            class="col-lg-4 col-md-4 col-sm-6 col-12">
                                             <div
                                                 class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
                                                 <div class="inner">
@@ -109,7 +123,7 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
+                                        </a>
                                         <!-- End Single Card  -->
 
                                         <!-- Start Single Card  -->
@@ -118,7 +132,11 @@
                                                 class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-secondary-opacity">
                                                 <div class="inner">
                                                     <div class="rbt-round-icon bg-secondary-opacity">
-                                                        <img src="/svg/achievement.svg" alt="Current Grade">
+                                                        <h3 class="without-icon color-primary">
+                                                            <span class="">
+                                                                <%= student.userProfile.admittedClass.classLevel %>
+                                                            </span>
+                                                        </h3>
                                                     </div>
                                                     <div class="content">
                                                         <h3 class="without-icon color-primary">
@@ -131,25 +149,182 @@
                                         </div>
                                         <!-- End Single Card  -->
 
+
+
                                     </div>
                                 </div>
+                            </div>
+                        </div>
+
+                        <div class="col-lg-9">
+                            <!-- Start Instructor Profile  -->
+                            <div class="rbt-dashboard-content bg-color-white rbt-shadow-box">
+                                <div class="content">
+                                    <div class="section-title">
+                                        <h4 class="rbt-title-style-3">
+                                            <%= student.fullName %>'s Profile
+                                        </h4>
+                                    </div>
+                                    <% if(student.userProfile.admitted){ %>
+                                        <!-- Start Profile Row  -->
+                                        <div class="rbt-profile-row row row--15">
+                                            <div class="col-lg-4 col-md-4">
+                                                <div class="rbt-profile-content b2">Registration Date</div>
+                                            </div>
+                                            <div class="col-lg-8 col-md-8">
+                                                <div class="rbt-profile-content b2">
+                                                    <%= `${student.userProfile.admissionDate.toLocaleString('default', {
+                                                        month: 'short' })}
+                                                        ${student.userProfile.admissionDate.getDate()}
+                                                        ${student.userProfile.admissionDate.getFullYear()}
+                                                        ${student.userProfile.admissionDate.getHours()}:${student.userProfile.admissionDate.getMinutes()}`;
+                                                        %>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!-- End Profile Row  -->
+                                        <% } %>
+
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Full Name</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.fullName %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Profile Row  -->
+
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Date of Birth</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.userProfile.DOB[0]+'/'+student.userProfile.DOB[1]+ '/'
+                                                            + student.userProfile.DOB[2] %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Profile Row  -->
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Father Name</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.userProfile.fatherName %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Profile Row  -->
+
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Gender</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.userProfile.gender %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Profile Row  -->
+
+
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Email</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.email %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Profile Row  -->
+
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Phone Number</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.userProfile.contact.phoneNo ?
+                                                            student.userProfile.contact.phoneNo : 'N/A' %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!-- End Profile Row  -->
+
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Address</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.userProfile.contact.address.streetAddress+', '+
+                                                            student.userProfile.contact.address.country %>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Education</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">
+                                                        <%= student.userProfile.education.instituteName+' ,Grade '+
+                                                            student.userProfile.education.previous_grade %>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            
+                                            <!-- End Profile Row  -->
+
+                                            <!-- Start Profile Row  -->
+                                            <div class="rbt-profile-row row row--15 mt--15">
+                                                <div class="col-lg-4 col-md-4">
+                                                    <div class="rbt-profile-content b2">Biography</div>
+                                                </div>
+                                                <div class="col-lg-8 col-md-8">
+                                                    <div class="rbt-profile-content b2">I' m the Front-End Developer
+                                                            for #Rainbow IT in Bangladesh, OR. I have serious passion
+                                                            for UI effects, animations and creating intuitive, dynamic
+                                                            user experiences.</div>
+                                                    </div>
+                                                </div>
+                                                <!-- End Profile Row  -->
+                                            </div>
+                                </div>
+                                <!-- End Instructor Profile  -->
+
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <!-- End Card Style -->
-    <div class="rbt-separator-mid">
-        <div class="container">
-            <hr class="rbt-separator m-0">
+        <!-- End Card Style -->
+        <div class="rbt-separator-mid">
+            <div class="container">
+                <hr class="rbt-separator m-0">
+            </div>
         </div>
-    </div>
 
-    <%- include('../partials/footer') %>
+        <%- include('../partials/footer') %>
 
 
-        </body>
+            </body>
 
-        </html>
+            </html>
