@@ -20,7 +20,7 @@
                         <div class="tutor-bg-photo bg_image bg_image--23 height-350">
                         </div>
                         <!-- Start Tutor Information  -->
-                        <div class="rbt-tutor-information">
+                        <div class="rbt-tutor-information bg-dark">
                             <div class="rbt-tutor-information-left">
                                 <div class="thumbnail rbt-avatars size-lg">
                                     <img src="/img/female-profile.jpg" alt="Instructor">
@@ -35,14 +35,31 @@
                                                 class <%= student.userProfile.admittedClass.classLevel + ', Section ' +
                                                     student.userProfile.admittedClass.section %>
                                             </li>
-                                            <% }else{ %>
-                                                <li> <img src="/svg/class.svg" width="15" alt="">&nbsp;You are not
-                                                    enrolled in any class
+                                            <% }else if(!student.userProfile.admitted &&
+                                                !student.userProfile.admissionRequested){ %>
+                                                <li class="text-danger"> <img src="/svg/class.svg" width="15"
+                                                        alt="">&nbsp;You are not
+                                                    enrolled in any class, you can access <a
+                                                        class="rbt-btn-link color-primary"
+                                                        href="/class/view/all/static">self paced
+                                                        classes</a> and study
+                                                    on your own OR you can <a class="rbt-btn-link color-primary"
+                                                        href="/class/interactive/apply">apply</a>
+                                                    for collaborative classes
                                                 </li>
-                                                <% } %>
-                                                    <li><img src="/svg/certificate.svg" width="15" alt="">&nbsp;0
-                                                        Certificate
+                                                <% }else if(!student.userProfile.admitted &&
+                                                    student.userProfile.admissionRequested){ %>
+                                                    <li class="text-danger"> <img src="/svg/class.svg" width="15"
+                                                            alt="">&nbsp;You have requested admission, You can access <a
+                                                            class="rbt-btn-link color-primary"
+                                                            href="/class/view/all/static">self paced
+                                                            classes</a> and study
+                                                        on your own untill you are enrolled in the requested class
                                                     </li>
+                                                    <% } %>
+                                                        <li><img src="/svg/certificate.svg" width="15" alt="">&nbsp;0
+                                                            Certificate
+                                                        </li>
                                     </ul>
                                 </div>
                             </div>
@@ -64,17 +81,19 @@
                                                 </h6>
                                             </div>
                                             <nav class="mainmenu-nav">
-                                                <ul class="dashboard-mainmenu rbt-default-sidebar-list">
-                                                    <li><a
-                                                            href="/class/<%= student.userProfile.admittedClass.classType %>/<%= student.userProfile.admittedClass._id %>/view"><img
-                                                                src="/svg/class.svg" width="15" alt=""> &nbsp;
-                                                            <span>Enrolled
-                                                                Class</span></a></li>
-                                                    <li><a href="#"><img src="/svg/exam.svg" width="15" alt="">
-                                                            &nbsp;<span>My assignment
-                                                                Attempts</span></a></li>
-                                                    </li>
-                                                </ul>
+                                                <% if(student.userProfile.admitted){ %>
+                                                    <ul class="dashboard-mainmenu rbt-default-sidebar-list">
+                                                        <li><a
+                                                                href="/class/<%= student.userProfile.admittedClass.classType %>/<%= student.userProfile.admittedClass._id %>/view"><img
+                                                                    src="/svg/class.svg" width="15" alt=""> &nbsp;
+                                                                <span>Enrolled
+                                                                    Class</span></a></li>
+                                                        <li><a href="#"><img src="/svg/exam.svg" width="15" alt="">
+                                                                &nbsp;<span>My assignment
+                                                                    Attempts</span></a></li>
+                                                        </li>
+                                                    </ul>
+                                                    <% } %>
                                             </nav>
 
                                             <div class="section-title mt--40 mb--20">
@@ -106,48 +125,105 @@
                                     </div>
                                     <div class="row g-5">
 
-                                        <!-- Start Single Card  -->
-                                        <a href="/class/<%= student.userProfile.admittedClass.classType %>/<%= student.userProfile.admittedClass._id %>/view"
-                                            class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div
-                                                class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-primary-opacity">
-                                                        <img width="80" src="/svg/class.svg" alt="enrolled Class">
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="without-icon color-primary">
-                                                            <span class="">Enrolled
-                                                                Class</span>
-                                                        </h3>
+                                        <% if (student.userProfile.admitted){ %>
+
+                                            <!-- Start Single Card  -->
+                                            <a href="/class/<%= student.userProfile.admittedClass.classType %>/<%= student.userProfile.admittedClass._id %>/view"
+                                                class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                                <div
+                                                    class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
+                                                    <div class="inner">
+                                                        <div class="rbt-round-icon bg-primary-opacity">
+                                                            <img width="80" src="/svg/class.svg" alt="enrolled Class">
+                                                        </div>
+                                                        <div class="content">
+                                                            <h3 class="without-icon color-primary">
+                                                                <span class="">Enrolled
+                                                                    Class</span>
+                                                            </h3>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </a>
-                                        <!-- End Single Card  -->
-
-                                        <!-- Start Single Card  -->
-                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
-                                            <div
-                                                class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-secondary-opacity">
-                                                <div class="inner">
-                                                    <div class="rbt-round-icon bg-secondary-opacity">
-                                                        <h3 class="without-icon color-primary">
-                                                            <span class="">
-                                                                <%= student.userProfile.admittedClass.classLevel %>
-                                                            </span>
-                                                        </h3>
-                                                    </div>
-                                                    <div class="content">
-                                                        <h3 class="without-icon color-primary">
-                                                            <span class="">Your Grade</span>
-                                                        </h3>
+                                            </a>
+                                            <% }else if(!student.userProfile.admitted &&
+                                                !student.userProfile.admissionRequested){ %>
+                                                <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                                    <div
+                                                        class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-danger-opacity">
+                                                        <div class="inner">
+                                                            <div class="rbt-round-icon bg-primary-opacity">
+                                                                <img width="80" src="/svg/class.svg"
+                                                                    alt="enrolled Class">
+                                                            </div>
+                                                            <div class="content">
+                                                                <h3 class="without-icon color-danger">
+                                                                    <span class="">No Enrolled</span>
+                                                                </h3>
+                                                                <span class="rbt-title-style-2 d-block"><a
+                                                                        class="rbt-btn-link color-primary"
+                                                                        href="/class/interactive/apply">Apply for
+                                                                        online
+                                                                        Collaborative Classes</a></span>
+                                                                <br>
+                                                                <span class="rbt-title-style-2 d-block"><a
+                                                                        class="rbt-btn-link color-primary"
+                                                                        href="/class/view/all/static">Access self paced
+                                                                        Classes</a></span>
+                                                            </div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
+                                                <% }else if(!student.userProfile.admitted &&
+                                                    student.userProfile.admissionRequested){ %>
+                                                    <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                                        <div
+                                                            class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-primary-opacity">
+                                                            <div class="inner">
+                                                                <div class="rbt-round-icon bg-primary-opacity">
+                                                                    <img width="80" src="/svg/class.svg"
+                                                                        alt="enrolled Class">
+                                                                </div>
+                                                                <div class="content">
+                                                                    <h3 class="without-icon color-primary">
+                                                                        <span class="">You have requested
+                                                                            Admission</span>
+                                                                    </h3>
+                                                                    <br>
+                                                                    <span class="rbt-title-style-2 d-block"><a
+                                                                            class="rbt-btn-link color-primary"
+                                                                            href="/class/view/all/static">You can access
+                                                                            self
+                                                                            paced
+                                                                            Classes</a></span>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <% } %>
+                                                        <!-- End Single Card  -->
 
-                                        </div>
-                                        <!-- End Single Card  -->
+                                                        <!-- Start Single Card  -->
+                                                        <div class="col-lg-4 col-md-4 col-sm-6 col-12">
+                                                            <div
+                                                                class="rbt-counterup variation-01 rbt-hover-03 rbt-border-dashed bg-secondary-opacity">
+                                                                <div class="inner">
+                                                                    <div class="rbt-round-icon bg-secondary-opacity">
+                                                                        <h3 class="without-icon color-primary">
+                                                                            <span class="">
+                                                                                <%= student.userProfile.grade %>
+                                                                            </span>
+                                                                        </h3>
+                                                                    </div>
+                                                                    <div class="content">
+                                                                        <h3 class="without-icon color-primary">
+                                                                            <span class="">Your Grade</span>
+                                                                        </h3>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+
+                                                        </div>
+                                                        <!-- End Single Card  -->
 
 
 
