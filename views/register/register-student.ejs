@@ -1,38 +1,8 @@
-<!DOCTYPE html>
-<html lang="en">
+<% layout('layouts/boilerplate') %>
 
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="x-ua-compatible" content="ie=edge">
-    <title>Home - Online Courses &amp; Education Bootstrap5 Template</title>
-    <meta name="robots" content="noindex, follow">
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" type="image/x-icon" href="/assets/img/banner-01.png">
-
-    <!-- CSS
-        ============================================ -->
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/slick.css">
-    <link rel="stylesheet" href="/assets/css/slick-theme.css">
-    <link rel="stylesheet" href="/assets/css/plugins/sal.css">
-    <!-- <link rel="stylesheet" href="/assets/css/plugins/feather.css"> -->
-    <link rel="stylesheet" href="/assets/css/plugins/fontawesome.min.css">
-    <!-- <link rel="stylesheet" href="/assets/css/plugins/euclid-circulara.css"> -->
-    <link rel="stylesheet" href="/assets/css/plugins/swiper.css">
-    <link rel="stylesheet" href="/assets/css/plugins/magnify.css">
-    <link rel="stylesheet" href="/assets/css/plugins/odometer.css">
-    <link rel="stylesheet" href="/assets/css/plugins/animation.css">
-    <link rel="stylesheet" href="/assets/css/plugins/bootstrap-select.min.css">
-    <link rel="stylesheet" href="/assets/css/plugins/jquery-ui.css">
-    <link rel="stylesheet" href="/assets/css/plugins/magnigy-popup.min.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
 
     <link rel="stylesheet" type="text/css" href="/assets/css/forms/theme-checkbox-radio.css">
-
-
     <style>
         /* Style for the select element */
         .selectEl {
@@ -78,9 +48,8 @@
             outline: none !important;
         }
     </style>
-</head>
 
-<body class="p-5">
+
     <h1 class="title p-3">Register</h1>
     <%- include('../partials/flash.ejs') %>
         <form class="col-lg-12 d-flex flex-wrap" method="post" action="/student/register">
@@ -383,14 +352,14 @@
                 class="col-12 rbt-contact-form contact-form-style-1 max-width-auto shadow-none">
                 <h5 class="title text-center">Education Information</h5>
                 <div class="col-12 d-flex justify-content-center flex-column align-items-center">
-                    <div class="form-group col-6">
+                    <div class="form-group col-12 col-lg-6">
                         <input name="education[instituteName]" type="text" id="instituteName">
                         <label>Enter School name(<small>if any</small>)</label>
                         <span class="focus-border"></span>
                     </div>
-                    <div class="form-group col-6">
+                    <div class="form-group col-12 col-lg-6">
                         <div>Select previous education level</div>
-                        <select name="education[previous_grade]" class="form-control mb-4 selectEl" id="grade">
+                        <select name="education[previous_grade]" class="form-control" id="grade">
                             <option disabled selected value="">--Previous grade--</option>
                             <option value="none">none
                             </option>
@@ -426,28 +395,30 @@
 
             </div>
 
-            <div class="d-flex flex-column align-items-center col-12 pt-5s">
+            <div class="d-flex flex-column align-items-center col-12 p-4">
                 <div class=" col-6 bg-danger p-3 mb-3 rounded text-white text-center d-none" id="msg">
                     Password did not
                     match
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                     <input name="password" type="password" id="password">
                     <label>Password</label>
                     <span class="focus-border"></span>
                 </div>
-                <div class="form-group col-6">
+                <div class="form-group col-12 col-lg-6">
                     <input name="conf_password" type="password" id="conf_password">
                     <label>Confirm Password</label>
                     <span class="focus-border"></span>
                 </div>
+
+
                 <div class="d-flex justify-content-center col-12">
                     <div class="form-submit-group w-50 d-flex justify-content-end justify-content-sm-center">
                         <button type="submit" class="rbt-btn btn-md btn-gradient hover-icon-reverse w-100">
                             <span class="icon-reverse-wrapper">
                                 <span class="btn-text">Register</span>
-                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
-                                <span class="btn-icon"><i class="feather-arrow-right"></i></span>
+                                <span class="btn-icon"><img src="/svg/greater-sign.svg" alt=""></span>
+                                <span class="btn-icon"><img src="/svg/greater-sign.svg" alt=""></span>
                             </span>
                         </button>
                     </div>
@@ -461,59 +432,26 @@
         </form>
 
 
-
-
-        <!-- JS
-============================================ -->
-        <!-- Modernizer JS -->
-        <script src="/assets/js/modernizr.min.js"></script>
-        <!-- jQuery JS -->
-        <script src="/assets/js/jquery.js"></script>
-        <!-- Bootstrap JS -->
-        <script src="/assets/js/bootstrap.min.js"></script>
-        <!-- sal.js -->
-        <script src="/assets/js/sal.js"></script>
-        <script src="/assets/js/swiper.js"></script>
-        <script src="/assets/js/magnify.min.js"></script>
-        <script src="/assets/js/jquery-appear.js"></script>
-        <script src="/assets/js/odometer.js"></script>
-        <!-- <script src="/assets/js/backtotop.js"></script> -->
-        <script src="/assets/js/isotop.js"></script>
-        <script src="/assets/js/imageloaded.js"></script>
-
-        <script src="/assets/js/wow.js"></script>
-        <script src="/assets/js/waypoint.min.js"></script>
-        <script src="/assets/js/easypie.js"></script>
-        <script src="/assets/js/text-type.js"></script>
-        <script src="/assets/js/jquery-one-page-nav.js"></script>
-        <script src="/assets/js/bootstrap-select.min.js"></script>
-        <script src="/assets/js/jquery-ui.js"></script>
-        <script src="/assets/js/magnify-popup.min.js"></script>
-        <script src="/assets/js/paralax-scroll.js"></script>
-        <!-- <script src="/assets/js/paralax.min.js"></script> -->
-        <script src="/assets/js/countdown.js"></script>
-        <!-- Main JS -->
-        <script src="/assets/js/main.js"></script>
-
-        <!-- add required to inputs -->
-        <script>
-            for (let input of document.querySelectorAll('input')) {
-                const inputId = input.id;
-                if (inputId != 'phoneNo' && inputId != 'instituteName' && inputId != 'grade') {
-                    input.setAttribute('required', '');
+        <%- include('../partials/footer') %>
+            <!-- add required to inputs -->
+            <script>
+                for (let input of document.querySelectorAll('input')) {
+                    const inputId = input.id;
+                    if (inputId != 'phoneNo' && inputId != 'instituteName' && inputId != 'grade') {
+                        input.setAttribute('required', '');
+                    }
                 }
-            }
-        </script>
-        <!-- Check password before submitting -->
-        <script>
-            document.querySelector('form').addEventListener('submit', function (evt) {
-                if (document.getElementById('password').value !== document.getElementById('conf_password').value) {
-                    document.getElementById('msg').classList.remove('d-none');
-                    evt.preventDefault()
-                    evt.stopPropagation();
-                }
-            })
-        </script>
-</body>
+            </script>
+            <!-- Check password before submitting -->
+            <script>
+                document.querySelector('form').addEventListener('submit', function (evt) {
+                    if (document.getElementById('password').value !== document.getElementById('conf_password').value) {
+                        document.getElementById('msg').classList.remove('d-none');
+                        evt.preventDefault()
+                        evt.stopPropagation();
+                    }
+                })
+            </script>
+            </body>
 
-</html>
+            </html>
