@@ -62,10 +62,13 @@ app.listen(port, () => {
 // });
 const mongoUrl = process.env.MONGOURL
 
-mongoose.connect(mongoUrl, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-});
+// We will call this function with await in app.use
+async function connect_mongoose() {
+    mongoose.connect(mongoUrl, {
+        useNewUrlParser: true,
+        useUnifiedTopology: true,
+    });
+}
 
 //the following will check for a successfull connection to mongodb, The above commented code can also be used
 const db = mongoose.connection;
@@ -91,7 +94,16 @@ app.use(passport.session());
 // configure passport
 app.use(configurePassport);
 
-app.use((req, res, next) => {
+app.use(async (req, res, next) => {
+    try {
+        // connnect to mongoose
+        await connect_mongoose();
+
+    } catch (err) {
+        console.log("Unable to connect to mongoose....", err);
+    }
+
+    // Create flash variable in res.locals
     res.locals.success = req.flash("success");
     res.locals.error = req.flash("error");
     next();
