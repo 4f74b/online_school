@@ -56,7 +56,7 @@ module.exports.addMaterialToSubject = async function (req, res) {
     await Subject.findByIdAndUpdate(req.params.subjectId, { $push: { material: material._id } });
     await material.save();
     req.flash('success', 'Successfully added new material to class');
-    res.redirect(`/teacher/subject/${req.params.subjectId}/view`)
+    res.redirect(`/${req.user.role}/subject/${req.params.subjectId}/view`)
 }
 
 module.exports.addAssigmentToSubject = async function (req, res) {

@@ -16,7 +16,6 @@ const studentRoute = require('./routes/student-route');
 const teacherRoute = require('./routes/teacher-route');
 const adminRoute = require('./routes/admin-route');
 const publicRoute = require('./routes/public-route');
-// const zoomRouter = require("./routes/zoom-route");
 
 
 const configurePassport = require('./controllers/passport/configure-passport');
@@ -35,9 +34,6 @@ const port = process.env.PORT || 3000;
 //registering middlewares
 // app.use(cors());
 
-
-//registering routes
-// app.use("/zoomapi", zoomRouter);
 
 
 app.use(express.urlencoded({ extended: true }));

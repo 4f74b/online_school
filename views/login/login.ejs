@@ -74,13 +74,10 @@
         <!-- include footer -->
         <%- include('../partials/footer') %>
             <script>
-                // document.getElementById('email').value = 'farooq@some.fake'
-                // document.getElementById('email').value = 'sdfadfs@sfaf'
-                // document.getElementById('email').value = 'Nabi@fsaf'
-                // document.getElementById('email').value = 'alamaft3@gmail.com'
-
-                // document.getElementById('password').value = '123'
-                // document.forms[0].submit();
+                const focusField = function () {
+                    document.getElementById("email").focus();
+                };
+                focusField();
             </script>
 
     </body>

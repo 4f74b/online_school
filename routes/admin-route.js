@@ -22,6 +22,7 @@ const { viewAllAdmins, viewAllEnrolledStudents, viewAllStaticStudents, viewAllAd
 const { deleteAdmin } = require('../controllers/admin/delete-admin');
 const catchAsync = require('../utils/catchAsync');
 const { isAdmin } = require('../controllers/role');
+const { addMaterialToSubject, addAssigmentToSubject, getAssignmentFile } = require('../controllers/subject/subject');
 
 
 
@@ -64,7 +65,10 @@ router.get('/class/:id/view', catchAsync(viewClass));
 
 
 // ==================================================Subject Related========================================================
-router.get('/class/:classId/subject/:subjectId/view', catchAsync(viewSubject))
+router.get('/subject/:subjectId/view', catchAsync(viewSubject))
+
+// ==================================================Material related=====================================================
+router.post('/subject/:subjectId/material/add', upload.array("files"), catchAsync(addMaterialToSubject))
 
 // ==================================================Student========================================================
 // get student related to particular class

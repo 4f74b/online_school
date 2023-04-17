@@ -8,12 +8,15 @@
     <div class="dashboard-content-one p-0 p-sm-2 p-lg-3 p-xl-5">
         <!-- Breadcubs Area Start Here -->
         <div class="breadcrumbs-area">
-            <h3>Class</h3>
+            <h3>Subject</h3>
             <ul>
                 <li>
-                    <a href="index.html">Home</a>
+                    <a href="/">Home</a>
                 </li>
-                <li>Subject Details</li>
+                <li>
+                    Class
+                </li>
+                <li>Subject</li>
             </ul>
         </div>
         <!-- Breadcubs Area End Here -->
@@ -31,7 +34,7 @@
                                                 <u>
                                                     <%= cls.courses[0].name.charAt(0).toUpperCase()+cls.courses[0].name.slice(1)
                                                         %>
-                                                </u> Class
+                                                </u> Subject
                                             </h3>
                                         </div>
                                         <div class="dropdown">
@@ -633,7 +636,7 @@
                                             </div>
                                         </div>
                                         <form id="materialForm" method="post" enctype="multipart/form-data"
-                                            action="<%= `/teacher/subject/${cls.courses[0]._id}/material/add` %>"
+                                            action="<%= `/admin/subject/${cls.courses[0]._id}/material/add` %>"
                                             class="widget-content widget-content-area">
                                             <div id="content-container">
 
